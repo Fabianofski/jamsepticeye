@@ -8,4 +8,7 @@ signal set_money(amount: int)
 
 signal fuel_updated(amount: float)
 signal ran_out_of_fuel()
+
+signal durability_updated(amount: float)
+signal ran_out_of_durability()
 @warning_ignore_restore("unused_signal")

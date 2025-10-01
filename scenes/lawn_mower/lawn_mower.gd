@@ -57,11 +57,6 @@ func update_model():
 	model.position = position 
 	model.rotation.y = direction
 
-func _process(delta: float) -> void:
-	fuel -= fuel_consum * delta
-	SignalBus.fuel_updated.emit(fuel)
-	if fuel <= 0: 
-		SignalBus.ran_out_of_fuel.emit()
 
 func _physics_process(delta):
 	get_speed(delta)
@@ -72,3 +67,15 @@ func _physics_process(delta):
 
 	update_camera()
 	update_model()
+
+func _process(delta: float) -> void:
+	fuel -= fuel_consum * delta
+	SignalBus.fuel_updated.emit(fuel)
+	if fuel <= 0: 
+		SignalBus.ran_out_of_fuel.emit()
+
+func take_damage(damage: float): 
+	durability -= damage
+	SignalBus.durability_updated.emit(durability)
+	if durability <= 0: 
+		SignalBus.ran_out_of_durability.emit()
