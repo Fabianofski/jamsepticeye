@@ -8,7 +8,8 @@ extends RigidBody3D
 @export var fuel = 100.0
 @export var fuel_consum = 1.0 
 
-@onready var model: Node3D= $Model
+@onready var model: Node3D = $Model
+@onready var player_animations: AnimationPlayer = $Model/person/AnimationPlayer
 @onready var camera_rig: Node3D = $CameraRig
 
 var speed = 0.0
@@ -73,6 +74,11 @@ func _process(delta: float) -> void:
 	SignalBus.fuel_updated.emit(fuel)
 	if fuel <= 0: 
 		SignalBus.ran_out_of_fuel.emit()
+	
+	if speed >= 1 and not player_animations.current_animation == "walk":
+		player_animations.play("walk")
+	elif speed < 1 and not player_animations.current_animation == "idle":
+		player_animations.play("idle")
 
 func take_damage(damage: float): 
 	durability -= damage
