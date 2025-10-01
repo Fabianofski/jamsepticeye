@@ -1,9 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://by1gn4o48sli5"]
+[gd_scene load_steps=7 format=3 uid="uid://by1gn4o48sli5"]
 
 [ext_resource type="PackedScene" uid="uid://6tsp8d8bsshk" path="res://scenes/collectible/obstacle.tscn" id="1_4xfga"]
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_4xfga"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_paxxb"]
+seamless = true
+noise = SubResource("FastNoiseLite_4xfga")
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f24su"]
-albedo_color = Color(0.04578, 0.21, 0.0168, 1)
+shading_mode = 2
+albedo_color = Color(0, 0.223529, 0.129412, 1)
+metallic_specular = 0.12
+roughness_texture = SubResource("NoiseTexture2D_paxxb")
 
 [sub_resource type="BoxMesh" id="BoxMesh_eqhe0"]
 material = SubResource("StandardMaterial3D_f24su")
@@ -13,14 +22,6 @@ size = Vector3(100, 1, 100)
 size = Vector3(100, 1, 100)
 
 [node name="Map" type="Node3D"]
-
-[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.026742, 0.964593, 0.262383, -0.514921, -0.238268, 0.823459, 0.856821, -0.113086, 0.503061, -1.27215, 13.1522, -13.9163)
-light_energy = 3.133
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.554554, -0.0908677, 0.827172, -0.832148, -0.0605554, 0.551238, 0, -0.99402, -0.109197, 0, 14, 0)
-light_energy = 3.133
 
 [node name="Ground" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_eqhe0")

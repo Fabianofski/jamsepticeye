@@ -1,11 +1,42 @@
-[gd_scene load_steps=5 format=3 uid="uid://boai28d22w8n2"]
+[gd_scene load_steps=8 format=3 uid="uid://boai28d22w8n2"]
 
 [ext_resource type="PackedScene" uid="uid://by1gn4o48sli5" path="res://scenes/map.tscn" id="1_mixcd"]
 [ext_resource type="PackedScene" uid="uid://cjywsv8rowemi" path="res://scenes/lawn_mower/lawn_mower.tscn" id="2_mj2jn"]
 [ext_resource type="PackedScene" uid="uid://c485h3twkkbdo" path="res://scenes/collectible/collectible.tscn" id="3_kdryc"]
 [ext_resource type="Script" uid="uid://yaswdugcal5a" path="res://scenes/ui/ui.gd" id="4_6e45b"]
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mixcd"]
+sky_top_color = Color(0.324592, 0.535986, 0.835765, 1)
+sky_horizon_color = Color(0.70249, 0.747589, 0.813534, 1)
+ground_horizon_color = Color(0.70249, 0.747589, 0.813534, 1)
+
+[sub_resource type="Sky" id="Sky_mj2jn"]
+sky_material = SubResource("ProceduralSkyMaterial_mixcd")
+
+[sub_resource type="Environment" id="Environment_kdryc"]
+background_mode = 2
+sky = SubResource("Sky_mj2jn")
+ambient_light_source = 2
+ambient_light_color = Color(0.81, 0.81, 0.7614, 1)
+ambient_light_energy = 0.5
+tonemap_mode = 2
+tonemap_white = 2.35
+glow_enabled = true
+glow_bloom = 0.07
+adjustment_enabled = true
+adjustment_brightness = 1.05
+adjustment_contrast = 1.1
+adjustment_saturation = 1.25
+
 [node name="Root" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_kdryc")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+light_color = Color(1, 0.94, 0.88, 1)
+shadow_enabled = true
 
 [node name="Map" parent="." instance=ExtResource("1_mixcd")]
 
