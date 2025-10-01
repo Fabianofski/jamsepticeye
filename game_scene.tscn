@@ -1,9 +1,20 @@
-[gd_scene load_steps=8 format=3 uid="uid://boai28d22w8n2"]
+[gd_scene load_steps=23 format=3 uid="uid://boai28d22w8n2"]
 
 [ext_resource type="PackedScene" uid="uid://by1gn4o48sli5" path="res://scenes/map.tscn" id="1_mixcd"]
 [ext_resource type="PackedScene" uid="uid://cjywsv8rowemi" path="res://scenes/lawn_mower/lawn_mower.tscn" id="2_mj2jn"]
 [ext_resource type="PackedScene" uid="uid://c485h3twkkbdo" path="res://scenes/collectible/collectible.tscn" id="3_kdryc"]
 [ext_resource type="Script" uid="uid://yaswdugcal5a" path="res://scenes/ui/ui.gd" id="4_6e45b"]
+[ext_resource type="Texture2D" uid="uid://dwad8ugg8tvs2" path="res://scenes/ui/border.png" id="5_mj2jn"]
+[ext_resource type="Texture2D" uid="uid://cj53tufwlw80h" path="res://scenes/ui/fuel_empty.png" id="6_e35lh"]
+[ext_resource type="Texture2D" uid="uid://b0cxfseq7x005" path="res://scenes/ui/fuel_border.png" id="7_udeyl"]
+[ext_resource type="Texture2D" uid="uid://ck8jx8jowhs1f" path="res://scenes/ui/fuel_full.png" id="8_miq82"]
+[ext_resource type="Texture2D" uid="uid://bvocmvvmfrqyr" path="res://scenes/ui/durability_1.png" id="9_udeyl"]
+[ext_resource type="Texture2D" uid="uid://bf31rmjofyhue" path="res://scenes/ui/durability_2.png" id="10_ueiaa"]
+[ext_resource type="Texture2D" uid="uid://liowo62dneej" path="res://scenes/ui/durability_3.png" id="11_daj04"]
+[ext_resource type="Texture2D" uid="uid://cbrwpsgtckpng" path="res://scenes/ui/durability_4.png" id="12_mlphb"]
+[ext_resource type="Texture2D" uid="uid://c7alyfmkffa0o" path="res://scenes/ui/money_1.png" id="13_mlphb"]
+[ext_resource type="Texture2D" uid="uid://cdvq0it55eq56" path="res://scenes/ui/money_2.png" id="14_opqoc"]
+[ext_resource type="FontFile" uid="uid://c1hpa04tng3qi" path="res://scenes/ui/Ranchers-Regular.ttf" id="15_opqoc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mixcd"]
 sky_top_color = Color(0.324592, 0.535986, 0.835765, 1)
@@ -28,6 +39,52 @@ adjustment_brightness = 1.05
 adjustment_contrast = 1.1
 adjustment_saturation = 1.25
 
+[sub_resource type="LabelSettings" id="LabelSettings_opqoc"]
+font = ExtResource("15_opqoc")
+font_size = 24
+shadow_color = Color(0, 0, 0, 0.768627)
+shadow_offset = Vector2(4, 0)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_miq82"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_udeyl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ueiaa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_daj04")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_mlphb")
+}],
+"loop": false,
+"name": &"default",
+"speed": 0.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_bpcsf"]
+font = ExtResource("15_opqoc")
+font_size = 32
+shadow_color = Color(0, 0, 0, 0.768627)
+shadow_offset = Vector2(4, 0)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bpcsf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_mlphb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_opqoc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Root" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -49,26 +106,110 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 20)
 [node name="Ui" type="CanvasLayer" parent="."]
 script = ExtResource("4_6e45b")
 
-[node name="FuelLabel" type="Label" parent="Ui"]
-anchors_preset = 1
-anchor_left = 1.0
+[node name="Border" type="TextureRect" parent="Ui"]
+anchors_preset = 15
 anchor_right = 1.0
-offset_left = -139.0
-offset_bottom = 48.0
-grow_horizontal = 0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_mj2jn")
+expand_mode = 5
+
+[node name="Fuel" type="TextureProgressBar" parent="Ui"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -234.0
+offset_top = 8.0
+offset_right = 234.0
+offset_bottom = 79.0
+grow_horizontal = 2
+size_flags_horizontal = 0
+max_value = 10.0
+step = 0.25
+texture_under = ExtResource("6_e35lh")
+texture_over = ExtResource("7_udeyl")
+texture_progress = ExtResource("8_miq82")
+
+[node name="FuelLabel" type="Label" parent="Ui/Fuel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -69.0
+offset_top = 10.0
+offset_right = 70.0
+offset_bottom = 59.0
+grow_horizontal = 2
 size_flags_horizontal = 8
 text = "Fuel: 100"
+label_settings = SubResource("LabelSettings_opqoc")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="DurabilityLabel" type="Label" parent="Ui"]
+[node name="Durability" type="Control" parent="Ui"]
+layout_mode = 3
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -23.0
-offset_right = 71.0
+offset_top = -40.0
+offset_right = 40.0
 grow_vertical = 0
-text = "Durability: 100"
 
-[node name="MoneyLabel" type="Label" parent="Ui"]
-offset_right = 139.0
-offset_bottom = 48.0
-text = "Money: 0"
+[node name="DurabilityVisual" type="AnimatedSprite2D" parent="Ui/Durability"]
+position = Vector2(104, -24)
+scale = Vector2(0.7, 0.7)
+sprite_frames = SubResource("SpriteFrames_miq82")
+
+[node name="DurabilityLabel" type="Label" parent="Ui/Durability"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 28.0
+offset_top = -67.0
+offset_right = 121.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "100%"
+label_settings = SubResource("LabelSettings_bpcsf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Money" type="Control" parent="Ui"]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="MoneyVisual" type="AnimatedSprite2D" parent="Ui/Money"]
+position = Vector2(-48, -48)
+scale = Vector2(0.7, 0.7)
+sprite_frames = SubResource("SpriteFrames_bpcsf")
+
+[node name="MoneyLabel" type="Label" parent="Ui/Money"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -142.0
+offset_top = -68.0
+offset_right = 10.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "$0"
+label_settings = SubResource("LabelSettings_bpcsf")
+horizontal_alignment = 1
+vertical_alignment = 1
