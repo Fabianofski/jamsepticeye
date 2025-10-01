@@ -5,7 +5,7 @@ extends RigidBody3D
 @export var drift_speed = 1.5
 @export var max_speed = 30.0
 
-@onready var mesh: MeshInstance3D = $MeshInstance3D
+@onready var model: Node3D= $Model
 @onready var camera_rig: Node3D = $CameraRig
 
 var speed = 0.0
@@ -13,14 +13,14 @@ var direction = 0.0
 
 func _ready():
 	camera_rig.top_level = true
-	mesh.top_level = true
+	model.top_level = true
 
 func get_steering(delta): 
 	var input_dir = 0.0
 	if Input.is_action_pressed("left"):
-		input_dir = -1.0
-	elif Input.is_action_pressed("right"):
 		input_dir = 1.0
+	elif Input.is_action_pressed("right"):
+		input_dir = -1.0
 
 	if Input.is_action_pressed("drift"): 
 		var speed_factor = abs(speed) / max_speed
@@ -30,9 +30,9 @@ func get_steering(delta):
 
 func get_speed(delta): 
 	if Input.is_action_pressed("forward"):
-		speed -= acceleration * delta
-	elif Input.is_action_pressed("back"):
 		speed += acceleration * delta
+	elif Input.is_action_pressed("back"):
+		speed -= acceleration * delta
 	else:
 		speed = lerp(speed, 0.0, 0.05)
 
@@ -48,9 +48,9 @@ func update_camera():
 		0.1
 	)
 
-func update_mesh(): 
-	mesh.position = position 
-	mesh.rotation.y = direction
+func update_model(): 
+	model.position = position 
+	model.rotation.y = direction
 
 func _physics_process(delta):
 	get_speed(delta)
@@ -60,4 +60,4 @@ func _physics_process(delta):
 	linear_velocity = forward * speed
 
 	update_camera()
-	update_mesh()
+	update_model()
