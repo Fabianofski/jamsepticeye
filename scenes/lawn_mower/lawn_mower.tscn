@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjywsv8rowemi"]
+
+[ext_resource type="Script" uid="uid://bxxhxcs3idf0w" path="res://scenes/lawn_mower/lawn_mower.gd" id="1_utdds"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_utdds"]
+size = Vector3(0.75, 0.75, 2)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_eqhe0"]
+
+[node name="LawnMower" type="RigidBody3D"]
+script = ExtResource("1_utdds")
+acceleration = 5.0
+max_speed = 20.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_utdds")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_eqhe0")
+
+[node name="CameraRig" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="CameraRig"]
+transform = Transform3D(1, 0, 0, 0, 0.704944, 0.709263, 0, -0.709263, 0.704944, 0, 11.2233, 6.92822)
