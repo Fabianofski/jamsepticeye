@@ -75,9 +75,9 @@ func _process(delta: float) -> void:
 	if fuel <= 0: 
 		SignalBus.ran_out_of_fuel.emit()
 	
-	if speed >= 1 and not player_animations.current_animation == "walk":
+	if abs(speed) >= 1 and not player_animations.current_animation == "walk":
 		player_animations.play("walk")
-	elif speed < 1 and not player_animations.current_animation == "idle":
+	elif abs(speed) < 1 and not player_animations.current_animation == "idle":
 		player_animations.play("idle")
 
 func take_damage(damage: float): 
