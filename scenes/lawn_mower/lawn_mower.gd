@@ -55,7 +55,7 @@ func update_camera():
 	)
 
 func update_model(): 
-	model.position = position 
+	model.position = position - Vector3(0, 0.5, 0) # Offset so the character properly touches the ground
 	model.rotation.y = direction
 
 

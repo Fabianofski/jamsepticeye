@@ -17,6 +17,7 @@ fuel = 10.0
 [node name="person" parent="Model" instance=ExtResource("2_vgotr")]
 
 [node name="lawn_mower" parent="Model" instance=ExtResource("3_vgotr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.168874, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_eqhe0")
