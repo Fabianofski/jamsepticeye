@@ -10,6 +10,7 @@
 script = ExtResource("1_utdds")
 acceleration = 5.0
 max_speed = 10.0
+fuel = 10.0
 
 [node name="Model" type="Node3D" parent="."]
 

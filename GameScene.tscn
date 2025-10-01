@@ -18,6 +18,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 20)
 [node name="Ui" type="CanvasLayer" parent="."]
 script = ExtResource("4_b5kf5")
 
+[node name="FuelLabel" type="Label" parent="Ui"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -139.0
+offset_bottom = 48.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+text = "Fuel: 100"
+
 [node name="MoneyLabel" type="Label" parent="Ui"]
 offset_right = 139.0
 offset_bottom = 48.0

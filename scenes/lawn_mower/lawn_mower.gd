@@ -4,6 +4,9 @@ extends RigidBody3D
 @export var steering_speed = 1.5
 @export var drift_speed = 1.5
 @export var max_speed = 30.0
+@export var durability = 100.0
+@export var fuel = 100.0
+@export var fuel_consum = 1.0 
 
 @onready var model: Node3D= $Model
 @onready var camera_rig: Node3D = $CameraRig
@@ -14,6 +17,8 @@ var direction = 0.0
 func _ready():
 	camera_rig.top_level = true
 	model.top_level = true
+
+	SignalBus.fuel_updated.emit(fuel)
 
 func get_steering(delta): 
 	var input_dir = 0.0
@@ -51,6 +56,12 @@ func update_camera():
 func update_model(): 
 	model.position = position 
 	model.rotation.y = direction
+
+func _process(delta: float) -> void:
+	fuel -= fuel_consum * delta
+	SignalBus.fuel_updated.emit(fuel)
+	if fuel <= 0: 
+		SignalBus.ran_out_of_fuel.emit()
 
 func _physics_process(delta):
 	get_speed(delta)
