@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://by1gn4o48sli5"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_eqhe0"]
+top_radius = 2.0
+bottom_radius = 2.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_eqhe0"]
+radius = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f24su"]
+albedo_color = Color(0.04578, 0.21, 0.0168, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_eqhe0"]
+material = SubResource("StandardMaterial3D_f24su")
+size = Vector3(100, 1, 100)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f24su"]
+size = Vector3(100, 1, 100)
+
+[node name="Map" type="Node3D"]
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.026742, 0.964593, 0.262383, -0.514921, -0.238268, 0.823459, 0.856821, -0.113086, 0.503061, -1.27215, 13.1522, -13.9163)
+light_energy = 3.133
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.554554, -0.0908677, 0.827172, -0.832148, -0.0605554, 0.551238, 0, -0.99402, -0.109197, 0, 14, 0)
+light_energy = 3.133
+
+[node name="Obstacle" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -14)
+mesh = SubResource("CylinderMesh_eqhe0")
+skeleton = NodePath("../../root/@EditorNode@21272/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@54/@VBoxContainer@55/@EditorMainScreen@102/MainScreen/@CanvasItemEditor@11482/@VSplitContainer@11134/@HSplitContainer@11136/@HSplitContainer@11138/@Control@11139/@SubViewportContainer@11140/@SubViewport@11141/Root")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Obstacle"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacle/StaticBody3D"]
+shape = SubResource("CylinderShape3D_eqhe0")
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_eqhe0")
+skeleton = NodePath("../../root/@EditorNode@21272/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@54/@VBoxContainer@55/@EditorMainScreen@102/MainScreen/@CanvasItemEditor@11482/@VSplitContainer@11134/@HSplitContainer@11136/@HSplitContainer@11138/@Control@11139/@SubViewportContainer@11140/@SubViewport@11141/Root")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D"]
+shape = SubResource("BoxShape3D_f24su")

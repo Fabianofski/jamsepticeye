@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://cjywsv8rowemi"]
 
 [ext_resource type="Script" uid="uid://bxxhxcs3idf0w" path="res://scenes/lawn_mower/lawn_mower.gd" id="1_utdds"]
-[ext_resource type="PackedScene" uid="uid://dk6rofokxluak" path="res://assets/characters/person.blend" id="2_vgotr"]
-[ext_resource type="PackedScene" uid="uid://bicwbk6lrxb1" path="res://assets/mowers/lawn_mower.glb" id="3_vgotr"]
+[ext_resource type="PackedScene" uid="uid://dk6rofokxluak" path="res://scenes/characters/person.blend" id="2_vgotr"]
+[ext_resource type="PackedScene" uid="uid://bicwbk6lrxb1" path="res://scenes/lawn_mower/models/lawn_mower.glb" id="3_vgotr"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_eqhe0"]
 

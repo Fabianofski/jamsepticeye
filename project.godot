@@ -15,6 +15,15 @@ run/main_scene="uid://boai28d22w8n2"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GameManager="*res://scenes/game_manager.gd"
+SignalBus="*res://scenes/signal_bus.gd"
+
+[global_group]
+
+LawnMower="The LawnMower Object for Collision Check"
+
 [input]
 
 forward={
