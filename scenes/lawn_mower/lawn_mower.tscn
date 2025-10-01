@@ -10,7 +10,7 @@ size = Vector3(0.75, 0.75, 2)
 [node name="LawnMower" type="RigidBody3D"]
 script = ExtResource("1_utdds")
 acceleration = 5.0
-max_speed = 20.0
+max_speed = 10.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_utdds")
