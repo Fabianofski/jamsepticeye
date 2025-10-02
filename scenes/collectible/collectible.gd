@@ -9,8 +9,16 @@ enum PopupType { FUEL, MONEY, DURABILITY}
 @export var fuel_amount = 0
 @export var popup_type: PopupType = PopupType.MONEY
 
+@onready var mesh: Node3D = $Mesh
+@export var randomize_size: bool = false
+@export var min_size = 0.6 
+@export var max_size = 1.0 
+
 func _ready() -> void:
 	body_entered.connect(on_body_entered)
+	if randomize_size: 
+		var size = randf_range(min_size, max_size)
+		mesh.scale = Vector3.ONE * size
 
 func on_body_entered(body: Node3D):
 	if body.is_in_group("LawnMower"):
