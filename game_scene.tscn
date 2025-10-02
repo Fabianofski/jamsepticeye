@@ -1,8 +1,7 @@
-[gd_scene load_steps=23 format=3 uid="uid://boai28d22w8n2"]
+[gd_scene load_steps=22 format=3 uid="uid://boai28d22w8n2"]
 
 [ext_resource type="PackedScene" uid="uid://by1gn4o48sli5" path="res://scenes/map.tscn" id="1_mixcd"]
 [ext_resource type="PackedScene" uid="uid://cjywsv8rowemi" path="res://scenes/lawn_mower/lawn_mower.tscn" id="2_mj2jn"]
-[ext_resource type="PackedScene" uid="uid://c485h3twkkbdo" path="res://scenes/collectible/collectible.tscn" id="3_kdryc"]
 [ext_resource type="Script" uid="uid://yaswdugcal5a" path="res://scenes/ui/ui.gd" id="4_6e45b"]
 [ext_resource type="Texture2D" uid="uid://dwad8ugg8tvs2" path="res://scenes/ui/border.png" id="5_mj2jn"]
 [ext_resource type="Texture2D" uid="uid://cj53tufwlw80h" path="res://scenes/ui/fuel_empty.png" id="6_e35lh"]
@@ -99,10 +98,6 @@ shadow_enabled = true
 
 [node name="LawnMower" parent="." groups=["LawnMower"] instance=ExtResource("2_mj2jn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.453709, 0.674866, -8.44001)
-
-[node name="Collectible" parent="." instance=ExtResource("3_kdryc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 20)
-popup_type = 1
 
 [node name="Ui" type="CanvasLayer" parent="."]
 script = ExtResource("4_6e45b")

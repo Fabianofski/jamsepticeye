@@ -31,4 +31,4 @@ func on_body_entered(body: Node3D):
 				popup_value = damage
 			PopupType.FUEL:
 				popup_value = fuel_amount
-		SignalBus.ui_popup_called.emit(popup_type, str(popup_value), self.position)
+		SignalBus.ui_popup_called.emit(popup_type, str(popup_value), self.global_position)

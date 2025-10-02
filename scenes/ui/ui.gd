@@ -28,7 +28,7 @@ func on_money_updated(money: int):
 
 func on_fuel_updated(fuel: float, max_fuel: float): 
 	fuel_label.text = "Fuel: %d" % fuel
-	fuel_bar.max_value = max_fuel # NOTE: Doesn't appear to update visually for some reason.
+	fuel_bar.max_value = max_fuel
 	fuel_bar.value = fuel
 
 func on_durability_updated(durability: float): 
@@ -43,14 +43,14 @@ func on_durability_updated(durability: float):
 	else:
 		durability_visual.frame = 0
 
-func create_popup(popup_type: Collectible.PopupType, popup_value: Variant, popup_position: Vector3):
+func create_popup(popup_type: Collectible.PopupType, popup_value: String, popup_position: Vector3):
 	var popup_instance = popup_scene.instantiate()
 	self.add_child(popup_instance)
 	match popup_type:
 		Collectible.PopupType.MONEY:
-			popup_instance.set_text("+$" + str(popup_value))
+			popup_instance.set_text("+$" + popup_value)
 		Collectible.PopupType.DURABILITY:
-			popup_instance.set_text("-" + str(int(popup_value)))
+			popup_instance.set_text("-" + popup_value)
 		Collectible.PopupType.FUEL:
-			popup_instance.set_text("+" + str(int(popup_value)) + " fuel!")
+			popup_instance.set_text("+" + popup_value + " fuel!")
 	popup_instance.position = get_viewport().get_camera_3d().unproject_position(popup_position) - Vector2(0, 128)

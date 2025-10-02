@@ -1,6 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://by1gn4o48sli5"]
+[gd_scene load_steps=9 format=3 uid="uid://by1gn4o48sli5"]
 
 [ext_resource type="PackedScene" uid="uid://6tsp8d8bsshk" path="res://scenes/collectible/obstacle.tscn" id="1_4xfga"]
+[ext_resource type="PackedScene" uid="uid://jcttd5eh4ywc" path="res://scenes/collectible/fuel.tscn" id="1_gldc4"]
+[ext_resource type="PackedScene" uid="uid://dnjbfn1oxn3k2" path="res://scenes/collectible/collectible_spawner.tscn" id="2_paxxb"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_4xfga"]
 
@@ -31,13 +33,30 @@ mesh = SubResource("BoxMesh_eqhe0")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D"]
 shape = SubResource("BoxShape3D_f24su")
 
-[node name="Collectible" parent="." instance=ExtResource("1_4xfga")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.78497, 0.5, 3.3673)
-popup_type = 2
+[node name="FuelSpawner" parent="." instance=ExtResource("2_paxxb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+radius = 50.0
+min_distance = 20.0
+prefab = ExtResource("1_gldc4")
 
-[node name="Collectible2" parent="." instance=ExtResource("1_4xfga")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.21503, 0.5, 18.3673)
-destructible = true
-damage = 0.0
-fuel_amount = 10
-popup_type = 0
+[node name="ObstacleSpawner" parent="." instance=ExtResource("2_paxxb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+radius = 50.0
+min_distance = 20.0
+prefab = ExtResource("1_4xfga")
+
+[node name="CollectibleSpawner" parent="." instance=ExtResource("2_paxxb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5728, 0.5, 6.28088)
+min_distance = 1.0
+
+[node name="CollectibleSpawner2" parent="." instance=ExtResource("2_paxxb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.4272, 0.5, 6.28088)
+min_distance = 1.0
+
+[node name="CollectibleSpawner3" parent="." instance=ExtResource("2_paxxb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.42725, 0.5, -30.7191)
+min_distance = 1.0
+
+[node name="CollectibleSpawner4" parent="." instance=ExtResource("2_paxxb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5728, 0.5, 38.2809)
+min_distance = 1.0
