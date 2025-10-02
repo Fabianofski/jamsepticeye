@@ -1,7 +1,7 @@
 extends Node3D 
 
 var money: int = 0
-@onready var current_lawn_mower: LawnMower = load("res://scenes/lawn_mower/prefabs/basic.tres")
+var current_lawn_mower: LawnMower
 var game_started = false
 
 func _ready():
@@ -24,3 +24,7 @@ func on_game_over(_message: String):
 
 func start_game(): 
 	game_started = true
+
+func set_lawn_mower(mower: LawnMower): 
+	current_lawn_mower = mower 
+	SignalBus.mower_updated.emit(mower)

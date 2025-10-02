@@ -1,6 +1,10 @@
 extends Node3D 
 
+@export var lawn_mowers: Array[LawnMower] = []
+
 func _ready() -> void:
+	if GameManager.current_lawn_mower == null: 
+		GameManager.set_lawn_mower(lawn_mowers[0])
 	spawn_lawn_mower()
 
 func spawn_lawn_mower(): 

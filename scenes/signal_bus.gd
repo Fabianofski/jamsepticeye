@@ -18,4 +18,6 @@ signal game_over(message: String)
 signal game_started()
 
 signal ui_popup_called(type: Collectible.PopupType, value: String)
+
+signal mower_updated(mower: LawnMower)
 @warning_ignore_restore("unused_signal")
