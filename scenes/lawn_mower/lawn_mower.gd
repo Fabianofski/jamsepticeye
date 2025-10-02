@@ -21,6 +21,14 @@ func _ready():
 	model.top_level = true
 
 	SignalBus.fuel_updated.emit(fuel, max_fuel)
+	SignalBus.add_fuel.connect(func(amount): 
+		fuel += amount
+		SignalBus.fuel_updated.emit(fuel, max_fuel)
+	)
+	SignalBus.remove_fuel.connect(func(amount): 
+		fuel -= amount
+		SignalBus.fuel_updated.emit(fuel, max_fuel)
+	)
 
 func get_steering(delta): 
 	var input_dir = 0.0
@@ -86,3 +94,5 @@ func take_damage(damage: float):
 	SignalBus.durability_updated.emit(durability)
 	if durability <= 0: 
 		SignalBus.ran_out_of_durability.emit()
+
+

@@ -18,7 +18,7 @@ func on_body_entered(body: Node3D):
 		if money_amount > 0:
 			SignalBus.add_money.emit(money_amount)
 		if fuel_amount > 0:
-			pass # TODO: Consider fuel pickups that extend your timer.
+			SignalBus.add_fuel.emit(fuel_amount)
 
 		body.take_damage(damage)
 		

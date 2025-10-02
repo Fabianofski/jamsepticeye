@@ -6,6 +6,8 @@ signal add_money(amount: int)
 signal remove_money(amount: int)
 signal set_money(amount: int)
 
+signal add_fuel(amount: int)
+signal remove_fuel(amount: int)
 signal fuel_updated(amount: float, max_amount: float)
 signal ran_out_of_fuel()
 

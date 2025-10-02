@@ -32,4 +32,12 @@ mesh = SubResource("BoxMesh_eqhe0")
 shape = SubResource("BoxShape3D_f24su")
 
 [node name="Collectible" parent="." instance=ExtResource("1_4xfga")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.215032, 0.5, -12.6327)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.78497, 0.5, 3.3673)
+popup_type = 2
+
+[node name="Collectible2" parent="." instance=ExtResource("1_4xfga")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.21503, 0.5, 18.3673)
+destructible = true
+damage = 0.0
+fuel_amount = 10
+popup_type = 0

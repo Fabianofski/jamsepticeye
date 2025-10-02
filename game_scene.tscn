@@ -102,6 +102,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.453709, 0.674866, -8.44001
 
 [node name="Collectible" parent="." instance=ExtResource("3_kdryc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 20)
+popup_type = 1
 
 [node name="Ui" type="CanvasLayer" parent="."]
 script = ExtResource("4_6e45b")
