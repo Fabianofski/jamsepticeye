@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cbrwpsgtckpng"
-path="res://.godot/imported/durability_4.png-b30a73731de14c0801b3111c49efae07.ctex"
+uid="uid://liowo62dneej"
+path="res://.godot/imported/durability_3.png-d527c6de6d0e18049e6cf6b154f7ebee.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/ui/durability_4.png"
-dest_files=["res://.godot/imported/durability_4.png-b30a73731de14c0801b3111c49efae07.ctex"]
+source_file="res://scenes/ui/game_ui/durability_3.png"
+dest_files=["res://.godot/imported/durability_3.png-d527c6de6d0e18049e6cf6b154f7ebee.ctex"]
 
 [params]
 

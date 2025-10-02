@@ -1,15 +1,26 @@
 extends Node3D 
 
 var money: int = 0
+var upgrades: Upgrades = Upgrades.new()
+var game_started = false
 
 func _ready():
 	SignalBus.add_money.connect(on_add_money)
-	SignalBus.ran_out_of_fuel.connect(on_game_over)
-	SignalBus.ran_out_of_durability.connect(on_game_over)
+	SignalBus.remove_money.connect(on_remove_money)
+	SignalBus.game_over.connect(on_game_over)
+	SignalBus.game_started.connect(start_game)
 
 func on_add_money(amount: int): 
 	money += amount
 	SignalBus.money_updated.emit(money)
 
-func on_game_over(): 
+func on_remove_money(amount: int): 
+	money -= amount
+	SignalBus.money_updated.emit(money)
+
+func on_game_over(_message: String): 
+	game_started = false 
 	get_tree().reload_current_scene()
+
+func start_game(): 
+	game_started = true

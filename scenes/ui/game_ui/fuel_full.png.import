@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7alyfmkffa0o"
-path="res://.godot/imported/money_1.png-6452d886bf17f552caa8ffa1f681ba9e.ctex"
+uid="uid://ck8jx8jowhs1f"
+path="res://.godot/imported/fuel_full.png-853e6cc5e81eb1f4c5eb09eb0b695792.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/ui/money_1.png"
-dest_files=["res://.godot/imported/money_1.png-6452d886bf17f552caa8ffa1f681ba9e.ctex"]
+source_file="res://scenes/ui/game_ui/fuel_full.png"
+dest_files=["res://.godot/imported/fuel_full.png-853e6cc5e81eb1f4c5eb09eb0b695792.ctex"]
 
 [params]
 

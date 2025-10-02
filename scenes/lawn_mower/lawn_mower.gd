@@ -1,13 +1,20 @@
 extends RigidBody3D
 
 @export var acceleration = 20.0
+@export var base_max_speed = 10.0
+var max_speed = base_max_speed 
+
 @export var steering_speed = 1.5
 @export var drift_speed = 1.5
-@export var max_speed = 30.0
+
 @export var durability = 100.0
-@export var fuel = 100.0
-@export var max_fuel = 100.0
-@export var fuel_consum = 1.0 
+
+@export var base_max_fuel = 100.0
+var max_fuel = base_max_fuel
+var fuel = max_fuel
+
+@export var base_fuel_consum = 1.0 
+var fuel_consum = base_fuel_consum
 
 @onready var model: Node3D = $Model
 @onready var player_animations: AnimationPlayer = $Model/person/AnimationPlayer
@@ -29,6 +36,12 @@ func _ready():
 		fuel -= amount
 		SignalBus.fuel_updated.emit(fuel, max_fuel)
 	)
+	update_upgrades(GameManager.upgrades)
+
+func update_upgrades(upgrades: Upgrades):
+	max_speed = base_max_speed * upgrades.speed_upgrades
+	max_fuel = base_max_fuel * upgrades.fuel_tank_upgrades
+	fuel_consum = base_fuel_consum * upgrades.fuel_efficiency_upgrades
 
 func get_steering(delta): 
 	var input_dir = 0.0
@@ -67,8 +80,10 @@ func update_model():
 	model.position = position - Vector3(0, 0.5, 0) # Offset so the character properly touches the ground
 	model.rotation.y = direction
 
-
 func _physics_process(delta):
+	if not GameManager.game_started: 
+		return	
+
 	get_speed(delta)
 	get_steering(delta)
 
@@ -79,11 +94,16 @@ func _physics_process(delta):
 	update_model()
 
 func _process(delta: float) -> void:
+	play_animations()
+	if not GameManager.game_started: 
+		return
+
 	fuel -= fuel_consum * delta
 	SignalBus.fuel_updated.emit(fuel, max_fuel)
 	if fuel <= 0: 
-		SignalBus.ran_out_of_fuel.emit()
+		SignalBus.game_over.emit("Ran out of fuel!")
 	
+func play_animations(): 
 	if abs(speed) >= 1 and not player_animations.current_animation == "walk":
 		player_animations.play("walk")
 	elif abs(speed) < 1 and not player_animations.current_animation == "idle":
@@ -93,6 +113,6 @@ func take_damage(damage: float):
 	durability -= damage
 	SignalBus.durability_updated.emit(durability)
 	if durability <= 0: 
-		SignalBus.ran_out_of_durability.emit()
+		SignalBus.game_over.emit("Ran out of durability!")
 
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdvq0it55eq56"
-path="res://.godot/imported/money_2.png-3e2dd4ca2a3b36577852c84ae8bbd670.ctex"
+uid="uid://dwad8ugg8tvs2"
+path="res://.godot/imported/border.png-5844a296a90beeef3d6d42c6c1ddf8ec.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/ui/money_2.png"
-dest_files=["res://.godot/imported/money_2.png-3e2dd4ca2a3b36577852c84ae8bbd670.ctex"]
+source_file="res://scenes/ui/game_ui/border.png"
+dest_files=["res://.godot/imported/border.png-5844a296a90beeef3d6d42c6c1ddf8ec.ctex"]
 
 [params]
 

@@ -9,10 +9,11 @@ signal set_money(amount: int)
 signal add_fuel(amount: int)
 signal remove_fuel(amount: int)
 signal fuel_updated(amount: float, max_amount: float)
-signal ran_out_of_fuel()
 
 signal durability_updated(amount: float)
-signal ran_out_of_durability()
+
+signal game_over(message: String) 
+signal game_started()
 
 signal ui_popup_called(type: Collectible.PopupType, value: String)
 @warning_ignore_restore("unused_signal")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0cxfseq7x005"
-path="res://.godot/imported/fuel_border.png-dda1e74878849760ebac1b4087120f57.ctex"
+uid="uid://cdvq0it55eq56"
+path="res://.godot/imported/money_2.png-07f2ad918a2533f6b20a2cb18ef53d72.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/ui/fuel_border.png"
-dest_files=["res://.godot/imported/fuel_border.png-dda1e74878849760ebac1b4087120f57.ctex"]
+source_file="res://scenes/ui/game_ui/money_2.png"
+dest_files=["res://.godot/imported/money_2.png-07f2ad918a2533f6b20a2cb18ef53d72.ctex"]
 
 [params]
 

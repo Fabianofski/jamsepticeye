@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwad8ugg8tvs2"
-path="res://.godot/imported/border.png-96ae30344c612cd752f38605dfd21d49.ctex"
+uid="uid://bvocmvvmfrqyr"
+path="res://.godot/imported/durability_1.png-9d3ce6611d1ebf8fc947f3ba93a97f83.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/ui/border.png"
-dest_files=["res://.godot/imported/border.png-96ae30344c612cd752f38605dfd21d49.ctex"]
+source_file="res://scenes/ui/game_ui/durability_1.png"
+dest_files=["res://.godot/imported/durability_1.png-9d3ce6611d1ebf8fc947f3ba93a97f83.ctex"]
 
 [params]
 

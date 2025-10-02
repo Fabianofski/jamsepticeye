@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cj53tufwlw80h"
-path="res://.godot/imported/fuel_empty.png-0a2b04bef024df9e0310d53ece1bc40c.ctex"
+path="res://.godot/imported/fuel_empty.png-f1cc8d20a0c45159289e2fcc3940c2ff.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/ui/fuel_empty.png"
-dest_files=["res://.godot/imported/fuel_empty.png-0a2b04bef024df9e0310d53ece1bc40c.ctex"]
+source_file="res://scenes/ui/game_ui/fuel_empty.png"
+dest_files=["res://.godot/imported/fuel_empty.png-f1cc8d20a0c45159289e2fcc3940c2ff.ctex"]
 
 [params]
 

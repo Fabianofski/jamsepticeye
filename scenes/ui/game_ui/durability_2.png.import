@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ck8jx8jowhs1f"
-path="res://.godot/imported/fuel_full.png-8249c983e8beacfac4566702c9ff8b24.ctex"
+uid="uid://bf31rmjofyhue"
+path="res://.godot/imported/durability_2.png-0ac3769a1d4bd2509802513f77ae89b9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/ui/fuel_full.png"
-dest_files=["res://.godot/imported/fuel_full.png-8249c983e8beacfac4566702c9ff8b24.ctex"]
+source_file="res://scenes/ui/game_ui/durability_2.png"
+dest_files=["res://.godot/imported/durability_2.png-0ac3769a1d4bd2509802513f77ae89b9.ctex"]
 
 [params]
 
