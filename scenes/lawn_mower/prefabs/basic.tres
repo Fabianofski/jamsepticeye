@@ -8,15 +8,15 @@
 [sub_resource type="Resource" id="Resource_r664m"]
 script = ExtResource("2_8drfo")
 amount = 0.2
-base_price = 10
+base_price = 5
 price_increase = 2.0
 max_bought = 3
 metadata/_custom_type_script = "uid://cm0l1l6eqh1cg"
 
 [sub_resource type="Resource" id="Resource_8nffv"]
 script = ExtResource("2_8drfo")
-amount = 0.2
-base_price = 10
+amount = -0.2
+base_price = 15
 price_increase = 2.0
 max_bought = 3
 metadata/_custom_type_script = "uid://cm0l1l6eqh1cg"
@@ -24,7 +24,7 @@ metadata/_custom_type_script = "uid://cm0l1l6eqh1cg"
 [sub_resource type="Resource" id="Resource_i7o0x"]
 script = ExtResource("2_8drfo")
 amount = 0.2
-base_price = 10
+base_price = 20
 price_increase = 2.0
 max_bought = 3
 metadata/_custom_type_script = "uid://cm0l1l6eqh1cg"
@@ -32,7 +32,7 @@ metadata/_custom_type_script = "uid://cm0l1l6eqh1cg"
 [sub_resource type="Resource" id="Resource_k6n71"]
 script = ExtResource("2_8drfo")
 amount = 0.2
-base_price = 10
+base_price = 20
 price_increase = 2.0
 max_bought = 3
 metadata/_custom_type_script = "uid://cm0l1l6eqh1cg"

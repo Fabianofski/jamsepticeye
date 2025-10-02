@@ -5,18 +5,21 @@ class_name LawnMower
 @export var mesh: PackedScene
 var upgrades: Upgrades = Upgrades.new()
 
-@export var speed_upgrade_info = UpgradeInfo.new()
-@export var durability_upgrade_info = UpgradeInfo.new() 
-@export var fuel_tank_upgrade_info = UpgradeInfo.new()
-@export var fuel_efficiency_upgrade_info = UpgradeInfo.new() 
+@export var speed_upgrade_info : UpgradeInfo
+@export var durability_upgrade_info : UpgradeInfo
+@export var fuel_tank_upgrade_info : UpgradeInfo
+@export var fuel_efficiency_upgrade_info : UpgradeInfo
 
-var upgrade_infos: Dictionary[Upgrades.UpgradeType, UpgradeInfo]
+func get_upgrade_info(upgrade_type: Upgrades.UpgradeType) -> UpgradeInfo: 
+	match upgrade_type: 
+		Upgrades.UpgradeType.SPEED: 
+			return speed_upgrade_info
+		Upgrades.UpgradeType.DURABILITY: 
+			return durability_upgrade_info
+		Upgrades.UpgradeType.FUELTANK:
+			return fuel_tank_upgrade_info
+		Upgrades.UpgradeType.FUELEFFICIENCY: 
+			return fuel_efficiency_upgrade_info
 
-func _init(): 
-	upgrade_infos[Upgrades.UpgradeType.SPEED] = speed_upgrade_info
-	upgrade_infos[Upgrades.UpgradeType.DURABILITY] = durability_upgrade_info
-	upgrade_infos[Upgrades.UpgradeType.FUELTANK] = fuel_tank_upgrade_info
-	upgrade_infos[Upgrades.UpgradeType.FUELEFFICIENCY] = fuel_efficiency_upgrade_info
-
-
+	return null
 

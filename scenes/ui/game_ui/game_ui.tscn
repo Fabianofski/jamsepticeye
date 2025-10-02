@@ -12,8 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://cbrwpsgtckpng" path="res://scenes/ui/game_ui/durability_4.png" id="10_r5kob"]
 [ext_resource type="Texture2D" uid="uid://c7alyfmkffa0o" path="res://scenes/ui/game_ui/money_1.png" id="11_egwht"]
 [ext_resource type="Texture2D" uid="uid://cdvq0it55eq56" path="res://scenes/ui/game_ui/money_2.png" id="12_msipi"]
-[ext_resource type="Script" uid="uid://ciuippr4gu5v8" path="res://scenes/ui/upgrade_ui/upgrade_btn.gd" id="13_gc7ur"]
 [ext_resource type="Script" uid="uid://b2ly8jfqp50c5" path="res://scenes/ui/signal_btn.gd" id="14_8jg32"]
+[ext_resource type="Script" uid="uid://boqb36dldxvtd" path="res://scenes/ui/upgrade_ui/upgrade_btn_spawner.gd" id="14_gc7ur"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_opqoc"]
 font = ExtResource("6_xhr0k")
@@ -190,54 +190,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="FuelUpgradeBtn" type="Button" parent="Upgrade"]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 75.0
-offset_top = -141.0
-offset_right = 239.0
-offset_bottom = -102.0
-grow_vertical = 0
-script = ExtResource("13_gc7ur")
-upgrade_type = 3
-
-[node name="Label" type="Label" parent="Upgrade/FuelUpgradeBtn"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Speed 10$"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="SpeedUpgradeBtn" type="Button" parent="Upgrade"]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 73.0
-offset_top = -90.0
-offset_right = 237.0
-offset_bottom = -51.0
-grow_vertical = 0
-script = ExtResource("13_gc7ur")
-upgrade_type = 1
-
-[node name="Label" type="Label" parent="Upgrade/SpeedUpgradeBtn"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Speed 10$"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="StartBtn" type="Button" parent="Upgrade"]
 layout_mode = 1
 anchors_preset = 8
@@ -264,6 +216,16 @@ grow_vertical = 2
 text = "Start"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="UpgradeBtns" type="VFlowContainer" parent="Upgrade"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 42.0
+offset_right = 522.0
+grow_vertical = 2
+alignment = 1
+script = ExtResource("14_gc7ur")
 
 [connection signal="pressed" from="Upgrade/StartBtn" to="Game" method="set_visible" binds= [true]]
 [connection signal="pressed" from="Upgrade/StartBtn" to="Upgrade" method="set_visible" binds= [false]]

@@ -1,6 +1,6 @@
 extends Node3D 
 
-var money: int = 0
+var money: int = 100 
 var current_lawn_mower: LawnMower
 var game_started = false
 

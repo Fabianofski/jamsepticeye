@@ -30,10 +30,10 @@ func _ready():
 		SignalBus.fuel_updated.emit(fuel/max_fuel)
 	)
 	SignalBus.upgrades_updated.connect(update_upgrades)
-	
-	update_upgrades(GameManager.current_lawn_mower.upgrades)
 
 func update_upgrades(upgrades: Upgrades):
+	print("Lawn Mower")
+	print(upgrades)
 	max_speed = stats.base_max_speed * upgrades.speed_upgrades
 	max_fuel = stats.base_max_fuel * upgrades.fuel_tank_upgrades
 	fuel_consum = stats.base_fuel_consum * upgrades.fuel_efficiency_upgrades
