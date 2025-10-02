@@ -9,10 +9,13 @@ extends CanvasLayer
 @onready var durability_visual: AnimatedSprite2D = $Durability/DurabilityVisual
 @onready var durability_label: Label = $Durability/DurabilityLabel
 
+var popup_scene = preload("res://scenes/ui/popup.tscn")
+
 func _ready() -> void:
 	SignalBus.money_updated.connect(on_money_updated) 
 	SignalBus.fuel_updated.connect(on_fuel_updated) 
-	SignalBus.durability_updated.connect(on_durability_updated) 
+	SignalBus.durability_updated.connect(on_durability_updated)
+	SignalBus.ui_popup_called.connect(create_popup)
 	on_money_updated(GameManager.money)
 
 func on_money_updated(money: int): 
@@ -42,4 +45,19 @@ func on_durability_updated(durability: float):
 		pass
 	else:
 		durability_visual.frame = 0
+		pass
+
+func create_popup(popup_type: String, popup_value: Variant, popup_position: Vector3):
+	if popup_type != "":
+		var popup_instance = popup_scene.instantiate()
+		self.add_child(popup_instance)
+		match popup_type:
+			"money":
+				popup_instance.set_text("+$" + str(popup_value))
+			"durability":
+				popup_instance.set_text("-" + str(int(popup_value)))
+			"fuel":
+				popup_instance.set_text("+" + str(int(popup_value)) + " fuel!")
+		popup_instance.position = get_viewport().get_camera_3d().unproject_position(popup_position) - Vector2(0, 128)
+	else:
 		pass

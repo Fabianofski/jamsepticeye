@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4f5ukjvj140m"]
+
+[ext_resource type="FontFile" uid="uid://c1hpa04tng3qi" path="res://scenes/ui/Ranchers-Regular.ttf" id="1_3ig0g"]
+[ext_resource type="Script" uid="uid://bmyau2owencni" path="res://scenes/ui/popup.gd" id="1_xa8wr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xa8wr"]
+font = ExtResource("1_3ig0g")
+font_size = 24
+shadow_color = Color(0, 0, 0, 0.768627)
+shadow_offset = Vector2(4, 0)
+
+[node name="Popup" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xa8wr")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+offset_right = 253.0
+offset_bottom = 31.0
+size_flags_horizontal = 8
+text = "Aw yeah! It's a placeholder!"
+label_settings = SubResource("LabelSettings_xa8wr")
