@@ -14,5 +14,5 @@ signal ran_out_of_fuel()
 signal durability_updated(amount: float)
 signal ran_out_of_durability()
 
-signal ui_popup_called(type: String, value: Variant)
+signal ui_popup_called(type: Collectible.PopupType, value: Variant)
 @warning_ignore_restore("unused_signal")
