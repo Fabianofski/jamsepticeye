@@ -1,13 +1,14 @@
 extends RigidBody3D
 
+enum PopupType { FUEL, MONEY, DURABILITY}
+
 @export var money_amount = 10
 @export var destructible = true 
-@export var hardness = 1.0
+@export var damage = 1.0
 @export var fuel_amount = 0
-@export var popup_type: String = "" ## Can be "money", "durability" or "fuel", or left empty for no popups on interaction.
+@export var popup_type: PopupType = PopupType.MONEY
 
 func _ready() -> void:
-	print("SDFSDFF")
 	body_entered.connect(on_body_entered)
 
 func on_body_entered(body: Node3D):
@@ -19,14 +20,14 @@ func on_body_entered(body: Node3D):
 		if fuel_amount > 0:
 			pass # TODO: Consider fuel pickups that extend your timer.
 
-		body.take_damage(hardness)
+		body.take_damage(damage)
 		
 		var popup_value
 		match popup_type:
-			"money":
+			PopupType.MONEY:
 				popup_value = money_amount
-			"durability":
-				popup_value = hardness
-			"fuel":
+			PopupType.DURABILITY:
+				popup_value = damage
+			PopupType.FUEL:
 				popup_value = fuel_amount
 		SignalBus.ui_popup_called.emit(popup_type, popup_value, self.position)

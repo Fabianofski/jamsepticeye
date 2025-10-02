@@ -28,24 +28,20 @@ func on_money_updated(money: int):
 
 func on_fuel_updated(fuel: float, max_fuel: float): 
 	fuel_label.text = "Fuel: %d" % fuel
-	#fuel_bar.max_value = max_fuel NOTE: Doesn't appear to update visually for some reason.
+	fuel_bar.max_value = max_fuel # NOTE: Doesn't appear to update visually for some reason.
 	fuel_bar.value = fuel
 
 func on_durability_updated(durability: float): 
 	durability_label.text = str(int(durability)) + "%"
 	
-	if durability <= 25: # WARNING: Ugly else-if ahead!
+	if durability <= 25:
 		durability_visual.frame = 3
-		pass
 	elif durability <= 50:
 		durability_visual.frame = 2
-		pass
 	elif durability <= 75:
 		durability_visual.frame = 1
-		pass
 	else:
 		durability_visual.frame = 0
-		pass
 
 func create_popup(popup_type: String, popup_value: Variant, popup_position: Vector3):
 	if popup_type != "":
