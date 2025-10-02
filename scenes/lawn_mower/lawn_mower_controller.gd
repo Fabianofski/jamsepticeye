@@ -1,20 +1,12 @@
 extends RigidBody3D
 
-@export var acceleration = 20.0
-@export var base_max_speed = 10.0
-var max_speed = base_max_speed 
+@export var stats: LawnMowerStats
 
-@export var steering_speed = 1.5
-@export var drift_speed = 1.5
-
-@export var durability = 100.0
-
-@export var base_max_fuel = 100.0
-var max_fuel = base_max_fuel
-var fuel = max_fuel
-
-@export var base_fuel_consum = 1.0 
-var fuel_consum = base_fuel_consum
+var max_speed: float
+var max_fuel: float
+var fuel_consum: float
+var fuel: float
+var durability: float
 
 @onready var model: Node3D = $Model
 @onready var player_animations: AnimationPlayer = $Model/person/AnimationPlayer
@@ -36,12 +28,16 @@ func _ready():
 		fuel -= amount
 		SignalBus.fuel_updated.emit(fuel, max_fuel)
 	)
-	update_upgrades(GameManager.upgrades)
+	SignalBus.upgrades_updated.connect(update_upgrades)
+	
+	update_upgrades(GameManager.current_lawn_mower.upgrades)
 
 func update_upgrades(upgrades: Upgrades):
-	max_speed = base_max_speed * upgrades.speed_upgrades
-	max_fuel = base_max_fuel * upgrades.fuel_tank_upgrades
-	fuel_consum = base_fuel_consum * upgrades.fuel_efficiency_upgrades
+	max_speed = stats.base_max_speed * upgrades.speed_upgrades
+	max_fuel = stats.base_max_fuel * upgrades.fuel_tank_upgrades
+	fuel_consum = stats.base_fuel_consum * upgrades.fuel_efficiency_upgrades
+	fuel = max_fuel
+	durability = stats.base_durability
 
 func get_steering(delta): 
 	var input_dir = 0.0
@@ -52,15 +48,15 @@ func get_steering(delta):
 
 	if Input.is_action_pressed("drift"): 
 		var speed_factor = abs(speed) / max_speed
-		input_dir *= drift_speed * speed_factor
+		input_dir *= stats.drift_speed * speed_factor
 
-	direction += input_dir * steering_speed * delta * (speed / max_speed)
+	direction += input_dir * stats.steering_speed * delta * (speed / max_speed)
 
 func get_speed(delta): 
 	if Input.is_action_pressed("forward"):
-		speed += acceleration * delta
+		speed += stats.acceleration * delta
 	elif Input.is_action_pressed("back"):
-		speed -= acceleration * delta
+		speed -= stats.acceleration * delta
 	else:
 		speed = lerp(speed, 0.0, 0.05)
 
@@ -77,7 +73,7 @@ func update_camera():
 	)
 
 func update_model(): 
-	model.position = position - Vector3(0, 0.5, 0) # Offset so the character properly touches the ground
+	model.global_position = global_position - Vector3(0, 0.5, 0) # Offset so the character properly touches the ground
 	model.rotation.y = direction
 
 func _physics_process(delta):
@@ -114,5 +110,3 @@ func take_damage(damage: float):
 	SignalBus.durability_updated.emit(durability)
 	if durability <= 0: 
 		SignalBus.game_over.emit("Ran out of durability!")
-
-

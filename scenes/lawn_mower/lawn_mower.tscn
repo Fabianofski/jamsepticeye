@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://cjywsv8rowemi"]
+[gd_scene load_steps=8 format=3 uid="uid://cjywsv8rowemi"]
 
-[ext_resource type="Script" uid="uid://bxxhxcs3idf0w" path="res://scenes/lawn_mower/lawn_mower.gd" id="1_utdds"]
+[ext_resource type="Script" uid="uid://bxxhxcs3idf0w" path="res://scenes/lawn_mower/lawn_mower_controller.gd" id="1_utdds"]
+[ext_resource type="Resource" uid="uid://cltiswliie43p" path="res://scenes/lawn_mower/prefabs/basic_stats.tres" id="2_v4la7"]
 [ext_resource type="PackedScene" uid="uid://dk6rofokxluak" path="res://scenes/characters/person.blend" id="2_vgotr"]
 [ext_resource type="PackedScene" uid="uid://bicwbk6lrxb1" path="res://scenes/lawn_mower/models/lawn_mower.glb" id="3_vgotr"]
 [ext_resource type="Shader" uid="uid://dum7asi4x3gis" path="res://scenes/ui/posterise.gdshader" id="4_qsw3o"]
@@ -17,11 +18,9 @@ shader_parameter/steps_l = 12.0
 shader_parameter/level_c = 6.0
 shader_parameter/level_h = 0.05
 
-[node name="LawnMower" type="RigidBody3D"]
+[node name="LawnMower" type="RigidBody3D" groups=["LawnMower"]]
 script = ExtResource("1_utdds")
-acceleration = 5.0
-max_speed = 10.0
-fuel = 10.0
+stats = ExtResource("2_v4la7")
 
 [node name="Model" type="Node3D" parent="."]
 

@@ -1,7 +1,7 @@
 extends Node3D 
 
 var money: int = 0
-var upgrades: Upgrades = Upgrades.new()
+@onready var current_lawn_mower: LawnMower = load("res://scenes/lawn_mower/prefabs/basic.tres")
 var game_started = false
 
 func _ready():

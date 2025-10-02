@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="LawnMower" load_steps=5 format=3 uid="uid://d4i14axeujag0"]
+
+[ext_resource type="Script" uid="uid://cv4gv6mj1avnu" path="res://scenes/lawn_mower/upgrades/lawn_mower.gd" id="1_7hxam"]
+[ext_resource type="PackedScene" uid="uid://cjywsv8rowemi" path="res://scenes/lawn_mower/lawn_mower.tscn" id="1_r664m"]
+[ext_resource type="Script" uid="uid://cm0l1l6eqh1cg" path="res://scenes/lawn_mower/upgrades/upgrade_info.gd" id="2_8drfo"]
+[ext_resource type="Resource" uid="uid://cltiswliie43p" path="res://scenes/lawn_mower/prefabs/basic_stats.tres" id="3_r664m"]
+
+[resource]
+script = ExtResource("1_7hxam")
+stats = ExtResource("3_r664m")
+mesh = ExtResource("1_r664m")
+upgrade_infos = Array[ExtResource("2_8drfo")]([])
+metadata/_custom_type_script = "uid://cv4gv6mj1avnu"
