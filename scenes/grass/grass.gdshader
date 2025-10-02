@@ -10,9 +10,9 @@ uniform vec3 color = vec3(0.3, 0.6, 0.1);
 
 void vertex() {
 	bottom_to_top = 1.0 - UV.y;
-	
+
 	VERTEX.z += blade_bend * pow(bottom_to_top, 2.0);
-	
+
 	VERTEX *= size;
 }
 

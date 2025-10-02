@@ -241,5 +241,5 @@ text = "Start"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="pressed" from="Upgrade/StartBtn" to="Upgrade" method="set_visible" binds= [false]]
 [connection signal="pressed" from="Upgrade/StartBtn" to="Game" method="set_visible" binds= [true]]
+[connection signal="pressed" from="Upgrade/StartBtn" to="Upgrade" method="set_visible" binds= [false]]
