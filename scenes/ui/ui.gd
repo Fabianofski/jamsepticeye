@@ -3,11 +3,11 @@ extends CanvasLayer
 @onready var money_visual: AnimatedSprite2D = $Money/MoneyVisual
 @onready var money_label: Label = $Money/MoneyLabel
 
-@onready var fuel_bar: TextureProgressBar = $Fuel
-@onready var fuel_label: Label = $Fuel/FuelLabel
+@onready var fuel_bar: TextureProgressBar = $Game/Fuel
+@onready var fuel_label: Label = $Game/Fuel/FuelLabel
 
-@onready var durability_visual: AnimatedSprite2D = $Durability/DurabilityVisual
-@onready var durability_label: Label = $Durability/DurabilityLabel
+@onready var durability_visual: AnimatedSprite2D = $Game/Durability/DurabilityVisual
+@onready var durability_label: Label = $Game/Durability/DurabilityLabel
 
 var popup_scene = preload("res://scenes/ui/popup.tscn")
 
