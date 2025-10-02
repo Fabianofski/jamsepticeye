@@ -4,6 +4,8 @@ var money: int = 100
 var current_lawn_mower: LawnMower
 var game_started = false
 
+var player_node: Node3D
+
 func _ready():
 	SignalBus.add_money.connect(on_add_money)
 	SignalBus.remove_money.connect(on_remove_money)

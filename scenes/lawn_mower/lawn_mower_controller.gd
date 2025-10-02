@@ -16,6 +16,8 @@ var speed = 0.0
 var direction = 0.0
 
 func _ready():
+	GameManager.player_node = self
+	
 	camera_rig.top_level = true
 	model.top_level = true
 
