@@ -10,7 +10,7 @@ signal upgrades_updated(upgrade: Upgrades)
 
 signal add_fuel(amount: int)
 signal remove_fuel(amount: int)
-signal fuel_updated(amount: float, max_amount: float)
+signal fuel_updated(amount: float)
 
 signal durability_updated(amount: float)
 

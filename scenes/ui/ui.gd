@@ -26,9 +26,9 @@ func on_money_updated(money: int):
 	else:
 		money_visual.frame = 0
 
-func on_fuel_updated(fuel: float, max_fuel: float): 
-	fuel_label.text = "Fuel: %d" % fuel
-	fuel_bar.max_value = max_fuel
+func on_fuel_updated(fuel: float): 
+	fuel_label.text = "Fuel: %d %%" % (fuel * 100)
+	fuel_bar.max_value = 1
 	fuel_bar.value = fuel
 
 func on_durability_updated(durability: float): 
