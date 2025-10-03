@@ -287,11 +287,15 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Stats" type="VBoxContainer" parent="Upgrade"]
-layout_mode = 0
-offset_left = 894.0
-offset_top = 50.0
-offset_right = 1124.0
-offset_bottom = 206.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -255.0
+offset_top = 35.0
+offset_right = -25.0
+offset_bottom = 191.0
+grow_horizontal = 0
 script = ExtResource("16_3s8aq")
 
 [node name="End" type="Control" parent="."]
