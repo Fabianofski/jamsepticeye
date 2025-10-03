@@ -47,6 +47,16 @@ func stop_hunt():
 	if state == State.IDLE and not mesh_animation.current_animation == "idle":
 		mesh_animation.play("idle")
 
+func look_at_target(): 
+	var direction = navigation_agent.get_next_path_position() - global_position
+	direction = direction.normalized()
+	
+	var flat_direction = navigation_agent.get_next_path_position() - global_position
+	flat_direction.y = 0
+	flat_direction = flat_direction.normalized()
+	if flat_direction.length() > 0:
+		look_at(global_transform.origin - flat_direction, Vector3.UP)
+
 func _physics_process(_delta):
 	if state == State.IDLE: 
 		return
@@ -62,6 +72,7 @@ func _physics_process(_delta):
 			set_movement_target(path[index])
 		return
 
+	look_at_target()
 	var current_agent_position: Vector3 = global_position
 	var next_path_position: Vector3 = navigation_agent.get_next_path_position()
 
