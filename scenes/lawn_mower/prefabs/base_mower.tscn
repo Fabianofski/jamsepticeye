@@ -4,7 +4,7 @@
 [ext_resource type="Resource" uid="uid://cltiswliie43p" path="res://scenes/lawn_mower/prefabs/lawn_mower/lawn_mower_stats.tres" id="2_5gyun"]
 [ext_resource type="PackedScene" uid="uid://dk6rofokxluak" path="res://scenes/characters/person.blend" id="3_g2uju"]
 [ext_resource type="Shader" uid="uid://dum7asi4x3gis" path="res://scenes/ui/posterise.gdshader" id="5_obv1m"]
-[ext_resource type="Script" uid="uid://bdg068gycehyy" path="res://scenes/collectible/hunt_zone.gd" id="6_la7gn"]
+[ext_resource type="Script" uid="uid://bdg068gycehyy" path="res://scenes/collectible/zombie/hunt_zone.gd" id="6_la7gn"]
 [ext_resource type="Shader" uid="uid://c4u3g231110bn" path="res://scenes/ui/speedlines.gdshader" id="6_orcel"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_eqhe0"]

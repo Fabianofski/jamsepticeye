@@ -13,6 +13,8 @@ enum PopupType { FUEL, MONEY, DURABILITY}
 @export var min_size = 0.6 
 @export var max_size = 1.0 
 
+@export var particle: PackedScene
+
 func _ready() -> void:
 	SignalBus.reset_game.connect(func(): 
 		get_parent().queue_free()
@@ -24,6 +26,12 @@ func _ready() -> void:
 
 func on_body_entered(body: Node3D):
 	if body.is_in_group("LawnMower") and GameManager.game_started:
+		if particle != null: 
+			var part = particle.instantiate()
+			get_parent().get_parent().add_child(part)
+			part.global_position = global_position
+			part.emitting = true
+
 		var popup_pos = global_position
 		if money_amount > 0:
 			SignalBus.add_money.emit(money_amount)

@@ -153,6 +153,8 @@ func take_damage(damage: float):
 		return 
 	
 	stats.current_durability -= damage
+	if stats.current_durability < 0: 
+		stats.current_durability = 0
 	SignalBus.durability_updated.emit(stats.get_durability() / max_durability)
 	if stats.get_durability() <= 0: 
 		SignalBus.game_over.emit("Ran out of durability!")

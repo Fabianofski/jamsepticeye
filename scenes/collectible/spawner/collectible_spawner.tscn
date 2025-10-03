@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dnjbfn1oxn3k2"]
+
+[ext_resource type="Script" uid="uid://dplsp5dcsbhgd" path="res://scenes/collectible/spawner/collectible_spawner.gd" id="1_1oivf"]
+[ext_resource type="PackedScene" uid="uid://c485h3twkkbdo" path="res://scenes/collectible/zombie/zombie.tscn" id="2_4y7at"]
+
+[node name="CollectibleSpawner" type="Node3D"]
+script = ExtResource("1_1oivf")
+prefab = ExtResource("2_4y7at")
