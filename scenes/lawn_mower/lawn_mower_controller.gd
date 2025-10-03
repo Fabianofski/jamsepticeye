@@ -58,8 +58,7 @@ func update_upgrades(upgrades: Upgrades):
 	max_speed = upgrades.calculate_value(stats.base_max_speed, Upgrades.UpgradeType.SPEED)
 	max_fuel = upgrades.calculate_value(stats.base_max_fuel, Upgrades.UpgradeType.FUELTANK)
 	max_durability = upgrades.calculate_value(stats.base_durability, Upgrades.UpgradeType.DURABILITY)
-	if stats.current_durability == null: 
-		stats.current_durability = max_durability
+	SignalBus.durability_updated.emit(stats.get_durability() / max_durability)
 	fuel_consum = upgrades.calculate_value(stats.base_fuel_consum, Upgrades.UpgradeType.FUELEFFICIENCY)
 	fuel = max_fuel
 
@@ -154,6 +153,6 @@ func take_damage(damage: float):
 		return 
 	
 	stats.current_durability -= damage
-	SignalBus.durability_updated.emit(stats.current_durability / max_durability)
-	if stats.current_durability <= 0: 
+	SignalBus.durability_updated.emit(stats.get_durability() / max_durability)
+	if stats.get_durability() <= 0: 
 		SignalBus.game_over.emit("Ran out of durability!")

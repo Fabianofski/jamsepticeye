@@ -15,7 +15,7 @@ func update_button(amount: int):
 	disabled = amount < upgrade_info.base_price or upgrade_info.bought >= upgrade_info.max_bought 
 
 	var max_durability = upgrades.calculate_value(stats.base_durability, Upgrades.UpgradeType.DURABILITY)
-	if upgrade_type == Upgrades.UpgradeType.REPAIR and (stats.current_durability == max_durability or stats.current_durability == null):
+	if upgrade_type == Upgrades.UpgradeType.REPAIR and stats.get_durability() == max_durability:
 		disabled = true
 
 	label.text = "%s %d$ %d/%d" % [Upgrades.UpgradeType.keys()[upgrade_type], upgrade_info.base_price ,upgrade_info.bought, upgrade_info.max_bought]
@@ -46,7 +46,7 @@ func buy_upgrade():
 		Upgrades.UpgradeType.REPAIR: 
 			var max_durability = upgrades.calculate_value(stats.base_durability, Upgrades.UpgradeType.DURABILITY)
 			stats.current_durability = max_durability
-			SignalBus.durability_updated.emit(stats.current_durability / max_durability)
+			SignalBus.durability_updated.emit(stats.get_durability / max_durability)
 		_:
 			pass
 	upgrade_info.bought += 1

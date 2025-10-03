@@ -47,7 +47,7 @@ metadata/_custom_type_script = "uid://cm0l1l6eqh1cg"
 
 [resource]
 script = ExtResource("3_xv6qw")
-unlocked = false
+unlocked = true
 price = 500
 stats = ExtResource("4_j6iw5")
 mesh = ExtResource("2_j6iw5")
