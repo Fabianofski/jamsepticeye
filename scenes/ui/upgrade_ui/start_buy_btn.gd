@@ -19,9 +19,13 @@ func update_button(money: int):
 	else: 
 		label.text = "Buy $%d" % (current_mower.price)
 
-	disabled = money < current_mower.price 
+	disabled = !current_mower.unlocked and money < current_mower.price  
 		
 func on_pressed(): 
 	if current_mower.unlocked: 
 		SignalBus.game_started.emit()
 		disable_ui.emit()
+	elif GameManager.money >= current_mower.price: 
+		SignalBus.remove_money.emit(current_mower.price) 
+		current_mower.unlocked = true 
+		update_button(GameManager.money)
