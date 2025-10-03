@@ -23,6 +23,7 @@ func _ready() -> void:
 	SignalBus.ui_popup_called.connect(create_popup)
 	SignalBus.game_started.connect(on_game_start) 
 	SignalBus.game_over.connect(on_game_end)
+	SignalBus.reset_game.connect(on_game_restart)
 	on_money_updated(GameManager.money)
 
 func on_game_start(): 
@@ -30,9 +31,13 @@ func on_game_start():
 	upgrades.set_visible(false)
 
 func on_game_end(message: String): 
-	game.set_visible(false)
 	end.set_visible(true)
 	end_label.text = message
+
+func on_game_restart(): 
+	game.set_visible(false)
+	end.set_visible(false)
+	upgrades.set_visible(true)
 
 func on_money_updated(money: int): 
 	money_label.text = "$" + str(money)

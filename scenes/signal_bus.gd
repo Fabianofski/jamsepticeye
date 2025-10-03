@@ -16,6 +16,7 @@ signal durability_updated(amount: float)
 
 signal game_over(message: String) 
 signal game_started()
+signal reset_game()
 
 signal ui_popup_called(type: Collectible.PopupType, value: String)
 

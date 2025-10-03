@@ -11,7 +11,10 @@ func _ready() -> void:
 
 	SignalBus.next_mower.connect(next_mower)
 	SignalBus.previous_mower.connect(previous_mower)
-	SignalBus.game_started.connect(func(): base_cam.queue_free())
+	SignalBus.reset_game.connect(func(): 
+		base_cam.current = true 
+		spawn_lawn_mower()
+	)
 
 	spawn_lawn_mower()
 

@@ -14,6 +14,9 @@ enum PopupType { FUEL, MONEY, DURABILITY}
 @export var max_size = 1.0 
 
 func _ready() -> void:
+	SignalBus.reset_game.connect(func(): 
+		get_parent().queue_free()
+	)
 	body_entered.connect(on_body_entered)
 	if randomize_size: 
 		var size = randf_range(min_size, max_size)

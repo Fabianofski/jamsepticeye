@@ -12,6 +12,7 @@ var durability: float
 @onready var collision_shape: Node3D = $CollisionShape3D
 @onready var player_animations: AnimationPlayer = $Model/person/AnimationPlayer
 @onready var camera_rig: Node3D = $CameraRig
+@onready var camera: Camera3D = $CameraRig/Camera3D
 
 @onready var speed_lines: ColorRect = $"CameraRig/Camera3D/Speed Lines"
 
@@ -23,6 +24,13 @@ func _ready():
 	
 	camera_rig.top_level = true
 	model.top_level = true
+
+	SignalBus.game_started.connect(func(): 
+		camera.current = true
+	)
+	SignalBus.reset_game.connect(func(): 
+		queue_free()
+	)
 
 	SignalBus.fuel_updated.emit(fuel/max_fuel)
 	SignalBus.add_fuel.connect(func(amount): 

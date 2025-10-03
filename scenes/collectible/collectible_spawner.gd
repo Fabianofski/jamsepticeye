@@ -8,6 +8,10 @@ class_name Spawner
 @export var prefab: PackedScene
 
 func _ready() -> void:
+	SignalBus.reset_game.connect(spawn)
+	spawn()
+
+func spawn():
 	var count = randi_range(min_spawn, max_spawn)
 	var positions: Array = []
 

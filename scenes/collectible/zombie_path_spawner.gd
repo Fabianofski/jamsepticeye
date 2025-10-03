@@ -7,6 +7,10 @@ var path: Array[Vector3] = []
 var prefab: PackedScene = preload("res://scenes/collectible/collectible.tscn")
 
 func _ready() -> void:
+	SignalBus.reset_game.connect(spawn)
+	spawn()
+
+func spawn():
 	for child in get_children(): 
 		path.append(child.global_position)
 
