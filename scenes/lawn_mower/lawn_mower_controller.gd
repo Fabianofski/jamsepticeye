@@ -95,8 +95,9 @@ func _physics_process(delta):
 	get_speed(delta)
 	get_steering(delta)
 
-	var forward = Vector3(sin(direction), 0, cos(direction))
-	linear_velocity = forward * speed
+	var y_vel = linear_velocity.y
+	linear_velocity = Vector3(sin(direction), 0, cos(direction)) * speed
+	linear_velocity.y = y_vel
 
 	update_camera()
 

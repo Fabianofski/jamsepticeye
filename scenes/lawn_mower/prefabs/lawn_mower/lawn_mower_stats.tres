@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_pydy8")
 acceleration = 20.0
-base_max_speed = 10.0
+base_max_speed = 8.0
 steering_speed = 1.5
 drift_speed = 1.5
 base_durability = 100.0
