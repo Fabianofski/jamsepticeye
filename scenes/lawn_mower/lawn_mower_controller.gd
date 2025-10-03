@@ -140,8 +140,10 @@ func _process(delta: float) -> void:
 func play_animations(): 
 	if sitting:
 		return
-	if abs(speed) >= 1 and not player_animations.current_animation == "walk":
+	if not boosting and abs(speed) >= 1 and not player_animations.current_animation == "walk":
 		player_animations.play("walk")
+	elif boosting and abs(speed) >= 1 and not player_animations.current_animation == "dash":
+		player_animations.play("dash")
 	elif abs(speed) < 1 and not player_animations.current_animation == "idle":
 		player_animations.play("idle")
 
