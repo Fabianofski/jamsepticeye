@@ -21,7 +21,7 @@ func _ready() -> void:
 		mesh.scale = Vector3.ONE * size
 
 func on_body_entered(body: Node3D):
-	if body.is_in_group("LawnMower"):
+	if body.is_in_group("LawnMower") and GameManager.game_started:
 		if destructible: 
 			queue_free()
 		if money_amount > 0:

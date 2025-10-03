@@ -118,6 +118,9 @@ func play_animations():
 		player_animations.play("idle")
 
 func take_damage(damage: float): 
+	if !GameManager.game_started: 
+		return 
+	
 	durability -= damage
 	SignalBus.durability_updated.emit(durability)
 	if durability <= 0: 

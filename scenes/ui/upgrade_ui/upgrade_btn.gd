@@ -19,6 +19,9 @@ func set_lawn_mower(mower: LawnMower):
 	upgrade_info = mower.get_upgrade_info(upgrade_type)
 	update_button(GameManager.money)
 
+	if !mower.unlocked: 
+		disabled = true
+
 func buy_upgrade(): 
 	match upgrade_type:
 		Upgrades.UpgradeType.SPEED:

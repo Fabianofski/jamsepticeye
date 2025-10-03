@@ -48,3 +48,6 @@ shadow_enabled = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 script = ExtResource("3_mixcd")
 lawn_mowers = Array[ExtResource("4_mj2jn")]([ExtResource("5_6e45b"), ExtResource("5_kdryc")])
+
+[node name="BaseCam" type="Camera3D" parent="MowerBase"]
+transform = Transform3D(0.653036, -0.446916, 0.6114, 0.0192899, 0.816867, 0.576504, -0.757081, -0.364684, 0.542065, 4.08389, 4.5, 5.17659)
