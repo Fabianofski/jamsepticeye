@@ -1,0 +1,50 @@
+[gd_resource type="Resource" script_class="LawnMower" load_steps=9 format=3 uid="uid://cdygjpkfg3d7t"]
+
+[ext_resource type="Script" uid="uid://cm0l1l6eqh1cg" path="res://scenes/lawn_mower/upgrades/upgrade_info.gd" id="1_wtddo"]
+[ext_resource type="PackedScene" uid="uid://c1ef61vf5epuc" path="res://scenes/lawn_mower/prefabs/hand_mower/hand_mower_scene.tscn" id="2_7tlda"]
+[ext_resource type="Script" uid="uid://cv4gv6mj1avnu" path="res://scenes/lawn_mower/upgrades/lawn_mower.gd" id="3_hnhnb"]
+[ext_resource type="Resource" uid="uid://cr42dntenaf2d" path="res://scenes/lawn_mower/prefabs/hand_mower/hand_mower_stats.tres" id="4_7idof"]
+
+[sub_resource type="Resource" id="Resource_1sety"]
+script = ExtResource("1_wtddo")
+amount = 0.2
+base_price = 5
+price_increase = 2.0
+max_bought = 3
+metadata/_custom_type_script = "uid://cm0l1l6eqh1cg"
+
+[sub_resource type="Resource" id="Resource_snrfe"]
+script = ExtResource("1_wtddo")
+amount = -0.2
+base_price = 15
+price_increase = 2.0
+max_bought = 3
+metadata/_custom_type_script = "uid://cm0l1l6eqh1cg"
+
+[sub_resource type="Resource" id="Resource_6chsq"]
+script = ExtResource("1_wtddo")
+amount = 0.2
+base_price = 20
+price_increase = 2.0
+max_bought = 3
+metadata/_custom_type_script = "uid://cm0l1l6eqh1cg"
+
+[sub_resource type="Resource" id="Resource_ode16"]
+script = ExtResource("1_wtddo")
+amount = 0.2
+base_price = 20
+price_increase = 2.0
+max_bought = 3
+metadata/_custom_type_script = "uid://cm0l1l6eqh1cg"
+
+[resource]
+script = ExtResource("3_hnhnb")
+unlocked = true
+price = 0
+stats = ExtResource("4_7idof")
+mesh = ExtResource("2_7tlda")
+speed_upgrade_info = SubResource("Resource_ode16")
+durability_upgrade_info = SubResource("Resource_1sety")
+fuel_tank_upgrade_info = SubResource("Resource_6chsq")
+fuel_efficiency_upgrade_info = SubResource("Resource_snrfe")
+metadata/_custom_type_script = "uid://cv4gv6mj1avnu"

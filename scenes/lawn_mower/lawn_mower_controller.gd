@@ -9,6 +9,7 @@ var fuel: float
 var durability: float
 
 @onready var model: Node3D = $Model
+@onready var collision_shape: Node3D = $CollisionShape3D
 @onready var player_animations: AnimationPlayer = $Model/person/AnimationPlayer
 @onready var camera_rig: Node3D = $CameraRig
 
@@ -38,7 +39,7 @@ func _ready():
 	speed_lines.material.set_shader_parameter("effect_power", 0)
 
 func update_upgrades(upgrades: Upgrades):
-	print("Lawn Mower")
+	print(name)
 	print(upgrades)
 	max_speed = stats.base_max_speed * upgrades.speed_upgrades
 	max_fuel = stats.base_max_fuel * upgrades.fuel_tank_upgrades
@@ -82,10 +83,12 @@ func update_camera():
 	)
 
 func update_model(): 
-	model.global_position = global_position - Vector3(0, 0.5, 0) # Offset so the character properly touches the ground
+	model.global_position = global_transform.origin
 	model.rotation.y = direction
 
 func _physics_process(delta):
+	update_model()
+
 	if not GameManager.game_started: 
 		return	
 
@@ -96,7 +99,6 @@ func _physics_process(delta):
 	linear_velocity = forward * speed
 
 	update_camera()
-	update_model()
 
 func _process(delta: float) -> void:
 	play_animations()

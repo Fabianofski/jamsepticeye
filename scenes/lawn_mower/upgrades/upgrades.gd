@@ -1,5 +1,5 @@
 class_name Upgrades
-enum UpgradeType { MOWERBASE, SPEED, DURABILITY, FUELTANK, FUELEFFICIENCY}
+enum UpgradeType { SPEED, DURABILITY, FUELTANK, FUELEFFICIENCY}
 
 var speed_upgrades: float = 1
 var durability_upgrades: float = 1 

@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1ef61vf5epuc"]
+
+[ext_resource type="PackedScene" uid="uid://bk8l8bllutsvo" path="res://scenes/lawn_mower/prefabs/base_mower.tscn" id="1_feugv"]
+[ext_resource type="Resource" uid="uid://cr42dntenaf2d" path="res://scenes/lawn_mower/prefabs/hand_mower/hand_mower_stats.tres" id="2_i36kc"]
+[ext_resource type="PackedScene" uid="uid://b8mbvciaew4g5" path="res://scenes/lawn_mower/models/hand_mower.glb" id="4_gol1m"]
+
+[node name="HandMower" instance=ExtResource("1_feugv")]
+stats = ExtResource("2_i36kc")
+
+[node name="hand_mower" parent="Model" index="1" instance=ExtResource("4_gol1m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.504451, -0.202667)

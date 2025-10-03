@@ -1,6 +1,8 @@
 extends Resource 
 class_name LawnMower
 
+@export var unlocked: bool = false
+@export var price: int = 100
 @export var stats: LawnMowerStats
 @export var mesh: PackedScene
 var upgrades: Upgrades = Upgrades.new()

@@ -1,0 +1,72 @@
+[gd_scene load_steps=11 format=3 uid="uid://bk8l8bllutsvo"]
+
+[ext_resource type="Script" uid="uid://bxxhxcs3idf0w" path="res://scenes/lawn_mower/lawn_mower_controller.gd" id="1_mak8i"]
+[ext_resource type="Resource" uid="uid://cltiswliie43p" path="res://scenes/lawn_mower/prefabs/lawn_mower/lawn_mower_stats.tres" id="2_5gyun"]
+[ext_resource type="PackedScene" uid="uid://dk6rofokxluak" path="res://scenes/characters/person.blend" id="3_g2uju"]
+[ext_resource type="Shader" uid="uid://dum7asi4x3gis" path="res://scenes/ui/posterise.gdshader" id="5_obv1m"]
+[ext_resource type="Shader" uid="uid://c4u3g231110bn" path="res://scenes/ui/speedlines.gdshader" id="6_orcel"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_eqhe0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qsw3o"]
+shader = ExtResource("5_obv1m")
+shader_parameter/mix_amount = 0.0
+shader_parameter/use_l = true
+shader_parameter/use_c = true
+shader_parameter/use_h = true
+shader_parameter/steps_l = 12.0
+shader_parameter/level_c = 6.0
+shader_parameter/level_h = 0.05
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_aqdb2"]
+frequency = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_sf5s2"]
+seamless = true
+noise = SubResource("FastNoiseLite_aqdb2")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sf5s2"]
+shader = ExtResource("6_orcel")
+shader_parameter/noise = SubResource("NoiseTexture2D_sf5s2")
+shader_parameter/line_count = 2.0
+shader_parameter/distortion_power = 0.034
+shader_parameter/line_falloff = 1.0
+shader_parameter/mask_size = 0.175
+shader_parameter/mask_edge = 0.195
+shader_parameter/animation_speed = 20.0
+shader_parameter/blur_strength = 0.01
+shader_parameter/effect_power = 0.0
+
+[node name="BaseMower" type="RigidBody3D" groups=["LawnMower"]]
+script = ExtResource("1_mak8i")
+stats = ExtResource("2_5gyun")
+
+[node name="Model" type="Node3D" parent="."]
+
+[node name="person" parent="Model" instance=ExtResource("3_g2uju")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_eqhe0")
+
+[node name="CameraRig" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="CameraRig"]
+transform = Transform3D(-1, -6.18173e-08, 6.18172e-08, -1.58791e-08, 0.82378, 0.56691, -8.59686e-08, 0.56691, -0.82378, 0, 6.78544, -2.80135)
+
+[node name="Posterise" type="ColorRect" parent="CameraRig/Camera3D"]
+material = SubResource("ShaderMaterial_qsw3o")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Speed Lines" type="ColorRect" parent="CameraRig/Camera3D"]
+material = SubResource("ShaderMaterial_sf5s2")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1uuval7blgbc"]
+
+[ext_resource type="PackedScene" uid="uid://bk8l8bllutsvo" path="res://scenes/lawn_mower/prefabs/base_mower.tscn" id="1_f3sdb"]
+[ext_resource type="PackedScene" uid="uid://bicwbk6lrxb1" path="res://scenes/lawn_mower/models/lawn_mower.glb" id="4_35fhi"]
+
+[node name="LawnMower" instance=ExtResource("1_f3sdb")]
+
+[node name="lawn_mower" parent="Model" index="1" instance=ExtResource("4_35fhi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.495629, 0.0484121)

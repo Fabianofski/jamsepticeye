@@ -2,6 +2,7 @@ extends Node3D
 
 var money: int = 100 
 var current_lawn_mower: LawnMower
+var current_lawn_mower_index: int = 0
 var game_started = false
 
 var player_node: Node3D

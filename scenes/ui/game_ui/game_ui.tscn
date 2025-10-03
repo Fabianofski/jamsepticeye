@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cb8dld63hgqkj"]
+[gd_scene load_steps=20 format=3 uid="uid://cb8dld63hgqkj"]
 
 [ext_resource type="Script" uid="uid://yaswdugcal5a" path="res://scenes/ui/ui.gd" id="1_nvly0"]
 [ext_resource type="Texture2D" uid="uid://dwad8ugg8tvs2" path="res://scenes/ui/game_ui/border.png" id="2_vjxrc"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://cbrwpsgtckpng" path="res://scenes/ui/game_ui/durability_4.png" id="10_r5kob"]
 [ext_resource type="Texture2D" uid="uid://c7alyfmkffa0o" path="res://scenes/ui/game_ui/money_1.png" id="11_egwht"]
 [ext_resource type="Texture2D" uid="uid://cdvq0it55eq56" path="res://scenes/ui/game_ui/money_2.png" id="12_msipi"]
+[ext_resource type="Script" uid="uid://bgx13csjkcgm6" path="res://scenes/ui/upgrade_ui/start_buy_btn.gd" id="13_gc7ur"]
 [ext_resource type="Script" uid="uid://b2ly8jfqp50c5" path="res://scenes/ui/signal_btn.gd" id="14_8jg32"]
 [ext_resource type="Script" uid="uid://boqb36dldxvtd" path="res://scenes/ui/upgrade_ui/upgrade_btn_spawner.gd" id="14_gc7ur"]
 
@@ -190,6 +191,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="UpgradeBtns" type="VFlowContainer" parent="Upgrade"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 42.0
+offset_right = 522.0
+grow_vertical = 2
+alignment = 2
+script = ExtResource("14_gc7ur")
+
 [node name="StartBtn" type="Button" parent="Upgrade"]
 layout_mode = 1
 anchors_preset = 8
@@ -203,8 +214,7 @@ offset_right = 82.0
 offset_bottom = 18.5
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("14_8jg32")
-signal_name = "game_started"
+script = ExtResource("13_gc7ur")
 
 [node name="Label" type="Label" parent="Upgrade/StartBtn"]
 layout_mode = 1
@@ -217,15 +227,59 @@ text = "Start"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="UpgradeBtns" type="VFlowContainer" parent="Upgrade"]
+[node name="NextBtn" type="Button" parent="Upgrade"]
 layout_mode = 1
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_left = 42.0
-offset_right = 522.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 340.0
+offset_top = -18.0
+offset_right = 504.0
+offset_bottom = 19.0
+grow_horizontal = 2
 grow_vertical = 2
-alignment = 1
-script = ExtResource("14_gc7ur")
+script = ExtResource("14_8jg32")
+signal_name = "next_mower"
 
-[connection signal="pressed" from="Upgrade/StartBtn" to="Game" method="set_visible" binds= [true]]
-[connection signal="pressed" from="Upgrade/StartBtn" to="Upgrade" method="set_visible" binds= [false]]
+[node name="Label" type="Label" parent="Upgrade/NextBtn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Next"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PreviousBtn" type="Button" parent="Upgrade"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -473.0
+offset_top = -18.0
+offset_right = -309.0
+offset_bottom = 19.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("14_8jg32")
+signal_name = "previous_mower"
+
+[node name="Label" type="Label" parent="Upgrade/PreviousBtn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Previous"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="disable_ui" from="Upgrade/StartBtn" to="Game" method="set_visible" binds= [true]]
+[connection signal="disable_ui" from="Upgrade/StartBtn" to="Upgrade" method="set_visible" binds= [false]]
