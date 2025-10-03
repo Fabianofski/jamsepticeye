@@ -5,7 +5,6 @@ func _init():
 	create_material("radius_mat", Color(1, 0, 0, 0.5))
 
 func _has_gizmo(node: Node3D) -> bool:
-	print(node.name)
 	return node is Spawner
 
 func _redraw(gizmo: EditorNode3DGizmo) -> void:

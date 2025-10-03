@@ -4,7 +4,11 @@ enum State { IDLE, HUNTING, PATH }
 
 var movement_speed: float = 2.0
 var state: State = State.IDLE
+var base_state: State = State.IDLE
 var player: Node3D = null
+
+var path: Array[Vector3] = []
+var index: int = 0
 
 @onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var mesh_animation: AnimationPlayer = $Area3D/Mesh/AnimationPlayer
@@ -16,6 +20,19 @@ func _ready():
 func set_movement_target(movement_target: Vector3):
 	navigation_agent.set_target_position(movement_target)
 
+
+func set_path(_path: Array[Vector3], _index: int) -> void: 
+	path = _path 
+	index = _index
+
+	state = State.PATH
+	base_state = State.PATH
+
+	set_movement_target(path[index])
+
+	if not mesh_animation.current_animation == "run":
+		mesh_animation.play("run")
+
 func hunt(_player: Node3D): 
 	player = _player
 	state = State.HUNTING
@@ -25,9 +42,9 @@ func hunt(_player: Node3D):
 
 func stop_hunt(): 
 	player = null 
-	state = State.IDLE
+	state = base_state
 	
-	if not mesh_animation.current_animation == "idle":
+	if state == State.IDLE and not mesh_animation.current_animation == "idle":
 		mesh_animation.play("idle")
 
 func _physics_process(_delta):
@@ -38,6 +55,11 @@ func _physics_process(_delta):
 		set_movement_target(player.global_position)
 
 	if navigation_agent.is_navigation_finished():
+		if state == State.PATH: 
+			index += 1 
+			if index >= len(path): 
+				index = 0
+			set_movement_target(path[index])
 		return
 
 	var current_agent_position: Vector3 = global_position
