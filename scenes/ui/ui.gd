@@ -11,8 +11,8 @@ extends CanvasLayer
 @onready var fuel_bar: TextureProgressBar = $Game/Fuel
 @onready var fuel_label: Label = $Game/Fuel/FuelLabel
 
-@onready var durability_visual: AnimatedSprite2D = $Game/Durability/DurabilityVisual
-@onready var durability_label: Label = $Game/Durability/DurabilityLabel
+@onready var durability_visual: AnimatedSprite2D = $Durability/DurabilityVisual
+@onready var durability_label: Label = $Durability/DurabilityLabel
 
 var popup_scene = preload("res://scenes/ui/popup.tscn")
 
@@ -53,13 +53,13 @@ func on_fuel_updated(fuel: float):
 	fuel_bar.value = fuel
 
 func on_durability_updated(durability: float): 
-	durability_label.text = str(int(durability)) + "%"
+	durability_label.text = "%d%%" % (durability * 100)
 	
-	if durability <= 25:
+	if durability <= 0.25:
 		durability_visual.frame = 3
-	elif durability <= 50:
+	elif durability <= 0.50:
 		durability_visual.frame = 2
-	elif durability <= 75:
+	elif durability <= 0.75:
 		durability_visual.frame = 1
 	else:
 		durability_visual.frame = 0

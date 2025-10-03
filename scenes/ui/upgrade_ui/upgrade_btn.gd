@@ -3,6 +3,7 @@ extends Button
 @export var upgrade_type: Upgrades.UpgradeType 
 @onready var label: Label = $Label
 var upgrades : Upgrades
+var stats: LawnMowerStats
 var upgrade_info : UpgradeInfo 
 
 func _ready():
@@ -12,10 +13,16 @@ func _ready():
 
 func update_button(amount: int): 
 	disabled = amount < upgrade_info.base_price or upgrade_info.bought >= upgrade_info.max_bought 
+
+	var max_durability = upgrades.calculate_value(stats.base_durability, Upgrades.UpgradeType.DURABILITY)
+	if upgrade_type == Upgrades.UpgradeType.REPAIR and (stats.current_durability == max_durability or stats.current_durability == null):
+		disabled = true
+
 	label.text = "%s %d$ %d/%d" % [Upgrades.UpgradeType.keys()[upgrade_type], upgrade_info.base_price ,upgrade_info.bought, upgrade_info.max_bought]
 
 func set_lawn_mower(mower: LawnMower):
 	upgrades = mower.upgrades
+	stats = mower.stats
 	upgrade_info = mower.get_upgrade_info(upgrade_type)
 	update_button(GameManager.money)
 
@@ -36,9 +43,14 @@ func buy_upgrade():
 		Upgrades.UpgradeType.FUELEFFICIENCY:
 			print("Upgrade Fuel Efficiency")
 			upgrades.fuel_efficiency_upgrades += upgrade_info.amount
+		Upgrades.UpgradeType.REPAIR: 
+			var max_durability = upgrades.calculate_value(stats.base_durability, Upgrades.UpgradeType.DURABILITY)
+			stats.current_durability = max_durability
+			SignalBus.durability_updated.emit(stats.current_durability / max_durability)
 		_:
 			pass
 	upgrade_info.bought += 1
+	upgrade_info.price = upgrade_info.price * upgrade_info.price_increase
 
 	SignalBus.remove_money.emit(upgrade_info.base_price)
 	SignalBus.upgrades_updated.emit(upgrades)

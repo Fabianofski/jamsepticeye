@@ -11,6 +11,7 @@ var upgrades: Upgrades = Upgrades.new()
 @export var durability_upgrade_info : UpgradeInfo
 @export var fuel_tank_upgrade_info : UpgradeInfo
 @export var fuel_efficiency_upgrade_info : UpgradeInfo
+@export var repair_upgrade_info : UpgradeInfo
 
 func get_upgrade_info(upgrade_type: Upgrades.UpgradeType) -> UpgradeInfo: 
 	match upgrade_type: 
@@ -22,5 +23,7 @@ func get_upgrade_info(upgrade_type: Upgrades.UpgradeType) -> UpgradeInfo:
 			return fuel_tank_upgrade_info
 		Upgrades.UpgradeType.FUELEFFICIENCY: 
 			return fuel_efficiency_upgrade_info
+		Upgrades.UpgradeType.REPAIR: 
+			return repair_upgrade_info
 
 	return null

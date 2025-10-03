@@ -121,8 +121,8 @@ label_settings = SubResource("LabelSettings_opqoc")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Durability" type="Control" parent="Game"]
-layout_mode = 1
+[node name="Durability" type="Control" parent="."]
+layout_mode = 3
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -130,12 +130,12 @@ offset_top = -40.0
 offset_right = 40.0
 grow_vertical = 0
 
-[node name="DurabilityVisual" type="AnimatedSprite2D" parent="Game/Durability"]
+[node name="DurabilityVisual" type="AnimatedSprite2D" parent="Durability"]
 position = Vector2(104, -24)
 scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_miq82")
 
-[node name="DurabilityLabel" type="Label" parent="Game/Durability"]
+[node name="DurabilityLabel" type="Label" parent="Durability"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

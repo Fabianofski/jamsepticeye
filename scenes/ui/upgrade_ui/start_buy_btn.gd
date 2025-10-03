@@ -20,6 +20,8 @@ func update_button(money: int):
 		label.text = "Buy $%d" % (current_mower.price)
 
 	disabled = !current_mower.unlocked and money < current_mower.price  
+	if current_mower.stats.current_durability == 0: 
+		disabled = true
 		
 func on_pressed(): 
 	if current_mower.unlocked: 

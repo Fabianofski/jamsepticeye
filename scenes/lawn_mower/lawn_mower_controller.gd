@@ -5,9 +5,9 @@ extends RigidBody3D
 
 var max_speed: float
 var max_fuel: float
+var max_durability: float
 var fuel_consum: float
 var fuel: float
-var durability: float
 
 @onready var model: Node3D = $Model
 @onready var collision_shape: Node3D = $CollisionShape3D
@@ -55,11 +55,13 @@ func _ready():
 func update_upgrades(upgrades: Upgrades):
 	print(name)
 	print(upgrades)
-	max_speed = stats.base_max_speed * upgrades.speed_upgrades
-	max_fuel = stats.base_max_fuel * upgrades.fuel_tank_upgrades
-	fuel_consum = stats.base_fuel_consum * upgrades.fuel_efficiency_upgrades
+	max_speed = upgrades.calculate_value(stats.base_max_speed, Upgrades.UpgradeType.SPEED)
+	max_fuel = upgrades.calculate_value(stats.base_max_fuel, Upgrades.UpgradeType.FUELTANK)
+	max_durability = upgrades.calculate_value(stats.base_durability, Upgrades.UpgradeType.DURABILITY)
+	if stats.current_durability == null: 
+		stats.current_durability = max_durability
+	fuel_consum = upgrades.calculate_value(stats.base_fuel_consum, Upgrades.UpgradeType.FUELEFFICIENCY)
 	fuel = max_fuel
-	durability = stats.base_durability
 
 func get_steering(delta): 
 	var input_dir = 0.0
@@ -151,7 +153,7 @@ func take_damage(damage: float):
 	if !GameManager.game_started: 
 		return 
 	
-	durability -= damage
-	SignalBus.durability_updated.emit(durability)
-	if durability <= 0: 
+	stats.current_durability -= damage
+	SignalBus.durability_updated.emit(stats.current_durability / max_durability)
+	if stats.current_durability <= 0: 
 		SignalBus.game_over.emit("Ran out of durability!")

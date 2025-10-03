@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="LawnMower" load_steps=9 format=3 uid="uid://cdygjpkfg3d7t"]
+[gd_resource type="Resource" script_class="LawnMower" load_steps=10 format=3 uid="uid://cdygjpkfg3d7t"]
 
 [ext_resource type="Script" uid="uid://cm0l1l6eqh1cg" path="res://scenes/lawn_mower/upgrades/upgrade_info.gd" id="1_wtddo"]
 [ext_resource type="PackedScene" uid="uid://c1ef61vf5epuc" path="res://scenes/lawn_mower/prefabs/hand_mower/hand_mower_scene.tscn" id="2_7tlda"]
@@ -29,6 +29,14 @@ price_increase = 2.0
 max_bought = 3
 metadata/_custom_type_script = "uid://cm0l1l6eqh1cg"
 
+[sub_resource type="Resource" id="Resource_wtddo"]
+script = ExtResource("1_wtddo")
+amount = 1.0
+base_price = 10
+price_increase = 1.0
+max_bought = 99
+metadata/_custom_type_script = "uid://cm0l1l6eqh1cg"
+
 [sub_resource type="Resource" id="Resource_ode16"]
 script = ExtResource("1_wtddo")
 amount = 0.2
@@ -47,4 +55,5 @@ speed_upgrade_info = SubResource("Resource_ode16")
 durability_upgrade_info = SubResource("Resource_1sety")
 fuel_tank_upgrade_info = SubResource("Resource_6chsq")
 fuel_efficiency_upgrade_info = SubResource("Resource_snrfe")
+repair_upgrade_info = SubResource("Resource_wtddo")
 metadata/_custom_type_script = "uid://cv4gv6mj1avnu"
