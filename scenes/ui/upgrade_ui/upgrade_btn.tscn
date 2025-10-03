@@ -1,6 +1,49 @@
-[gd_scene load_steps=2 format=3 uid="uid://dkrvuap5myfeg"]
+[gd_scene load_steps=12 format=3 uid="uid://dkrvuap5myfeg"]
 
 [ext_resource type="Script" uid="uid://ciuippr4gu5v8" path="res://scenes/ui/upgrade_ui/upgrade_btn.gd" id="1_4sdvl"]
+[ext_resource type="Texture2D" uid="uid://b5mt7cpy4uvom" path="res://scenes/ui/btn_2.png" id="1_tbl4s"]
+[ext_resource type="Texture2D" uid="uid://bode2fx2vmuvw" path="res://scenes/ui/btn_1.png" id="2_0dpt2"]
+[ext_resource type="Texture2D" uid="uid://bt56hiqqwdvap" path="res://scenes/ui/btn_0.png" id="3_4g44r"]
+[ext_resource type="FontFile" uid="uid://c1hpa04tng3qi" path="res://scenes/ui/Ranchers-Regular.ttf" id="5_nn5yj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o76u3"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4o0o4"]
+texture = ExtResource("1_tbl4s")
+texture_margin_left = 1.0
+texture_margin_top = 1.0
+texture_margin_right = 1.0
+texture_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ehtku"]
+texture = ExtResource("2_0dpt2")
+texture_margin_left = 1.0
+texture_margin_top = 1.0
+texture_margin_right = 1.0
+texture_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fka55"]
+texture = ExtResource("1_tbl4s")
+texture_margin_left = 1.0
+texture_margin_top = 1.0
+texture_margin_right = 1.0
+texture_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ynu71"]
+texture = ExtResource("3_4g44r")
+texture_margin_left = 1.0
+texture_margin_top = 1.0
+texture_margin_right = 1.0
+texture_margin_bottom = 2.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_2mi0r"]
+font = ExtResource("5_nn5yj")
+font_size = 24
+font_color = Color(0.757198, 0.761105, 0.776745, 1)
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(4, 0)
 
 [node name="SpeedUpgradeBtn" type="Button"]
 custom_minimum_size = Vector2(164, 48)
@@ -9,12 +52,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -82.0
+offset_left = -114.0
 offset_top = -24.0
-offset_right = 82.0
+offset_right = 114.0
 offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o76u3")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_4o0o4")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ehtku")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_fka55")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ynu71")
 script = ExtResource("1_4sdvl")
 upgrade_type = 1
 
@@ -26,5 +74,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Speed 10$"
+label_settings = SubResource("LabelSettings_2mi0r")
 horizontal_alignment = 1
 vertical_alignment = 1

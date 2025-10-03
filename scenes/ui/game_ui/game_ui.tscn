@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cb8dld63hgqkj"]
+[gd_scene load_steps=32 format=3 uid="uid://cb8dld63hgqkj"]
 
 [ext_resource type="Script" uid="uid://yaswdugcal5a" path="res://scenes/ui/ui.gd" id="1_nvly0"]
 [ext_resource type="Texture2D" uid="uid://dwad8ugg8tvs2" path="res://scenes/ui/game_ui/border.png" id="2_vjxrc"]
@@ -15,6 +15,9 @@
 [ext_resource type="Script" uid="uid://bgx13csjkcgm6" path="res://scenes/ui/upgrade_ui/start_buy_btn.gd" id="13_gc7ur"]
 [ext_resource type="Script" uid="uid://b2ly8jfqp50c5" path="res://scenes/ui/signal_btn.gd" id="14_8jg32"]
 [ext_resource type="Script" uid="uid://boqb36dldxvtd" path="res://scenes/ui/upgrade_ui/upgrade_btn_spawner.gd" id="14_gc7ur"]
+[ext_resource type="Texture2D" uid="uid://bode2fx2vmuvw" path="res://scenes/ui/btn_1.png" id="14_hjaf2"]
+[ext_resource type="Texture2D" uid="uid://bt56hiqqwdvap" path="res://scenes/ui/btn_0.png" id="14_xhr0k"]
+[ext_resource type="Texture2D" uid="uid://b5mt7cpy4uvom" path="res://scenes/ui/btn_2.png" id="15_3b87j"]
 [ext_resource type="Script" path="res://scenes/ui/upgrade_ui/stats.gd" id="16_3s8aq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_opqoc"]
@@ -62,6 +65,42 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3b87j"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8kkbn"]
+texture = ExtResource("15_3b87j")
+texture_margin_left = 1.0
+texture_margin_top = 1.0
+texture_margin_right = 1.0
+texture_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hjaf2"]
+texture = ExtResource("14_hjaf2")
+texture_margin_left = 1.0
+texture_margin_top = 1.0
+texture_margin_right = 1.0
+texture_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3b87j"]
+texture = ExtResource("14_xhr0k")
+texture_margin_left = 1.0
+texture_margin_top = 1.0
+texture_margin_right = 1.0
+texture_margin_bottom = 2.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_3b87j"]
+font = ExtResource("6_xhr0k")
+font_size = 24
+font_color = Color(0.757198, 0.761105, 0.776745, 1)
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(4, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8kkbn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r5kob"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3s8aq"]
 font = ExtResource("6_xhr0k")
@@ -201,7 +240,7 @@ layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
 offset_left = 42.0
-offset_right = 248.0
+offset_right = 325.0
 grow_vertical = 2
 alignment = 1
 script = ExtResource("14_gc7ur")
@@ -213,12 +252,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -82.0
-offset_top = -18.5
-offset_right = 82.0
-offset_bottom = 18.5
+offset_left = -66.0
+offset_top = 192.0
+offset_right = 66.0
+offset_bottom = 288.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3b87j")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_8kkbn")
+theme_override_styles/hover = SubResource("StyleBoxTexture_hjaf2")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_8kkbn")
+theme_override_styles/normal = SubResource("StyleBoxTexture_3b87j")
 script = ExtResource("13_gc7ur")
 
 [node name="Label" type="Label" parent="Upgrade/StartBtn"]
@@ -229,6 +273,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Start"
+label_settings = SubResource("LabelSettings_3b87j")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -239,12 +284,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 340.0
-offset_top = -18.0
-offset_right = 504.0
-offset_bottom = 19.0
+offset_left = 268.0
+offset_top = 213.0
+offset_right = 432.0
+offset_bottom = 268.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8kkbn")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_8kkbn")
+theme_override_styles/hover = SubResource("StyleBoxTexture_hjaf2")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_8kkbn")
+theme_override_styles/normal = SubResource("StyleBoxTexture_3b87j")
 script = ExtResource("14_8jg32")
 signal_name = "next_mower"
 
@@ -256,6 +306,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Next"
+label_settings = SubResource("LabelSettings_3b87j")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -266,12 +317,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -473.0
-offset_top = -18.0
-offset_right = -309.0
-offset_bottom = 19.0
+offset_left = -409.0
+offset_top = 213.0
+offset_right = -245.0
+offset_bottom = 268.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_r5kob")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_8kkbn")
+theme_override_styles/hover = SubResource("StyleBoxTexture_hjaf2")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_8kkbn")
+theme_override_styles/normal = SubResource("StyleBoxTexture_3b87j")
 script = ExtResource("14_8jg32")
 signal_name = "previous_mower"
 
@@ -283,6 +339,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Previous"
+label_settings = SubResource("LabelSettings_3b87j")
 horizontal_alignment = 1
 vertical_alignment = 1
 

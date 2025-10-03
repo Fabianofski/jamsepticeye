@@ -18,7 +18,7 @@ func update_button(amount: int):
 	if upgrade_type == Upgrades.UpgradeType.REPAIR and stats.get_durability() == max_durability:
 		disabled = true
 
-	label.text = "%s %d$ %d/%d" % [Upgrades.UpgradeType.keys()[upgrade_type], upgrade_info.price ,upgrade_info.bought, upgrade_info.max_bought]
+	label.text = "%s - %d$ (%d/%d)" % [Upgrades.UpgradeType.keys()[upgrade_type], upgrade_info.price ,upgrade_info.bought, upgrade_info.max_bought]
 
 func set_lawn_mower(mower: LawnMower):
 	upgrades = mower.upgrades
