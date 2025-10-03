@@ -26,7 +26,7 @@ func _ready():
 	model.top_level = true
 
 	SignalBus.game_started.connect(func(): 
-		camera.current = true
+		SignalBus.set_camera_target.emit(camera.global_position, camera.quaternion)
 	)
 	SignalBus.reset_game.connect(func(): 
 		queue_free()
@@ -81,6 +81,8 @@ func get_speed(delta):
 	speed_lines.material.set_shader_parameter("effect_power", remap(speed, 0, 20, 0, 1))
 
 func update_camera(): 
+	if !camera.current: 
+		camera.current = true
 	camera_rig.global_transform.origin = lerp(
 		camera_rig.global_transform.origin, 
 		global_transform.origin, 0.1

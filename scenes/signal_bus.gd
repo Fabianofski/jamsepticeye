@@ -23,4 +23,6 @@ signal ui_popup_called(type: Collectible.PopupType, value: String)
 signal mower_updated(mower: LawnMower)
 signal next_mower()
 signal previous_mower()
+
+signal set_camera_target(position: Vector3, rotation: Quaternion)
 @warning_ignore_restore("unused_signal")

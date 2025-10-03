@@ -1,7 +1,7 @@
 extends Node3D 
 
 @export var lawn_mowers: Array[LawnMower] = []
-@onready var base_cam: Camera3D = $BaseCam
+@onready var base_cam: Node3D = $BaseCam
 var mower_object: Node3D = null
 
 func _ready() -> void:
@@ -11,11 +11,11 @@ func _ready() -> void:
 
 	SignalBus.next_mower.connect(next_mower)
 	SignalBus.previous_mower.connect(previous_mower)
-	SignalBus.reset_game.connect(func(): 
-		base_cam.current = true 
-		spawn_lawn_mower()
-	)
+	SignalBus.reset_game.connect(initialize)
+	initialize()
 
+func initialize():
+	SignalBus.set_camera_target.emit(base_cam.global_position, base_cam.quaternion)
 	spawn_lawn_mower()
 
 func next_mower(): 
