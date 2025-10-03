@@ -44,14 +44,18 @@ func on_durability_updated(durability: float):
 		durability_visual.frame = 0
 
 func create_popup(popup_type: Collectible.PopupType, popup_value: String, popup_position: Vector3):
-	var popup_instance = popup_scene.instantiate()
-	self.add_child(popup_instance)
-	match popup_type:
-		Collectible.PopupType.MONEY:
-			popup_instance.set_text(popup_type, "+$" + popup_value)
-		Collectible.PopupType.DURABILITY:
-			popup_instance.set_text(popup_type, "-" + popup_value)
-		Collectible.PopupType.FUEL:
-			popup_instance.set_text(popup_type, "+" + popup_value + " fuel!")
-	popup_instance.position = get_viewport().get_camera_3d().unproject_position(popup_position) - Vector2(0, 128)
-	popup_instance.start_tween()
+	if popup_type != null and popup_value != null and popup_position != null:
+		var popup_instance = popup_scene.instantiate()
+		self.add_child(popup_instance)
+		match popup_type:
+			Collectible.PopupType.MONEY:
+				popup_instance.set_text(popup_type, "+$" + popup_value)
+			Collectible.PopupType.DURABILITY:
+				popup_instance.set_text(popup_type, "-" + popup_value)
+			Collectible.PopupType.FUEL:
+				popup_instance.set_text(popup_type, "+" + popup_value + " fuel!")
+		popup_instance.position = get_viewport().get_camera_3d().unproject_position(popup_position) - Vector2(0, 128)
+		popup_instance.start_tween()
+	else:
+		print("Tried to create a popup with at least one null value... bit silly innit...")
+		return

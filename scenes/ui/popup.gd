@@ -9,7 +9,11 @@ func _ready() -> void:
 	tween.set_trans(Tween.TRANS_ELASTIC)
 
 func set_text(popup_type: Collectible.PopupType, popup_contents: String):
-	label.text = popup_contents
+	if label != null:
+		label.text = popup_contents
+	else:
+		print("Tried to call set_text on a null popup... bit silly innit...")
+		return
 	
 	match popup_type:
 		Collectible.PopupType.MONEY:
