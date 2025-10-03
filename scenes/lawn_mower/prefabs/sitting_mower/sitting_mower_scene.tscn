@@ -4,8 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://gw3umdaoqibe" path="res://scenes/lawn_mower/models/sitting_mower.glb" id="2_8yoov"]
 
 [node name="SittingMower" instance=ExtResource("1_f2foy")]
+sitting = true
 
 [node name="person" parent="Model" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 
-[node name="sitting_mower" parent="." index="4" instance=ExtResource("2_8yoov")]
+[node name="sitting_mower" parent="Model" index="1" instance=ExtResource("2_8yoov")]

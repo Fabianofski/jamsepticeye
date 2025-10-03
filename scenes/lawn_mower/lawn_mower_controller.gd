@@ -1,6 +1,7 @@
 extends RigidBody3D
 
 @export var stats: LawnMowerStats
+@export var sitting: bool = false
 
 var max_speed: float
 var max_fuel: float
@@ -46,6 +47,10 @@ func _ready():
 	SignalBus.upgrades_updated.connect(update_upgrades)
 	
 	speed_lines.material.set_shader_parameter("effect_power", 0)
+
+	if sitting:
+		if not player_animations.current_animation == "driving":
+			player_animations.play("driving")
 
 func update_upgrades(upgrades: Upgrades):
 	print(name)
@@ -133,6 +138,8 @@ func _process(delta: float) -> void:
 	
 	
 func play_animations(): 
+	if sitting:
+		return
 	if abs(speed) >= 1 and not player_animations.current_animation == "walk":
 		player_animations.play("walk")
 	elif abs(speed) < 1 and not player_animations.current_animation == "idle":
