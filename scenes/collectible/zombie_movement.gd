@@ -30,21 +30,25 @@ func set_path(_path: Array[Vector3], _index: int) -> void:
 
 	set_movement_target(path[index])
 
-	if not mesh_animation.current_animation == "run":
-		mesh_animation.play("run")
+	if not mesh_animation.current_animation == "walk":
+		mesh_animation.play("walk")
 
 func hunt(_player: Node3D): 
 	player = _player
 	state = State.HUNTING
-	
-	if not mesh_animation.current_animation == "run":
-		mesh_animation.play("run")
+	play_animations()
 
 func stop_hunt(): 
 	player = null 
 	state = base_state
+	play_animations()
 	
-	if state == State.IDLE and not mesh_animation.current_animation == "idle":
+func play_animations():
+	if state == State.HUNTING and not mesh_animation.current_animation == "run":
+		mesh_animation.play("run")
+	elif state == State.PATH and not mesh_animation.current_animation == "walk":
+		mesh_animation.play("walk")
+	elif not mesh_animation.current_animation == "idle":
 		mesh_animation.play("idle")
 
 func look_at_target(): 
