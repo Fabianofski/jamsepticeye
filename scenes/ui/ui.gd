@@ -48,9 +48,10 @@ func create_popup(popup_type: Collectible.PopupType, popup_value: String, popup_
 	self.add_child(popup_instance)
 	match popup_type:
 		Collectible.PopupType.MONEY:
-			popup_instance.set_text("+$" + popup_value)
+			popup_instance.set_text(popup_type, "+$" + popup_value)
 		Collectible.PopupType.DURABILITY:
-			popup_instance.set_text("-" + popup_value)
+			popup_instance.set_text(popup_type, "-" + popup_value)
 		Collectible.PopupType.FUEL:
-			popup_instance.set_text("+" + popup_value + " fuel!")
+			popup_instance.set_text(popup_type, "+" + popup_value + " fuel!")
 	popup_instance.position = get_viewport().get_camera_3d().unproject_position(popup_position) - Vector2(0, 128)
+	popup_instance.start_tween()

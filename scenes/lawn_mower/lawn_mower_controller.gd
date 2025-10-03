@@ -34,6 +34,8 @@ func _ready():
 		SignalBus.fuel_updated.emit(fuel/max_fuel)
 	)
 	SignalBus.upgrades_updated.connect(update_upgrades)
+	
+	speed_lines.material.set_shader_parameter("effect_power", 0)
 
 func update_upgrades(upgrades: Upgrades):
 	print("Lawn Mower")

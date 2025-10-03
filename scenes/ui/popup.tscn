@@ -20,8 +20,10 @@ script = ExtResource("1_xa8wr")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
-offset_right = 253.0
+offset_left = -128.0
+offset_right = 125.0
 offset_bottom = 31.0
 size_flags_horizontal = 8
 text = "Aw yeah! It's a placeholder!"
 label_settings = SubResource("LabelSettings_xa8wr")
+horizontal_alignment = 1
