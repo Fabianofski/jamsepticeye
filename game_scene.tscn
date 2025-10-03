@@ -51,7 +51,7 @@ transform = Transform3D(0.653036, -0.446916, 0.6114, 0.0192899, 0.816867, 0.5765
 script = ExtResource("3_6e45b")
 
 [node name="MowerBase" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.789532, 0)
 script = ExtResource("3_mixcd")
 lawn_mowers = Array[ExtResource("4_mj2jn")]([ExtResource("5_6e45b"), ExtResource("5_kdryc"), ExtResource("8_e35lh")])
 
