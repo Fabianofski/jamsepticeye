@@ -1,12 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://boai28d22w8n2"]
+[gd_scene load_steps=12 format=3 uid="uid://boai28d22w8n2"]
 
 [ext_resource type="PackedScene" uid="uid://by1gn4o48sli5" path="res://scenes/map.tscn" id="1_mixcd"]
-[ext_resource type="Script" path="res://scenes/main_camera.gd" id="3_6e45b"]
+[ext_resource type="Script" uid="uid://bgpu3yrnt5wo" path="res://scenes/main_camera.gd" id="3_6e45b"]
 [ext_resource type="Script" uid="uid://d1ewpaukhbydx" path="res://scenes/lawn_mower/lawn_mower_base.gd" id="3_mixcd"]
 [ext_resource type="PackedScene" uid="uid://cb8dld63hgqkj" path="res://scenes/ui/game_ui/game_ui.tscn" id="3_v1wow"]
 [ext_resource type="Script" uid="uid://cv4gv6mj1avnu" path="res://scenes/lawn_mower/upgrades/lawn_mower.gd" id="4_mj2jn"]
 [ext_resource type="Resource" uid="uid://cdygjpkfg3d7t" path="res://scenes/lawn_mower/prefabs/hand_mower/hand_mower.tres" id="5_6e45b"]
 [ext_resource type="Resource" uid="uid://d4i14axeujag0" path="res://scenes/lawn_mower/prefabs/lawn_mower/lawn_mower.tres" id="5_kdryc"]
+[ext_resource type="Resource" uid="uid://bp5a48ea187oe" path="res://scenes/lawn_mower/prefabs/sitting_mower/sitting_mower.tres" id="8_e35lh"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mixcd"]
 sky_top_color = Color(0.324592, 0.535986, 0.835765, 1)
@@ -52,7 +53,7 @@ script = ExtResource("3_6e45b")
 [node name="MowerBase" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
 script = ExtResource("3_mixcd")
-lawn_mowers = Array[ExtResource("4_mj2jn")]([ExtResource("5_6e45b"), ExtResource("5_kdryc")])
+lawn_mowers = Array[ExtResource("4_mj2jn")]([ExtResource("5_6e45b"), ExtResource("5_kdryc"), ExtResource("8_e35lh")])
 
 [node name="BaseCam" type="Node3D" parent="MowerBase"]
 transform = Transform3D(0.653036, -0.446916, 0.6114, 0.0192899, 0.816867, 0.576504, -0.757081, -0.364684, 0.542065, 4.08389, 4.5, 5.17659)
