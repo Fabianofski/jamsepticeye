@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://b4ep0lkt7po62"
+path="res://.godot/imported/path-stones-long.obj-977c6910cf0e1cf22d539ec6c7f8d96d.mesh"
+
+[deps]
+
+files=["res://.godot/imported/path-stones-long.obj-977c6910cf0e1cf22d539ec6c7f8d96d.mesh"]
+
+source_file="res://scenes/buildings/kenney/path-stones-long.obj"
+dest_files=["res://.godot/imported/path-stones-long.obj-977c6910cf0e1cf22d539ec6c7f8d96d.mesh", "res://.godot/imported/path-stones-long.obj-977c6910cf0e1cf22d539ec6c7f8d96d.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://c32b8bo7m4d64"
+path="res://.godot/imported/building-type-f.obj-dd6dc0b7bdfe4ab50ae2985d41e32dbe.mesh"
+
+[deps]
+
+files=["res://.godot/imported/building-type-f.obj-dd6dc0b7bdfe4ab50ae2985d41e32dbe.mesh"]
+
+source_file="res://scenes/buildings/kenney/building-type-f.obj"
+dest_files=["res://.godot/imported/building-type-f.obj-dd6dc0b7bdfe4ab50ae2985d41e32dbe.mesh", "res://.godot/imported/building-type-f.obj-dd6dc0b7bdfe4ab50ae2985d41e32dbe.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
