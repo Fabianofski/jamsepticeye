@@ -12,6 +12,8 @@ var durability: float
 @onready var player_animations: AnimationPlayer = $Model/person/AnimationPlayer
 @onready var camera_rig: Node3D = $CameraRig
 
+@onready var speed_lines: ColorRect = $"CameraRig/Camera3D/Speed Lines"
+
 var speed = 0.0
 var direction = 0.0
 
@@ -64,6 +66,8 @@ func get_speed(delta):
 		speed = lerp(speed, 0.0, 0.05)
 
 	speed = clamp(speed, -max_speed, max_speed)
+	
+	speed_lines.material.set_shader_parameter("effect_power", remap(speed, 0, 20, 0, 1))
 
 func update_camera(): 
 	camera_rig.global_transform.origin = lerp(
@@ -101,6 +105,7 @@ func _process(delta: float) -> void:
 	SignalBus.fuel_updated.emit(fuel / max_fuel)
 	if fuel <= 0: 
 		SignalBus.game_over.emit("Ran out of fuel!")
+	
 	
 func play_animations(): 
 	if abs(speed) >= 1 and not player_animations.current_animation == "walk":

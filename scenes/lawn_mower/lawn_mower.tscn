@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cjywsv8rowemi"]
+[gd_scene load_steps=12 format=3 uid="uid://cjywsv8rowemi"]
 
 [ext_resource type="Script" uid="uid://bxxhxcs3idf0w" path="res://scenes/lawn_mower/lawn_mower_controller.gd" id="1_utdds"]
 [ext_resource type="Resource" uid="uid://cltiswliie43p" path="res://scenes/lawn_mower/prefabs/basic_stats.tres" id="2_v4la7"]
 [ext_resource type="PackedScene" uid="uid://dk6rofokxluak" path="res://scenes/characters/person.blend" id="2_vgotr"]
 [ext_resource type="PackedScene" uid="uid://bicwbk6lrxb1" path="res://scenes/lawn_mower/models/lawn_mower.glb" id="3_vgotr"]
 [ext_resource type="Shader" uid="uid://dum7asi4x3gis" path="res://scenes/ui/posterise.gdshader" id="4_qsw3o"]
+[ext_resource type="Shader" uid="uid://c4u3g231110bn" path="res://scenes/ui/speedlines.gdshader" id="6_aqdb2"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_eqhe0"]
 
@@ -17,6 +18,25 @@ shader_parameter/use_h = true
 shader_parameter/steps_l = 12.0
 shader_parameter/level_c = 6.0
 shader_parameter/level_h = 0.05
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_aqdb2"]
+frequency = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_sf5s2"]
+seamless = true
+noise = SubResource("FastNoiseLite_aqdb2")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sf5s2"]
+shader = ExtResource("6_aqdb2")
+shader_parameter/noise = SubResource("NoiseTexture2D_sf5s2")
+shader_parameter/line_count = 2.0
+shader_parameter/distortion_power = 0.034
+shader_parameter/line_falloff = 1.0
+shader_parameter/mask_size = 0.175
+shader_parameter/mask_edge = 0.195
+shader_parameter/animation_speed = 20.0
+shader_parameter/blur_strength = 0.01
+shader_parameter/effect_power = 0.0
 
 [node name="LawnMower" type="RigidBody3D" groups=["LawnMower"]]
 script = ExtResource("1_utdds")
@@ -45,3 +65,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="Speed Lines" type="ColorRect" parent="CameraRig/Camera3D"]
+material = SubResource("ShaderMaterial_sf5s2")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
