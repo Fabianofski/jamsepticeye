@@ -18,6 +18,7 @@ var durability: float
 
 var speed = 0.0
 var direction = 0.0
+var boosting = false
 
 func _ready():
 	GameManager.player_node = self
@@ -69,16 +70,17 @@ func get_steering(delta):
 	direction += input_dir * stats.steering_speed * delta * (speed / max_speed)
 
 func get_speed(delta): 
+	var acceleration = stats.acceleration if !boosting else stats.acceleration*2
 	if Input.is_action_pressed("forward"):
-		speed += stats.acceleration * delta
+		speed += acceleration * delta
 	elif Input.is_action_pressed("back"):
-		speed -= stats.acceleration * delta
+		speed -= acceleration * delta
 	else:
 		speed = lerp(speed, 0.0, 0.05)
 
-	speed = clamp(speed, -max_speed, max_speed)
+	var _max_speed = max_speed if !boosting else max_speed * 2
+	speed = clamp(speed, -_max_speed/2, _max_speed)
 	
-	speed_lines.material.set_shader_parameter("effect_power", remap(speed, 0, 20, 0, 1))
 
 func update_camera(): 
 	if !camera.current: 
@@ -102,6 +104,13 @@ func _physics_process(delta):
 	if not GameManager.game_started: 
 		return	
 
+	if Input.is_action_pressed("boost"):
+		boosting = true
+		speed_lines.material.set_shader_parameter("effect_power", 1)
+	else: 
+		boosting = false
+		speed_lines.material.set_shader_parameter("effect_power", 0)
+
 	get_speed(delta)
 	get_steering(delta)
 
@@ -116,7 +125,8 @@ func _process(delta: float) -> void:
 	if not GameManager.game_started: 
 		return
 
-	fuel -= fuel_consum * delta
+	var _fuel_consum = fuel_consum if !boosting else 2*fuel_consum
+	fuel -= _fuel_consum * delta
 	SignalBus.fuel_updated.emit(fuel / max_fuel)
 	if fuel <= 0: 
 		SignalBus.game_over.emit("Ran out of fuel!")
