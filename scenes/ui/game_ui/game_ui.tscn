@@ -15,7 +15,7 @@
 [ext_resource type="Script" uid="uid://bgx13csjkcgm6" path="res://scenes/ui/upgrade_ui/start_buy_btn.gd" id="13_gc7ur"]
 [ext_resource type="Script" uid="uid://b2ly8jfqp50c5" path="res://scenes/ui/signal_btn.gd" id="14_8jg32"]
 [ext_resource type="Script" uid="uid://boqb36dldxvtd" path="res://scenes/ui/upgrade_ui/upgrade_btn_spawner.gd" id="14_gc7ur"]
-[ext_resource type="Script" uid="uid://bru6pa7ggs1e4" path="res://scenes/ui/upgrade_ui/stats.gd" id="16_3s8aq"]
+[ext_resource type="Script" path="res://scenes/ui/upgrade_ui/stats.gd" id="16_3s8aq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_opqoc"]
 font = ExtResource("6_xhr0k")
@@ -203,7 +203,7 @@ anchor_bottom = 1.0
 offset_left = 42.0
 offset_right = 248.0
 grow_vertical = 2
-alignment = 2
+alignment = 1
 script = ExtResource("14_gc7ur")
 
 [node name="StartBtn" type="Button" parent="Upgrade"]
@@ -292,10 +292,11 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -255.0
-offset_top = 35.0
+offset_top = 1.0
 offset_right = -25.0
-offset_bottom = 191.0
+offset_bottom = 1081.0
 grow_horizontal = 0
+alignment = 1
 script = ExtResource("16_3s8aq")
 
 [node name="End" type="Control" parent="."]
