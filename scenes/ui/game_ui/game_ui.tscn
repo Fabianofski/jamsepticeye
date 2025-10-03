@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cb8dld63hgqkj"]
+[gd_scene load_steps=22 format=3 uid="uid://cb8dld63hgqkj"]
 
 [ext_resource type="Script" uid="uid://yaswdugcal5a" path="res://scenes/ui/ui.gd" id="1_nvly0"]
 [ext_resource type="Texture2D" uid="uid://dwad8ugg8tvs2" path="res://scenes/ui/game_ui/border.png" id="2_vjxrc"]
@@ -62,6 +62,10 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3s8aq"]
+font = ExtResource("6_xhr0k")
+font_size = 51
 
 [node name="GameUi" type="CanvasLayer"]
 script = ExtResource("1_nvly0")
@@ -290,5 +294,35 @@ offset_right = 1124.0
 offset_bottom = 206.0
 script = ExtResource("16_3s8aq")
 
-[connection signal="disable_ui" from="Upgrade/StartBtn" to="Game" method="set_visible" binds= [true]]
-[connection signal="disable_ui" from="Upgrade/StartBtn" to="Upgrade" method="set_visible" binds= [false]]
+[node name="End" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="End"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="End"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "YOU LOST"
+label_settings = SubResource("LabelSettings_3s8aq")

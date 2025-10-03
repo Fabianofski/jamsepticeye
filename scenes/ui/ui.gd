@@ -1,5 +1,10 @@
 extends CanvasLayer
 
+@onready var upgrades: Control = $Upgrade 
+@onready var game: Control = $Game
+@onready var end: Control = $End
+@onready var end_label: Control = $End/Label
+
 @onready var money_visual: AnimatedSprite2D = $Money/MoneyVisual
 @onready var money_label: Label = $Money/MoneyLabel
 
@@ -16,7 +21,18 @@ func _ready() -> void:
 	SignalBus.fuel_updated.connect(on_fuel_updated) 
 	SignalBus.durability_updated.connect(on_durability_updated)
 	SignalBus.ui_popup_called.connect(create_popup)
+	SignalBus.game_started.connect(on_game_start) 
+	SignalBus.game_over.connect(on_game_end)
 	on_money_updated(GameManager.money)
+
+func on_game_start(): 
+	game.set_visible(true)
+	upgrades.set_visible(false)
+
+func on_game_end(message: String): 
+	game.set_visible(false)
+	end.set_visible(true)
+	end_label.text = message
 
 func on_money_updated(money: int): 
 	money_label.text = "$" + str(money)

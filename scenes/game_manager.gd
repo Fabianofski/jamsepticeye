@@ -23,7 +23,7 @@ func on_remove_money(amount: int):
 
 func on_game_over(_message: String): 
 	game_started = false 
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(3).timeout
 	get_tree().reload_current_scene()
 
 func start_game(): 
