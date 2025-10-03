@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://boai28d22w8n2"]
 
 [ext_resource type="PackedScene" uid="uid://by1gn4o48sli5" path="res://scenes/map.tscn" id="1_mixcd"]
-[ext_resource type="Script" uid="uid://bgpu3yrnt5wo" path="res://scenes/main_camera.gd" id="3_6e45b"]
+[ext_resource type="Script" path="res://scenes/main_camera.gd" id="3_6e45b"]
 [ext_resource type="Script" uid="uid://d1ewpaukhbydx" path="res://scenes/lawn_mower/lawn_mower_base.gd" id="3_mixcd"]
 [ext_resource type="PackedScene" uid="uid://cb8dld63hgqkj" path="res://scenes/ui/game_ui/game_ui.tscn" id="3_v1wow"]
 [ext_resource type="Script" uid="uid://cv4gv6mj1avnu" path="res://scenes/lawn_mower/upgrades/lawn_mower.gd" id="4_mj2jn"]
