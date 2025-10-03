@@ -12,13 +12,13 @@ func _ready():
 	SignalBus.mower_updated.connect(set_lawn_mower)
 
 func update_button(amount: int): 
-	disabled = amount < upgrade_info.base_price or upgrade_info.bought >= upgrade_info.max_bought 
+	disabled = amount < upgrade_info.price or upgrade_info.bought >= upgrade_info.max_bought 
 
 	var max_durability = upgrades.calculate_value(stats.base_durability, Upgrades.UpgradeType.DURABILITY)
 	if upgrade_type == Upgrades.UpgradeType.REPAIR and stats.get_durability() == max_durability:
 		disabled = true
 
-	label.text = "%s %d$ %d/%d" % [Upgrades.UpgradeType.keys()[upgrade_type], upgrade_info.base_price ,upgrade_info.bought, upgrade_info.max_bought]
+	label.text = "%s %d$ %d/%d" % [Upgrades.UpgradeType.keys()[upgrade_type], upgrade_info.price ,upgrade_info.bought, upgrade_info.max_bought]
 
 func set_lawn_mower(mower: LawnMower):
 	upgrades = mower.upgrades
