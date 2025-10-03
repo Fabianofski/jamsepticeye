@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cb8dld63hgqkj"]
+[gd_scene load_steps=21 format=3 uid="uid://cb8dld63hgqkj"]
 
 [ext_resource type="Script" uid="uid://yaswdugcal5a" path="res://scenes/ui/ui.gd" id="1_nvly0"]
 [ext_resource type="Texture2D" uid="uid://dwad8ugg8tvs2" path="res://scenes/ui/game_ui/border.png" id="2_vjxrc"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://bgx13csjkcgm6" path="res://scenes/ui/upgrade_ui/start_buy_btn.gd" id="13_gc7ur"]
 [ext_resource type="Script" uid="uid://b2ly8jfqp50c5" path="res://scenes/ui/signal_btn.gd" id="14_8jg32"]
 [ext_resource type="Script" uid="uid://boqb36dldxvtd" path="res://scenes/ui/upgrade_ui/upgrade_btn_spawner.gd" id="14_gc7ur"]
+[ext_resource type="Script" uid="uid://bru6pa7ggs1e4" path="res://scenes/ui/upgrade_ui/stats.gd" id="16_3s8aq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_opqoc"]
 font = ExtResource("6_xhr0k")
@@ -191,12 +192,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="UpgradeBtns" type="VFlowContainer" parent="Upgrade"]
+[node name="UpgradeBtns" type="VBoxContainer" parent="Upgrade"]
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
 offset_left = 42.0
-offset_right = 522.0
+offset_right = 248.0
 grow_vertical = 2
 alignment = 2
 script = ExtResource("14_gc7ur")
@@ -280,6 +281,14 @@ grow_vertical = 2
 text = "Previous"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Stats" type="VBoxContainer" parent="Upgrade"]
+layout_mode = 0
+offset_left = 894.0
+offset_top = 50.0
+offset_right = 1124.0
+offset_bottom = 206.0
+script = ExtResource("16_3s8aq")
 
 [connection signal="disable_ui" from="Upgrade/StartBtn" to="Game" method="set_visible" binds= [true]]
 [connection signal="disable_ui" from="Upgrade/StartBtn" to="Upgrade" method="set_visible" binds= [false]]
