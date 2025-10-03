@@ -46,7 +46,7 @@ func buy_upgrade():
 		Upgrades.UpgradeType.REPAIR: 
 			var max_durability = upgrades.calculate_value(stats.base_durability, Upgrades.UpgradeType.DURABILITY)
 			stats.current_durability = max_durability
-			SignalBus.durability_updated.emit(stats.get_durability / max_durability)
+			SignalBus.durability_updated.emit(stats.get_durability() / max_durability)
 		_:
 			pass
 	upgrade_info.bought += 1
