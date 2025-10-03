@@ -24,6 +24,10 @@ SignalBus="*res://scenes/signal_bus.gd"
 
 window/stretch/aspect="ignore"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/gizmos/plugin.cfg")
+
 [global_group]
 
 LawnMower="The LawnMower Object for Collision Check"

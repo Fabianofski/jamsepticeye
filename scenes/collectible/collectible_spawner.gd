@@ -1,4 +1,5 @@
 extends Node3D
+class_name Spawner
 
 @export var radius: float = 5 
 @export var min_distance: float = 0.5 
