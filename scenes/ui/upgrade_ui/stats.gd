@@ -15,11 +15,11 @@ func set_lawn_mower(mower: LawnMower):
 	var upgrades = mower.upgrades
 
 	var slider_data = {
-		"Speed %d km/h": stats.base_max_speed * upgrades.speed_upgrades,
-		"Acceleration %d m2/s": stats.acceleration,
-		"Durability %d points": stats.base_durability * upgrades.durability_upgrades,
-		"Fuel Tank %d liters": stats.base_max_fuel * upgrades.fuel_tank_upgrades,
-		"Fuel Efficiency %d liters/second": stats.base_fuel_consum * upgrades.fuel_efficiency_upgrades
+		"Speed: %d km/h": stats.base_max_speed * upgrades.speed_upgrades,
+		"Acceleration: %d m2/s": stats.acceleration,
+		"Durability: %d points": stats.base_durability * upgrades.durability_upgrades,
+		"Fuel Tank: %d litres": stats.base_max_fuel * upgrades.fuel_tank_upgrades,
+		"Fuel Efficiency: %d litres/second": stats.base_fuel_consum * upgrades.fuel_efficiency_upgrades
 	}
 
 	for key in slider_data.keys():

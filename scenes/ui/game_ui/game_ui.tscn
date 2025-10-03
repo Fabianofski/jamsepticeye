@@ -18,7 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://bode2fx2vmuvw" path="res://scenes/ui/btn_1.png" id="14_hjaf2"]
 [ext_resource type="Texture2D" uid="uid://bt56hiqqwdvap" path="res://scenes/ui/btn_0.png" id="14_xhr0k"]
 [ext_resource type="Texture2D" uid="uid://b5mt7cpy4uvom" path="res://scenes/ui/btn_2.png" id="15_3b87j"]
-[ext_resource type="Script" path="res://scenes/ui/upgrade_ui/stats.gd" id="16_3s8aq"]
+[ext_resource type="Script" uid="uid://bru6pa7ggs1e4" path="res://scenes/ui/upgrade_ui/stats.gd" id="16_3s8aq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_opqoc"]
 font = ExtResource("6_xhr0k")

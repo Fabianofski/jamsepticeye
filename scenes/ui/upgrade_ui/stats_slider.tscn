@@ -1,12 +1,65 @@
-[gd_scene format=3 uid="uid://dqdnnmssapjva"]
+[gd_scene load_steps=6 format=3 uid="uid://dqdnnmssapjva"]
+
+[ext_resource type="FontFile" uid="uid://c1hpa04tng3qi" path="res://scenes/ui/Ranchers-Regular.ttf" id="1_hl54d"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lxei1"]
+font = ExtResource("1_hl54d")
+font_size = 24
+font_color = Color(0.757198, 0.761105, 0.776745, 1)
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+shadow_color = Color(0, 0, 0, 0.25098)
+shadow_offset = Vector2(4, 0)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_hl54d"]
+size = Vector2(0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lxei1"]
+bg_color = Color(0.372549, 0.341176, 0.309804, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+shadow_size = 1
+shadow_offset = Vector2(2, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hl54d"]
+bg_color = Color(0, 0.894118, 0.211765, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+shadow_size = 1
+shadow_offset = Vector2(2, 0)
 
 [node name="StatsSlider" type="VBoxContainer"]
+theme_override_constants/separation = 6
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 2
 text = "Speed (5km/h)"
+label_settings = SubResource("LabelSettings_lxei1")
 
 [node name="Slider" type="HSlider" parent="."]
 layout_mode = 2
+theme_override_icons/grabber = SubResource("PlaceholderTexture2D_hl54d")
+theme_override_icons/grabber_highlight = SubResource("PlaceholderTexture2D_hl54d")
+theme_override_icons/grabber_disabled = SubResource("PlaceholderTexture2D_hl54d")
+theme_override_styles/slider = SubResource("StyleBoxFlat_lxei1")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_hl54d")
 editable = false
 scrollable = false
