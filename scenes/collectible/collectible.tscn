@@ -17,6 +17,7 @@ script = ExtResource("1_j8pxs")
 
 [node name="Area3D" type="Area3D" parent="."]
 script = ExtResource("2_b2tt7")
+damage = 10.0
 
 [node name="Mesh" parent="Area3D" instance=ExtResource("2_j8pxs")]
 

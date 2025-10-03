@@ -17,11 +17,11 @@ func set_text(popup_type: Collectible.PopupType, popup_contents: String):
 	
 	match popup_type:
 		Collectible.PopupType.MONEY:
-			label.label_settings.font_color = Color("#00e436") # Colour palette green
+			label.modulate = Color("#00e436") # Colour palette green
 		Collectible.PopupType.DURABILITY:
-			label.label_settings.font_color = Color("#ff004d") # Colour palette red
+			label.modulate = Color("#ff004d") # Colour palette red
 		Collectible.PopupType.FUEL:
-			label.label_settings.font_color = Color("#0beab2") # Colour palette aquamarine
+			label.modulate= Color("#0beab2") # Colour palette aquamarine
 
 func start_tween():
 	tween.tween_property(self, "global_position:y", global_position.y - 32, 1)

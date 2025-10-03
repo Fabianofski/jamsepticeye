@@ -54,7 +54,8 @@ func create_popup(popup_type: Collectible.PopupType, popup_value: String, popup_
 				popup_instance.set_text(popup_type, "-" + popup_value)
 			Collectible.PopupType.FUEL:
 				popup_instance.set_text(popup_type, "+" + popup_value + " fuel!")
-		popup_instance.position = get_viewport().get_camera_3d().unproject_position(popup_position) - Vector2(0, 128)
+		var shift = randi_range(0, 50)
+		popup_instance.position = get_viewport().get_camera_3d().unproject_position(popup_position) - Vector2(0 + shift, 128 + shift)
 		popup_instance.start_tween()
 	else:
 		print("Tried to create a popup with at least one null value... bit silly innit...")

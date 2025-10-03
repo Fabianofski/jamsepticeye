@@ -7,7 +7,6 @@ enum PopupType { FUEL, MONEY, DURABILITY}
 @export var destructible = true 
 @export var damage = 1.0
 @export var fuel_amount = 0
-@export var popup_type: PopupType = PopupType.MONEY
 
 @onready var mesh: Node3D = $Mesh
 @export var randomize_size: bool = false
@@ -22,21 +21,16 @@ func _ready() -> void:
 
 func on_body_entered(body: Node3D):
 	if body.is_in_group("LawnMower") and GameManager.game_started:
-		if destructible: 
-			get_parent().queue_free()
+		var popup_pos = global_position
 		if money_amount > 0:
 			SignalBus.add_money.emit(money_amount)
+			SignalBus.ui_popup_called.emit(PopupType.MONEY, str(money_amount), popup_pos)
 		if fuel_amount > 0:
 			SignalBus.add_fuel.emit(fuel_amount)
+			SignalBus.ui_popup_called.emit(PopupType.FUEL, str(fuel_amount), popup_pos)
+		if damage > 0:
+			body.take_damage(damage)
+			SignalBus.ui_popup_called.emit(PopupType.DURABILITY, str(damage), popup_pos)
 
-		body.take_damage(damage)
-		
-		var popup_value
-		match popup_type:
-			PopupType.MONEY:
-				popup_value = money_amount
-			PopupType.DURABILITY:
-				popup_value = damage
-			PopupType.FUEL:
-				popup_value = fuel_amount
-		SignalBus.ui_popup_called.emit(popup_type, str(popup_value), self.global_position)
+		if destructible: 
+			get_parent().queue_free()
