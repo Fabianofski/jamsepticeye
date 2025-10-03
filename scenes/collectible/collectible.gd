@@ -10,6 +10,7 @@ enum PopupType { FUEL, MONEY, DURABILITY}
 
 @onready var mesh: Node3D = $Mesh
 @export var randomize_size: bool = false
+@export var randomize_rotation: bool = false
 @export var min_size = 0.6 
 @export var max_size = 1.0 
 
@@ -23,6 +24,8 @@ func _ready() -> void:
 	if randomize_size: 
 		var size = randf_range(min_size, max_size)
 		mesh.scale = Vector3.ONE * size
+	if randomize_rotation:
+		mesh.rotation_degrees.y = randf_range(0, 360)
 
 func on_body_entered(body: Node3D):
 	if body.is_in_group("LawnMower") and GameManager.game_started:
