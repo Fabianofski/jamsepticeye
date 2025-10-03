@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://boafnp7blxqym"]
+
+[ext_resource type="PackedScene" uid="uid://dk6rofokxluak" path="res://scenes/characters/person.blend" id="1_87c0h"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_87c0h"]
+albedo_color = Color(0.81, 1, 0.996833, 1)
+
+[node name="House" type="Node3D"]
+
+[node name="Scale referenec" parent="." instance=ExtResource("1_87c0h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00927144, 0, -0.0372055)
+
+[node name="Walls" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
+size = Vector3(15, 12, 16)
+material = SubResource("StandardMaterial3D_87c0h")
+
+[node name="Door" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.25, 7.539)
+size = Vector3(2, 3.5, 1)
