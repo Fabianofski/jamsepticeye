@@ -24,4 +24,3 @@ func get_upgrade_info(upgrade_type: Upgrades.UpgradeType) -> UpgradeInfo:
 			return fuel_efficiency_upgrade_info
 
 	return null
-

@@ -7,6 +7,7 @@ var state: State = State.IDLE
 var player: Node3D = null
 
 @onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D
+@onready var mesh_animation: AnimationPlayer = $Area3D/Mesh/AnimationPlayer
 
 func _ready():
 	navigation_agent.path_desired_distance = 0.5
@@ -18,10 +19,16 @@ func set_movement_target(movement_target: Vector3):
 func hunt(_player: Node3D): 
 	player = _player
 	state = State.HUNTING
+	
+	if not mesh_animation.current_animation == "run":
+		mesh_animation.play("run")
 
 func stop_hunt(): 
 	player = null 
 	state = State.IDLE
+	
+	if not mesh_animation.current_animation == "idle":
+		mesh_animation.play("idle")
 
 func _physics_process(_delta):
 	if state == State.IDLE: 
