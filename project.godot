@@ -27,6 +27,7 @@ window/stretch/aspect="ignore"
 [global_group]
 
 LawnMower="The LawnMower Object for Collision Check"
+Zombie=""
 
 [input]
 

@@ -1,4 +1,4 @@
-extends RigidBody3D
+extends Area3D
 class_name Collectible
 
 enum PopupType { FUEL, MONEY, DURABILITY}
@@ -23,7 +23,7 @@ func _ready() -> void:
 func on_body_entered(body: Node3D):
 	if body.is_in_group("LawnMower") and GameManager.game_started:
 		if destructible: 
-			queue_free()
+			get_parent().queue_free()
 		if money_amount > 0:
 			SignalBus.add_money.emit(money_amount)
 		if fuel_amount > 0:

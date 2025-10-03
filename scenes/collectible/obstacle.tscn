@@ -12,20 +12,25 @@ albedo_color = Color(1, 0, 0, 1)
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_vjdt6"]
 material = SubResource("StandardMaterial3D_vjdt6")
 
-[node name="Collectible" type="RigidBody3D"]
+[node name="Obstacle" type="RigidBody3D"]
 freeze = true
-freeze_mode = 1
 contact_monitor = true
 max_contacts_reported = 1
-script = ExtResource("1_u0wpv")
-money_amount = 0
-destructible = false
-popup_type = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.24068, 0)
 shape = SubResource("CapsuleShape3D_k77ap")
 
-[node name="Mesh" type="MeshInstance3D" parent="."]
+[node name="Area3D" type="Area3D" parent="."]
+script = ExtResource("1_u0wpv")
+money_amount = 0
+destructible = false
+popup_type = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.24068, 0)
+shape = SubResource("CapsuleShape3D_k77ap")
+
+[node name="Mesh" type="MeshInstance3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_vjdt6")

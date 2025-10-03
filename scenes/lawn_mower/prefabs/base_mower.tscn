@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://bk8l8bllutsvo"]
+[gd_scene load_steps=13 format=3 uid="uid://bk8l8bllutsvo"]
 
 [ext_resource type="Script" uid="uid://bxxhxcs3idf0w" path="res://scenes/lawn_mower/lawn_mower_controller.gd" id="1_mak8i"]
 [ext_resource type="Resource" uid="uid://cltiswliie43p" path="res://scenes/lawn_mower/prefabs/lawn_mower/lawn_mower_stats.tres" id="2_5gyun"]
 [ext_resource type="PackedScene" uid="uid://dk6rofokxluak" path="res://scenes/characters/person.blend" id="3_g2uju"]
 [ext_resource type="Shader" uid="uid://dum7asi4x3gis" path="res://scenes/ui/posterise.gdshader" id="5_obv1m"]
+[ext_resource type="Script" uid="uid://bdg068gycehyy" path="res://scenes/collectible/hunt_zone.gd" id="6_la7gn"]
 [ext_resource type="Shader" uid="uid://c4u3g231110bn" path="res://scenes/ui/speedlines.gdshader" id="6_orcel"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_eqhe0"]
@@ -36,6 +37,9 @@ shader_parameter/mask_edge = 0.195
 shader_parameter/animation_speed = 20.0
 shader_parameter/blur_strength = 0.01
 shader_parameter/effect_power = 0.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_u6m8x"]
+radius = 10.0
 
 [node name="BaseMower" type="RigidBody3D" groups=["LawnMower"]]
 script = ExtResource("1_mak8i")
@@ -70,3 +74,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="HuntZoneArea" type="Area3D" parent="."]
+script = ExtResource("6_la7gn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HuntZoneArea"]
+shape = SubResource("SphereShape3D_u6m8x")
