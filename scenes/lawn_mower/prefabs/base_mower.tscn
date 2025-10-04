@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bk8l8bllutsvo"]
+[gd_scene load_steps=30 format=3 uid="uid://bk8l8bllutsvo"]
 
 [ext_resource type="Script" uid="uid://bxxhxcs3idf0w" path="res://scenes/lawn_mower/lawn_mower_controller.gd" id="1_mak8i"]
 [ext_resource type="Resource" uid="uid://cltiswliie43p" path="res://scenes/lawn_mower/prefabs/lawn_mower/lawn_mower_stats.tres" id="2_5gyun"]
@@ -11,6 +11,11 @@
 [ext_resource type="Shader" uid="uid://bnot7evxe61ix" path="res://scenes/lawn_mower/smoke/smoke_outline.gdshader" id="7_hrjim"]
 [ext_resource type="Script" uid="uid://dsjxdqpqy5fvq" path="res://scenes/lawn_mower/lawn_mower_fuel.gd" id="7_x24gr"]
 [ext_resource type="Shader" uid="uid://cyr53jwqoga1w" path="res://scenes/lawn_mower/smoke/smoke.gdshader" id="8_xt5ln"]
+[ext_resource type="Script" uid="uid://bm3fs6bogr87w" path="res://scenes/lawn_mower/tutorial.gd" id="9_dfx2q"]
+[ext_resource type="FontFile" uid="uid://c1hpa04tng3qi" path="res://scenes/ui/Ranchers-Regular.ttf" id="10_17c88"]
+[ext_resource type="Texture2D" uid="uid://dh6w2o71nwdpv" path="res://scenes/ui/keyboard/shift.png" id="11_qm8ju"]
+[ext_resource type="Texture2D" uid="uid://ck2g54ymmd5nq" path="res://scenes/ui/keyboard/space.png" id="12_07o8m"]
+[ext_resource type="Texture2D" uid="uid://bm380lemsb6b1" path="res://scenes/ui/keyboard/wasd.png" id="12_xt5ln"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_u6m8x"]
 radius = 10.0
@@ -129,6 +134,57 @@ shape = SubResource("CapsuleShape3D_x24gr")
 
 [node name="ShreddingSound" type="AudioStreamPlayer3D" parent="RotationLess/DamageZone"]
 stream = ExtResource("6_5vb1q")
+
+[node name="Tutorial" type="Node3D" parent="RotationLess"]
+script = ExtResource("9_dfx2q")
+
+[node name="Movement" type="Node3D" parent="RotationLess/Tutorial"]
+transform = Transform3D(1, -1.77636e-15, -7.10543e-15, 3.55271e-15, 1, -2.98023e-08, -7.10543e-15, 2.98023e-08, 1, 0, 0, -2.38419e-07)
+visible = false
+
+[node name="Wasd" type="Sprite3D" parent="RotationLess/Tutorial/Movement"]
+transform = Transform3D(-1, 4.07843e-15, 8.74228e-08, 2.96163e-08, 0.940869, 0.338771, -8.22534e-08, 0.338771, -0.940869, -5.42954, 4.05975, 2.36771)
+pixel_size = 0.1
+texture_filter = 0
+texture = ExtResource("12_xt5ln")
+
+[node name="Label3D" type="Label3D" parent="RotationLess/Tutorial/Movement"]
+transform = Transform3D(-1, 7.32684e-15, -8.74228e-08, -3.68123e-08, 0.907022, 0.421083, 7.92944e-08, 0.421083, -0.907022, -5.49755, 6.17206, 3.97941)
+text = "Move with"
+font = ExtResource("10_17c88")
+font_size = 157
+
+[node name="Boost" type="Node3D" parent="RotationLess/Tutorial"]
+transform = Transform3D(1, -1.77636e-15, -7.10543e-15, 3.55271e-15, 1, -2.98023e-08, -7.10543e-15, 2.98023e-08, 1, 0, 0, -2.38419e-07)
+visible = false
+
+[node name="Shift" type="Sprite3D" parent="RotationLess/Tutorial/Boost"]
+transform = Transform3D(-1, 4.07843e-15, 8.74228e-08, 2.96163e-08, 0.940869, 0.338771, -8.22534e-08, 0.338771, -0.940869, -5.42954, 4.05975, 2.36771)
+pixel_size = 0.1
+texture_filter = 0
+texture = ExtResource("11_qm8ju")
+
+[node name="Label3D" type="Label3D" parent="RotationLess/Tutorial/Boost"]
+transform = Transform3D(-1, 7.32684e-15, -8.74228e-08, -3.68123e-08, 0.907022, 0.421083, 7.92944e-08, 0.421083, -0.907022, -5.49755, 5.22967, 3.05064)
+text = "Boost"
+font = ExtResource("10_17c88")
+font_size = 157
+
+[node name="Drift" type="Node3D" parent="RotationLess/Tutorial"]
+transform = Transform3D(1, -1.77636e-15, -7.10543e-15, 3.55271e-15, 1, -2.98023e-08, -7.10543e-15, 2.98023e-08, 1, 0, 0, -2.38419e-07)
+visible = false
+
+[node name="Space" type="Sprite3D" parent="RotationLess/Tutorial/Drift"]
+transform = Transform3D(-1, 4.07843e-15, 8.74228e-08, 2.96163e-08, 0.940869, 0.338771, -8.22534e-08, 0.338771, -0.940869, -5.42954, 4.05975, 2.36771)
+pixel_size = 0.1
+texture_filter = 0
+texture = ExtResource("12_07o8m")
+
+[node name="Label3D" type="Label3D" parent="RotationLess/Tutorial/Drift"]
+transform = Transform3D(-1, 7.32684e-15, -8.74228e-08, -3.68123e-08, 0.907022, 0.421083, 7.92944e-08, 0.421083, -0.907022, -5.49755, 5.24085, 3.04071)
+text = "Drift"
+font = ExtResource("10_17c88")
+font_size = 157
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_eqhe0")

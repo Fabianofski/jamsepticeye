@@ -8,6 +8,8 @@ var game_started = false
 
 var player_node: Node3D
 
+var tutorial_stage: Tutorial.Stage
+
 func _ready():
 	SignalBus.add_money.connect(on_add_money)
 	SignalBus.remove_money.connect(on_remove_money)

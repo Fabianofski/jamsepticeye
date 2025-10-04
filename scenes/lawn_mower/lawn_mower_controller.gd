@@ -18,6 +18,7 @@ var speed = 0.0
 var direction = 0.0
 var boosting = false
 var throttle = false
+var drifting = false
 
 var game_over = false
 
@@ -59,8 +60,11 @@ func get_steering(delta):
 		input_dir = -1.0
 
 	if Input.is_action_pressed("drift"): 
+		drifting = true
 		var speed_factor = abs(speed) / max_speed
 		input_dir *= stats.drift_speed * speed_factor
+	else: 
+		drifting = false
 
 	direction += input_dir * stats.steering_speed * delta * (speed / max_speed)
 
@@ -86,6 +90,7 @@ func _physics_process(delta):
 		linear_velocity = Vector3.ZERO
 		throttle = false
 		boosting = false
+		drifting = false
 		speed_lines.material.set_shader_parameter("effect_power", 0)
 		return	
 
