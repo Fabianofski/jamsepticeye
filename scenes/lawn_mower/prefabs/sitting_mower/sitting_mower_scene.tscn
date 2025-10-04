@@ -1,10 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://d0u6yq2lnbrxy"]
+[gd_scene load_steps=4 format=3 uid="uid://d0u6yq2lnbrxy"]
 
 [ext_resource type="PackedScene" uid="uid://bk8l8bllutsvo" path="res://scenes/lawn_mower/prefabs/base_mower.tscn" id="1_f2foy"]
 [ext_resource type="PackedScene" uid="uid://gw3umdaoqibe" path="res://scenes/lawn_mower/models/sitting_mower.glb" id="2_8yoov"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f2foy"]
+radius = 1.02723
+height = 4.432
 
 [node name="SittingMower" instance=ExtResource("1_f2foy")]
 sitting = true
 
 [node name="sitting_mower" parent="RotationLess/Model" index="0" instance=ExtResource("2_8yoov")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.528958, 0)
+
+[node name="person" parent="RotationLess/Model" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="CollisionShape3D" parent="RotationLess/DamageZone" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.556664, 0.884054)
+shape = SubResource("CapsuleShape3D_f2foy")

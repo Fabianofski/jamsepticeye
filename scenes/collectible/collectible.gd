@@ -37,6 +37,7 @@ func trigger(player: LawnMowerHealth):
 	if money_amount > 0:
 		SignalBus.add_money.emit(money_amount)
 		SignalBus.ui_popup_called.emit(PopupType.MONEY, str(money_amount), popup_pos)
+		player.play_shredding_sound()
 	if fuel_amount > 0:
 		SignalBus.add_fuel.emit(fuel_amount)
 		SignalBus.ui_popup_called.emit(PopupType.FUEL, str(fuel_amount), popup_pos)

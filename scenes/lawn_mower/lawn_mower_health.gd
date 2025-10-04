@@ -3,6 +3,7 @@ class_name LawnMowerHealth
 
 var max_durability: float
 @onready var controller: LawnMowerController = $"../.."
+@onready var shredding_sound: AudioStreamPlayer3D = $"ShreddingSound"
 
 func _ready() -> void: 
 	SignalBus.upgrades_updated.connect(update_upgrades)
@@ -13,6 +14,10 @@ func update_upgrades(upgrades: Upgrades):
 	var stats = controller.stats
 	max_durability = upgrades.calculate_value(stats.base_durability, Upgrades.UpgradeType.DURABILITY)
 	SignalBus.durability_updated.emit(stats.get_durability() / max_durability)
+
+func play_shredding_sound(): 
+	shredding_sound.play()
+
 
 func take_damage(damage: float): 
 	if !GameManager.game_started: 
