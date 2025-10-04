@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://boai28d22w8n2"]
+[gd_scene load_steps=36 format=3 uid="uid://boai28d22w8n2"]
 
 [ext_resource type="PackedScene" uid="uid://by1gn4o48sli5" path="res://scenes/map.tscn" id="1_mixcd"]
 [ext_resource type="Script" uid="uid://kfjyu1fenphr" path="res://scenes/ui/menus.gd" id="2_miq82"]
@@ -6,14 +6,20 @@
 [ext_resource type="Script" uid="uid://b2ly8jfqp50c5" path="res://scenes/ui/signal_btn.gd" id="3_miq82"]
 [ext_resource type="Script" uid="uid://d1ewpaukhbydx" path="res://scenes/lawn_mower/lawn_mower_base.gd" id="3_mixcd"]
 [ext_resource type="PackedScene" uid="uid://cb8dld63hgqkj" path="res://scenes/ui/game_ui/game_ui.tscn" id="3_v1wow"]
+[ext_resource type="Texture2D" uid="uid://b5mt7cpy4uvom" path="res://scenes/ui/btn_2.png" id="4_3d2pr"]
+[ext_resource type="Texture2D" uid="uid://dwad8ugg8tvs2" path="res://scenes/ui/game_ui/border.png" id="4_h5hfs"]
 [ext_resource type="Script" uid="uid://cv4gv6mj1avnu" path="res://scenes/lawn_mower/upgrades/lawn_mower.gd" id="4_mj2jn"]
 [ext_resource type="Resource" uid="uid://cdygjpkfg3d7t" path="res://scenes/lawn_mower/prefabs/hand_mower/hand_mower.tres" id="5_6e45b"]
+[ext_resource type="Texture2D" uid="uid://bode2fx2vmuvw" path="res://scenes/ui/btn_1.png" id="5_h5hfs"]
 [ext_resource type="Resource" uid="uid://d4i14axeujag0" path="res://scenes/lawn_mower/prefabs/lawn_mower/lawn_mower.tres" id="5_kdryc"]
 [ext_resource type="FontFile" uid="uid://c1hpa04tng3qi" path="res://scenes/ui/Ranchers-Regular.ttf" id="5_ueiaa"]
 [ext_resource type="Texture2D" uid="uid://bvocmvvmfrqyr" path="res://scenes/ui/game_ui/durability_1.png" id="6_daj04"]
+[ext_resource type="Texture2D" uid="uid://bt56hiqqwdvap" path="res://scenes/ui/btn_0.png" id="6_snaye"]
 [ext_resource type="Script" uid="uid://bn6vubjwb13u2" path="res://scenes/ui/settings.gd" id="7_mlphb"]
 [ext_resource type="Resource" uid="uid://bp5a48ea187oe" path="res://scenes/lawn_mower/prefabs/sitting_mower/sitting_mower.tres" id="8_e35lh"]
 [ext_resource type="AudioStream" uid="uid://dw2t4cvtf4s15" path="res://scenes/audio/ambience.mp3" id="9_udeyl"]
+[ext_resource type="Texture2D" uid="uid://fjc27kog1hq0" path="res://scenes/ui/grabber_1.png" id="12_1wc4g"]
+[ext_resource type="Texture2D" uid="uid://b67sfodp7hfhj" path="res://scenes/ui/grabber_2.png" id="13_78j2m"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mixcd"]
 sky_top_color = Color(0.324592, 0.535986, 0.835765, 1)
@@ -38,12 +44,116 @@ adjustment_brightness = 1.05
 adjustment_contrast = 1.1
 adjustment_saturation = 1.25
 
-[sub_resource type="LabelSettings" id="LabelSettings_daj04"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1wc4g"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_78j2m"]
+texture = ExtResource("4_3d2pr")
+texture_margin_left = 1.0
+texture_margin_top = 1.0
+texture_margin_right = 1.0
+texture_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_na8jj"]
+texture = ExtResource("5_h5hfs")
+texture_margin_left = 1.0
+texture_margin_top = 1.0
+texture_margin_right = 1.0
+texture_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jv0we"]
+texture = ExtResource("4_3d2pr")
+texture_margin_left = 1.0
+texture_margin_top = 1.0
+texture_margin_right = 1.0
+texture_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nuflt"]
+texture = ExtResource("6_snaye")
+texture_margin_left = 1.0
+texture_margin_top = 1.0
+texture_margin_right = 1.0
+texture_margin_bottom = 2.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_3d2pr"]
 font = ExtResource("5_ueiaa")
+font_size = 24
+font_color = Color(0.757198, 0.761105, 0.776745, 1)
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(4, 0)
 
 [sub_resource type="LabelSettings" id="LabelSettings_mlphb"]
 font = ExtResource("5_ueiaa")
-font_size = 48
+font_size = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h5hfs"]
+bg_color = Color(0.372549, 0.341176, 0.309804, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+shadow_size = 1
+shadow_offset = Vector2(2, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_snaye"]
+bg_color = Color(0, 0.894118, 0.211765, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+shadow_size = 1
+shadow_offset = Vector2(2, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_opqoc"]
+font = ExtResource("5_ueiaa")
+font_size = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1wc4g"]
+bg_color = Color(0.372549, 0.341176, 0.309804, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+shadow_size = 1
+shadow_offset = Vector2(2, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_78j2m"]
+bg_color = Color(0, 0.894118, 0.211765, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+shadow_size = 1
+shadow_offset = Vector2(2, 0)
 
 [node name="Root" type="Node3D"]
 
@@ -68,13 +178,23 @@ visible = false
 
 [node name="MainMenu" type="CanvasLayer" parent="Menus"]
 
+[node name="Border" type="TextureRect" parent="Menus/MainMenu"]
+self_modulate = Color(1, 1, 1, 0.901961)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_h5hfs")
+expand_mode = 5
+
 [node name="ColorRect" type="ColorRect" parent="Menus/MainMenu"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.194349, 0.194349, 0.194349, 0.12549)
+color = Color(0.19, 0.19, 0.19, 0.376471)
 
 [node name="Start" type="Button" parent="Menus/MainMenu"]
 anchors_preset = 8
@@ -82,12 +202,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -109.0
-offset_top = -22.0
-offset_right = 109.0
-offset_bottom = 22.0
+offset_left = -66.0
+offset_top = -35.0
+offset_right = 66.0
+offset_bottom = 35.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1wc4g")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_78j2m")
+theme_override_styles/hover = SubResource("StyleBoxTexture_na8jj")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_jv0we")
+theme_override_styles/normal = SubResource("StyleBoxTexture_nuflt")
 script = ExtResource("3_miq82")
 signal_name = "play"
 
@@ -99,7 +224,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Start"
-label_settings = SubResource("LabelSettings_daj04")
+label_settings = SubResource("LabelSettings_3d2pr")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -111,19 +236,32 @@ offset_bottom = 379.0
 texture = ExtResource("6_daj04")
 
 [node name="Settings" type="VBoxContainer" parent="Menus/MainMenu"]
-offset_left = 109.0
-offset_top = 594.0
-offset_right = 479.0
-offset_bottom = 683.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -185.0
+offset_top = 237.0
+offset_right = 185.0
+offset_bottom = 403.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("7_mlphb")
 
 [node name="Music" type="Label" parent="Menus/MainMenu/Settings"]
 layout_mode = 2
 text = "Music"
 label_settings = SubResource("LabelSettings_mlphb")
+horizontal_alignment = 1
 
 [node name="MusicSlider" type="HSlider" parent="Menus/MainMenu/Settings"]
 layout_mode = 2
+theme_override_icons/grabber = ExtResource("12_1wc4g")
+theme_override_icons/grabber_highlight = ExtResource("13_78j2m")
+theme_override_styles/slider = SubResource("StyleBoxFlat_h5hfs")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_snaye")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_snaye")
 max_value = 1.0
 step = 0.01
 value = 1.0
@@ -131,10 +269,17 @@ value = 1.0
 [node name="Sound" type="Label" parent="Menus/MainMenu/Settings"]
 layout_mode = 2
 text = "Sounds"
-label_settings = SubResource("LabelSettings_mlphb")
+label_settings = SubResource("LabelSettings_opqoc")
+horizontal_alignment = 1
 
 [node name="SoundSlider" type="HSlider" parent="Menus/MainMenu/Settings"]
 layout_mode = 2
+theme_override_icons/grabber = ExtResource("12_1wc4g")
+theme_override_icons/grabber_highlight = ExtResource("13_78j2m")
+theme_override_icons/grabber_disabled = ExtResource("13_78j2m")
+theme_override_styles/slider = SubResource("StyleBoxFlat_1wc4g")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_78j2m")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_78j2m")
 max_value = 1.0
 step = 0.01
 value = 1.0
