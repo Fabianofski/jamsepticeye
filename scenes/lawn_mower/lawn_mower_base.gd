@@ -12,11 +12,16 @@ func _ready() -> void:
 	SignalBus.next_mower.connect(next_mower)
 	SignalBus.previous_mower.connect(previous_mower)
 	SignalBus.reset_game.connect(initialize)
-	initialize()
+	SignalBus.play.connect(set_camera)
+	spawn_lawn_mower()
 
 func initialize():
-	SignalBus.set_camera_target.emit(base_cam.global_position, base_cam.quaternion)
+	set_camera()
 	spawn_lawn_mower()
+
+func set_camera(): 
+	SignalBus.set_camera_target.emit(base_cam.global_position, base_cam.quaternion)
+
 
 func next_mower(): 
 	if GameManager.current_lawn_mower_index < len(lawn_mowers) - 1: 

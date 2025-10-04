@@ -14,6 +14,7 @@ signal fuel_updated(amount: float)
 
 signal durability_updated(amount: float)
 
+signal play()
 signal game_over(message: String) 
 signal game_started()
 signal reset_game()
