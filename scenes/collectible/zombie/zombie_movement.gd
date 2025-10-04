@@ -62,7 +62,7 @@ func look_at_target():
 		look_at(global_transform.origin - flat_direction, Vector3.UP)
 
 func _physics_process(_delta):
-	if state == State.IDLE: 
+	if state == State.IDLE or GameManager.game_paused:  
 		return
 
 	if state == State.HUNTING and player != null: 

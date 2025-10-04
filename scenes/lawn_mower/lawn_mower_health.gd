@@ -24,7 +24,7 @@ func play_shredding_sound():
 
 
 func take_damage(damage: float): 
-	if !GameManager.game_started: 
+	if !GameManager.game_started or GameManager.game_paused: 
 		return 
 
 	var stats = controller.stats

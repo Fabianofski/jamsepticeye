@@ -84,6 +84,9 @@ func get_speed(delta):
 	speed = clamp(speed, -_max_speed/2, _max_speed)
 
 func _physics_process(delta):
+	if GameManager.game_paused: 
+		return 
+
 	update_rotation_less()
 	if not GameManager.game_started: 
 		speed = 0.0
@@ -123,7 +126,7 @@ func play_animations():
 	elif abs(speed) < 1 and not player_animations.current_animation == "idle":
 		player_animations.play("idle")
 
-func update_camera(): 
+func update_camera(): 	
 	if !camera.current: 
 		camera.current = true
 	camera_rig.global_transform.origin = lerp(

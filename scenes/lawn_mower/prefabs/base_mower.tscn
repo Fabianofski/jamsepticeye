@@ -134,6 +134,7 @@ shape = SubResource("CapsuleShape3D_x24gr")
 
 [node name="ShreddingSound" type="AudioStreamPlayer3D" parent="RotationLess/DamageZone"]
 stream = ExtResource("6_5vb1q")
+bus = &"Audio"
 
 [node name="Tutorial" type="Node3D" parent="RotationLess"]
 script = ExtResource("9_dfx2q")
