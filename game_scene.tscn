@@ -13,11 +13,11 @@
 [ext_resource type="Texture2D" uid="uid://bode2fx2vmuvw" path="res://scenes/ui/btn_1.png" id="5_h5hfs"]
 [ext_resource type="Resource" uid="uid://d4i14axeujag0" path="res://scenes/lawn_mower/prefabs/lawn_mower/lawn_mower.tres" id="5_kdryc"]
 [ext_resource type="FontFile" uid="uid://c1hpa04tng3qi" path="res://scenes/ui/Ranchers-Regular.ttf" id="5_ueiaa"]
-[ext_resource type="Texture2D" uid="uid://bvocmvvmfrqyr" path="res://scenes/ui/game_ui/durability_1.png" id="6_daj04"]
 [ext_resource type="Texture2D" uid="uid://bt56hiqqwdvap" path="res://scenes/ui/btn_0.png" id="6_snaye"]
 [ext_resource type="Script" uid="uid://bn6vubjwb13u2" path="res://scenes/ui/settings.gd" id="7_mlphb"]
 [ext_resource type="Resource" uid="uid://bp5a48ea187oe" path="res://scenes/lawn_mower/prefabs/sitting_mower/sitting_mower.tres" id="8_e35lh"]
 [ext_resource type="AudioStream" uid="uid://dw2t4cvtf4s15" path="res://scenes/audio/ambience.mp3" id="9_udeyl"]
+[ext_resource type="Texture2D" uid="uid://cxtf315cttux2" path="res://scenes/ui/logo.png" id="10_1wc4g"]
 [ext_resource type="Texture2D" uid="uid://fjc27kog1hq0" path="res://scenes/ui/grabber_1.png" id="12_1wc4g"]
 [ext_resource type="Texture2D" uid="uid://b67sfodp7hfhj" path="res://scenes/ui/grabber_2.png" id="13_78j2m"]
 
@@ -194,7 +194,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.19, 0.19, 0.19, 0.376471)
+color = Color(0, 0, 0, 0.768627)
 
 [node name="Start" type="Button" parent="Menus/MainMenu"]
 anchors_preset = 8
@@ -203,9 +203,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -66.0
-offset_top = -35.0
+offset_top = 205.0
 offset_right = 66.0
-offset_bottom = 35.0
+offset_bottom = 275.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/focus = SubResource("StyleBoxEmpty_1wc4g")
@@ -228,12 +228,20 @@ label_settings = SubResource("LabelSettings_3d2pr")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="Menus/MainMenu"]
-offset_left = 656.0
-offset_top = 205.0
-offset_right = 1227.0
-offset_bottom = 379.0
-texture = ExtResource("6_daj04")
+[node name="Logo" type="TextureRect" parent="Menus/MainMenu"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -348.5
+offset_top = -441.651
+offset_right = 348.5
+offset_bottom = -22.3494
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_1wc4g")
+expand_mode = 5
 
 [node name="Settings" type="VBoxContainer" parent="Menus/MainMenu"]
 anchors_preset = 8
@@ -242,9 +250,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -185.0
-offset_top = 237.0
+offset_top = 317.0
 offset_right = 185.0
-offset_bottom = 403.0
+offset_bottom = 483.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("7_mlphb")
