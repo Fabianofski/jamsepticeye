@@ -4,6 +4,8 @@ extends Control
 
 func _ready() -> void:
 	for upgrade_type in len(Upgrades.UpgradeType): 
+		if upgrade_type == Upgrades.UpgradeType.REPAIR: 
+			continue
 		var btn = button.instantiate() 
 		add_child(btn)
 		btn.upgrade_type = upgrade_type
