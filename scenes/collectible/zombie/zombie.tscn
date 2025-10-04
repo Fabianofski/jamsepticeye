@@ -26,32 +26,7 @@ particle = ExtResource("3_h3k5g")
 script = ExtResource("4_j7snw")
 shirt_colors = Array[Color]([Color(0.529412, 0.462745, 0.537255, 1), Color(0.5274, 0.54, 0.4644, 1)])
 skin_colors = Array[Color]([Color(0.235294, 0.611765, 0.423529, 1), Color(0.41514, 0.589132, 0.272461, 1), Color(0.560834, 0.541557, 0.276488, 1)])
-hats = [NodePath("Crown"), NodePath("Cone"), NodePath("BaseCap"), NodePath("Construction")]
-
-[node name="Crown" type="MeshInstance3D" parent="ZombieRandomizer"]
-visible = false
-mesh = ExtResource("4_sft5r")
-skeleton = NodePath("../..")
-script = ExtResource("6_iix3q")
-rarity = 2
-
-[node name="Cone" type="MeshInstance3D" parent="ZombieRandomizer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0562637, 0)
-visible = false
-mesh = ExtResource("5_0pk84")
-skeleton = NodePath("../..")
-script = ExtResource("6_iix3q")
-
-[node name="BaseCap" type="MeshInstance3D" parent="ZombieRandomizer"]
-visible = false
-mesh = ExtResource("6_tnm7x")
-script = ExtResource("6_iix3q")
-
-[node name="Construction" type="MeshInstance3D" parent="ZombieRandomizer"]
-visible = false
-mesh = ExtResource("7_c53e3")
-script = ExtResource("6_iix3q")
-rarity = 1
+hats = [NodePath("../BoneAttachment3D/Crown"), NodePath("../BoneAttachment3D/Cone"), NodePath("../BoneAttachment3D/BaseCap"), NodePath("../BoneAttachment3D/Construction")]
 
 [node name="Mesh" parent="." instance=ExtResource("3_0pk84")]
 
@@ -60,3 +35,31 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.24068, 0)
 shape = SubResource("CapsuleShape3D_k77ap")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.46128, 0)
+use_external_skeleton = true
+external_skeleton = NodePath("")
+
+[node name="Crown" type="MeshInstance3D" parent="BoneAttachment3D"]
+visible = false
+mesh = ExtResource("4_sft5r")
+script = ExtResource("6_iix3q")
+rarity = 2
+
+[node name="Cone" type="MeshInstance3D" parent="BoneAttachment3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0562637, 0)
+visible = false
+mesh = ExtResource("5_0pk84")
+script = ExtResource("6_iix3q")
+
+[node name="BaseCap" type="MeshInstance3D" parent="BoneAttachment3D"]
+visible = false
+mesh = ExtResource("6_tnm7x")
+script = ExtResource("6_iix3q")
+
+[node name="Construction" type="MeshInstance3D" parent="BoneAttachment3D"]
+visible = false
+mesh = ExtResource("7_c53e3")
+script = ExtResource("6_iix3q")
+rarity = 1

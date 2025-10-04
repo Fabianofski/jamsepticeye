@@ -22,6 +22,8 @@ enum Personality { VICIOUS, SCAREDYCAT }
 @export_group("Hats")
 @export var hats: Array[Hat] = []
 @export var hat_chance = 0.3
+@onready var bone_attachment: BoneAttachment3D = $"../BoneAttachment3D"
+@onready var skeleton_path: NodePath = ^"../Mesh/Armature/Skeleton3D"
 
 @export_group("Behaviour")
 @export var personality: Personality = Personality.VICIOUS
@@ -63,6 +65,10 @@ func randomize_hat():
 		else:
 			pool = hats.filter(func(h): return h.rarity == Hat.Rarity.EPIC)
 			collectible.money_amount *= epic_multiplier
+
+		bone_attachment.set_external_skeleton(skeleton_path)
+		bone_attachment.bone_name = "neck"
+		bone_attachment.bone_idx = 4
 
 		var hat = pool[randi() % pool.size()]
 		collectible.rarity = hat.rarity
