@@ -13,7 +13,7 @@ func on_mower_selected(mower: LawnMower):
 	current_mower = mower
 	update_button(GameManager.money)
 
-func update_button(money: int):
+func update_button(money: float):
 	if current_mower.unlocked: 
 		label.text = "Start"
 	else: 

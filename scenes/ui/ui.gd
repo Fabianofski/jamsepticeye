@@ -39,7 +39,7 @@ func on_game_restart():
 	end.set_visible(false)
 	upgrades.set_visible(true)
 
-func on_money_updated(money: int): 
+func on_money_updated(money: float): 
 	money_label.text = "$" + str(money)
 	
 	if money != 0:
