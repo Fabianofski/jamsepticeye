@@ -48,29 +48,19 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_o2guw")
 
-[node name="Obstacle" type="RigidBody3D"]
-freeze = true
-contact_monitor = true
-max_contacts_reported = 1
+[node name="Obstacle" type="StaticBody3D" groups=["Collectible"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.437851, 0)
 shape = SubResource("CapsuleShape3D_k77ap")
 
-[node name="Area3D" type="Area3D" parent="."]
-script = ExtResource("1_u0wpv")
-money_amount = 0
-destructible = false
-randomize_size = true
-randomize_rotation = true
-min_size = 0.4
-max_size = 0.6
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.437851, 0)
-shape = SubResource("CapsuleShape3D_k77ap")
-
-[node name="Mesh" type="MeshInstance3D" parent="Area3D"]
+[node name="Mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, -0.0832803, 0)
 mesh = SubResource("ArrayMesh_87xxl")
 skeleton = NodePath("")
+
+[node name="Collectible" type="Node3D" parent="."]
+script = ExtResource("1_u0wpv")
+money_amount = 0
+destructible = false
+metadata/_custom_type_script = "uid://cdn6fo6lrk6nd"

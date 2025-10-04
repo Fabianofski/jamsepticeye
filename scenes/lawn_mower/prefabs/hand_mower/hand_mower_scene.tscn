@@ -7,5 +7,5 @@
 [node name="HandMower" instance=ExtResource("1_feugv")]
 stats = ExtResource("2_i36kc")
 
-[node name="hand_mower" parent="Model" index="1" instance=ExtResource("4_gol1m")]
+[node name="hand_mower" parent="RotationLess" index="0" instance=ExtResource("4_gol1m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.504451, -0.202667)

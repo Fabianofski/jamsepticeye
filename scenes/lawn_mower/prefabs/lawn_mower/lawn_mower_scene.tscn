@@ -5,5 +5,5 @@
 
 [node name="LawnMower" instance=ExtResource("1_f3sdb")]
 
-[node name="lawn_mower" parent="Model" index="1" instance=ExtResource("4_35fhi")]
+[node name="lawn_mower" parent="RotationLess" index="0" instance=ExtResource("4_35fhi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.342874, 0.0484121)

@@ -1,0 +1,37 @@
+extends Area3D 
+class_name LawnMowerHealth
+
+var max_durability: float
+@onready var controller: LawnMowerController = $"../.."
+
+func _ready() -> void: 
+	SignalBus.upgrades_updated.connect(update_upgrades)
+
+	body_entered.connect(on_body_entered)
+
+func update_upgrades(upgrades: Upgrades):
+	var stats = controller.stats
+	max_durability = upgrades.calculate_value(stats.base_durability, Upgrades.UpgradeType.DURABILITY)
+	SignalBus.durability_updated.emit(stats.get_durability() / max_durability)
+
+func take_damage(damage: float): 
+	if !GameManager.game_started: 
+		return 
+
+	var stats = controller.stats
+	
+	stats.current_durability -= damage
+	if stats.current_durability < 0: 
+		stats.current_durability = 0
+	SignalBus.durability_updated.emit(stats.get_durability() / max_durability)
+	if stats.get_durability() <= 0: 
+		SignalBus.game_over.emit("Ran out of durability!")
+
+func on_body_entered(body: Node3D) -> void: 
+	if not GameManager.game_started: 
+		return	
+
+	if body.is_in_group("Collectible"): 
+		print(body.name)
+		var child = body.get_node("Collectible")
+		child.trigger(self)

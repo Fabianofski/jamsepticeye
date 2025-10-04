@@ -35,6 +35,7 @@ enabled=PackedStringArray("res://addons/gizmos/plugin.cfg")
 
 LawnMower="The LawnMower Object for Collision Check"
 Zombie=""
+Collectible=""
 
 [input]
 

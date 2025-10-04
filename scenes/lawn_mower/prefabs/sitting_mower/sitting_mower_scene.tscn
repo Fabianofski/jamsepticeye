@@ -6,8 +6,5 @@
 [node name="SittingMower" instance=ExtResource("1_f2foy")]
 sitting = true
 
-[node name="person" parent="Model" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.971042, 0)
-
-[node name="sitting_mower" parent="Model" index="1" instance=ExtResource("2_8yoov")]
+[node name="sitting_mower" parent="RotationLess/Model" index="0" instance=ExtResource("2_8yoov")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.528958, 0)

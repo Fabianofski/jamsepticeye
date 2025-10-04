@@ -40,5 +40,5 @@ func spawn_lawn_mower():
 		mower_object.queue_free()
 
 	mower_object = GameManager.current_lawn_mower.mesh.instantiate() 
-	mower_object.update_upgrades(GameManager.current_lawn_mower.upgrades)
 	add_child(mower_object)
+	SignalBus.upgrades_updated.emit(GameManager.current_lawn_mower.upgrades)

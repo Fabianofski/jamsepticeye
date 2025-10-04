@@ -1,17 +1,13 @@
 extends RigidBody3D
+class_name LawnMowerController
 
 @export var stats: LawnMowerStats
 @export var sitting: bool = false
 
 var max_speed: float
-var max_fuel: float
-var max_durability: float
-var fuel_consum: float
-var fuel: float
 
-@onready var model: Node3D = $Model
-@onready var collision_shape: Node3D = $CollisionShape3D
-@onready var player_animations: AnimationPlayer = $Model/person/AnimationPlayer
+@onready var rotation_less: Node3D = $RotationLess
+@onready var player_animations: AnimationPlayer = $RotationLess/Model/person/AnimationPlayer
 @onready var camera_rig: Node3D = $CameraRig
 @onready var camera: Camera3D = $CameraRig/Camera3D
 
@@ -25,7 +21,7 @@ func _ready():
 	GameManager.player_node = self
 	
 	camera_rig.top_level = true
-	model.top_level = true
+	rotation_less.top_level = true
 
 	SignalBus.game_started.connect(func(): 
 		SignalBus.set_camera_target.emit(camera.global_position, camera.quaternion)
@@ -34,16 +30,6 @@ func _ready():
 		queue_free()
 	)
 
-	SignalBus.fuel_updated.emit(fuel/max_fuel)
-	SignalBus.add_fuel.connect(func(amount): 
-		fuel += amount
-		fuel = clampf(fuel, 0, max_fuel)
-		SignalBus.fuel_updated.emit(fuel/max_fuel)
-	)
-	SignalBus.remove_fuel.connect(func(amount): 
-		fuel -= amount
-		SignalBus.fuel_updated.emit(fuel/max_fuel)
-	)
 	SignalBus.upgrades_updated.connect(update_upgrades)
 	
 	speed_lines.material.set_shader_parameter("effect_power", 0)
@@ -53,14 +39,7 @@ func _ready():
 			player_animations.play("driving")
 
 func update_upgrades(upgrades: Upgrades):
-	print(name)
-	print(upgrades)
 	max_speed = upgrades.calculate_value(stats.base_max_speed, Upgrades.UpgradeType.SPEED)
-	max_fuel = upgrades.calculate_value(stats.base_max_fuel, Upgrades.UpgradeType.FUELTANK)
-	max_durability = upgrades.calculate_value(stats.base_durability, Upgrades.UpgradeType.DURABILITY)
-	SignalBus.durability_updated.emit(stats.get_durability() / max_durability)
-	fuel_consum = upgrades.calculate_value(stats.base_fuel_consum, Upgrades.UpgradeType.FUELEFFICIENCY)
-	fuel = max_fuel
 
 func get_steering(delta): 
 	var input_dir = 0.0
@@ -86,27 +65,9 @@ func get_speed(delta):
 
 	var _max_speed = max_speed if !boosting else max_speed * 2
 	speed = clamp(speed, -_max_speed/2, _max_speed)
-	
-
-func update_camera(): 
-	if !camera.current: 
-		camera.current = true
-	camera_rig.global_transform.origin = lerp(
-		camera_rig.global_transform.origin, 
-		global_transform.origin, 0.1
-	)
-	camera_rig.global_transform.basis = camera_rig.global_transform.basis.slerp(
-		Basis(Quaternion(Vector3.UP, direction)),
-		0.1
-	)
-
-func update_model(): 
-	model.global_position = global_transform.origin
-	model.rotation.y = direction
 
 func _physics_process(delta):
-	update_model()
-
+	update_rotation_less()
 	if not GameManager.game_started: 
 		return	
 
@@ -126,17 +87,8 @@ func _physics_process(delta):
 
 	update_camera()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	play_animations()
-	if not GameManager.game_started: 
-		return
-
-	var _fuel_consum = fuel_consum if !boosting else 2*fuel_consum
-	fuel -= _fuel_consum * delta
-	SignalBus.fuel_updated.emit(fuel / max_fuel)
-	if fuel <= 0: 
-		SignalBus.game_over.emit("Ran out of fuel!")
-	
 	
 func play_animations(): 
 	if sitting:
@@ -148,13 +100,18 @@ func play_animations():
 	elif abs(speed) < 1 and not player_animations.current_animation == "idle":
 		player_animations.play("idle")
 
-func take_damage(damage: float): 
-	if !GameManager.game_started: 
-		return 
-	
-	stats.current_durability -= damage
-	if stats.current_durability < 0: 
-		stats.current_durability = 0
-	SignalBus.durability_updated.emit(stats.get_durability() / max_durability)
-	if stats.get_durability() <= 0: 
-		SignalBus.game_over.emit("Ran out of durability!")
+func update_camera(): 
+	if !camera.current: 
+		camera.current = true
+	camera_rig.global_transform.origin = lerp(
+		camera_rig.global_transform.origin, 
+		global_transform.origin, 0.1
+	)
+	camera_rig.global_transform.basis = camera_rig.global_transform.basis.slerp(
+		Basis(Quaternion(Vector3.UP, direction)),
+		0.1
+	)
+
+func update_rotation_less(): 
+	rotation_less.global_position = global_transform.origin
+	rotation_less.rotation.y = direction

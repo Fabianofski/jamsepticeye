@@ -11,7 +11,7 @@ var path: Array[Vector3] = []
 var index: int = 0
 
 @onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D
-@onready var mesh_animation: AnimationPlayer = $Area3D/Mesh/AnimationPlayer
+@onready var mesh_animation: AnimationPlayer = $Mesh/AnimationPlayer
 
 func _ready():
 	navigation_agent.path_desired_distance = 0.5
