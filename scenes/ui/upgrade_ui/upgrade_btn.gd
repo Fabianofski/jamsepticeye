@@ -67,4 +67,3 @@ func buy_upgrade():
 
 	SignalBus.remove_money.emit(price)
 	SignalBus.upgrades_updated.emit(upgrades)
-

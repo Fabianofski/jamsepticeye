@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b5mt7cpy4uvom" path="res://scenes/ui/btn_2.png" id="1_tbl4s"]
 [ext_resource type="Texture2D" uid="uid://bode2fx2vmuvw" path="res://scenes/ui/btn_1.png" id="2_0dpt2"]
 [ext_resource type="Texture2D" uid="uid://bt56hiqqwdvap" path="res://scenes/ui/btn_0.png" id="3_4g44r"]
-[ext_resource type="Texture2D" uid="uid://ck8jx8jowhs1f" path="res://scenes/ui/game_ui/fuel_full.png" id="5_0dpt2"]
+[ext_resource type="Texture2D" uid="uid://casuik4xwlg2v" path="res://scenes/ui/game_ui/progressbar_fill_alt.png" id="5_0dpt2"]
 [ext_resource type="FontFile" uid="uid://c1hpa04tng3qi" path="res://scenes/ui/Ranchers-Regular.ttf" id="5_nn5yj"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o76u3"]
@@ -72,6 +72,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 max_value = 1.0
