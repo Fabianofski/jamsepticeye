@@ -12,7 +12,7 @@ func _ready():
 	pressed.connect(buy_upgrade)
 	SignalBus.mower_updated.connect(set_lawn_mower)
 
-func update_button(amount: int): 
+func update_button(amount: float): 
 	var max_upgrades_bought = upgrade_info.bought >= upgrade_info.max_bought 
 	var not_enough_money = amount < upgrade_info.price
 

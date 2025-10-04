@@ -4,10 +4,14 @@ class_name LawnMowerHealth
 var max_durability: float
 @onready var controller: LawnMowerController = $"../.."
 @onready var shredding_sound: AudioStreamPlayer3D = $"ShreddingSound"
+@onready var smoke_particle: GPUParticles3D = $SmokeParticle
+var base_amount: int
 
 func _ready() -> void: 
-	SignalBus.upgrades_updated.connect(update_upgrades)
+	base_amount = smoke_particle.amount
+	smoke_particle.emitting = false
 
+	SignalBus.upgrades_updated.connect(update_upgrades)
 	body_entered.connect(on_body_entered)
 
 func update_upgrades(upgrades: Upgrades):
@@ -28,7 +32,13 @@ func take_damage(damage: float):
 	stats.current_durability -= damage
 	if stats.current_durability < 0: 
 		stats.current_durability = 0
-	SignalBus.durability_updated.emit(stats.get_durability() / max_durability)
+
+	var durability_percent = stats.get_durability() / max_durability
+	SignalBus.durability_updated.emit(durability_percent)
+
+	smoke_particle.emitting = true
+	smoke_particle.amount = round(base_amount * durability_percent) 
+
 	if stats.get_durability() <= 0: 
 		SignalBus.game_over.emit("Ran out of durability!")
 

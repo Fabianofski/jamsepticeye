@@ -24,6 +24,8 @@ particle = ExtResource("3_h3k5g")
 
 [node name="ZombieRandomizer" type="Node3D" parent="." node_paths=PackedStringArray("hats")]
 script = ExtResource("4_j7snw")
+shirt_colors = Array[Color]([Color(0.168627, 0.180392, 0.196078, 1)])
+skin_colors = Array[Color]([Color(0, 0, 0, 1)])
 hats = [NodePath("Crown"), NodePath("Cone"), NodePath("BaseCap"), NodePath("Construction")]
 
 [node name="Crown" type="MeshInstance3D" parent="ZombieRandomizer"]

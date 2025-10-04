@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bk8l8bllutsvo"]
+[gd_scene load_steps=25 format=3 uid="uid://bk8l8bllutsvo"]
 
 [ext_resource type="Script" uid="uid://bxxhxcs3idf0w" path="res://scenes/lawn_mower/lawn_mower_controller.gd" id="1_mak8i"]
 [ext_resource type="Resource" uid="uid://cltiswliie43p" path="res://scenes/lawn_mower/prefabs/lawn_mower/lawn_mower_stats.tres" id="2_5gyun"]
@@ -8,10 +8,56 @@
 [ext_resource type="AudioStream" uid="uid://dt3ijk8eidexk" path="res://scenes/lawn_mower/audio/shredding.wav" id="6_5vb1q"]
 [ext_resource type="Script" uid="uid://bdg068gycehyy" path="res://scenes/collectible/zombie/hunt_zone.gd" id="6_la7gn"]
 [ext_resource type="Shader" uid="uid://c4u3g231110bn" path="res://scenes/ui/speedlines.gdshader" id="6_orcel"]
+[ext_resource type="Shader" uid="uid://bnot7evxe61ix" path="res://scenes/lawn_mower/smoke/smoke_outline.gdshader" id="7_hrjim"]
 [ext_resource type="Script" uid="uid://dsjxdqpqy5fvq" path="res://scenes/lawn_mower/lawn_mower_fuel.gd" id="7_x24gr"]
+[ext_resource type="Shader" uid="uid://cyr53jwqoga1w" path="res://scenes/lawn_mower/smoke/smoke.gdshader" id="8_xt5ln"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_u6m8x"]
 radius = 10.0
+
+[sub_resource type="Curve" id="Curve_s2i8u"]
+_data = [Vector2(0, 0), 0.0, 1.96578, 0, 0, Vector2(0.497207, 1), 0.0, 0.0, 0, 0, Vector2(0.99162, 0.0179348), -2.03582, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_d7dga"]
+curve = SubResource("Curve_s2i8u")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_odkc3"]
+emission_shape = 1
+emission_sphere_radius = 0.3
+angle_max = 180.0
+direction = Vector3(1, 1, 0)
+spread = 86.969
+gravity = Vector3(0.01, 0.1, 0)
+scale_min = 0.0
+scale_curve = SubResource("CurveTexture_d7dga")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7q6gc"]
+render_priority = 0
+shader = ExtResource("7_hrjim")
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/outline_width = 1.2
+shader_parameter/displacementStrength = 0.1
+shader_parameter/displacementSpeed = 0.1
+shader_parameter/noiseDensity = 8.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ht2g5"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_7q6gc")
+shader = ExtResource("8_xt5ln")
+shader_parameter/smoke_color = Color(0.299547, 0.299547, 0.299547, 1)
+shader_parameter/highlight_color = Color(1, 0.5, 0, 1)
+shader_parameter/shadow_color = Color(0.0170364, 0.0382575, 0.0486813, 1)
+shader_parameter/displacementStrength = 0.1
+shader_parameter/displacementSpeed = 0.1
+shader_parameter/noiseDensity = 8.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_qks0c"]
+material = SubResource("ShaderMaterial_ht2g5")
+radius = 0.1
+height = 0.2
+radial_segments = 100
+rings = 64
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_x24gr"]
 radius = 0.901326
@@ -67,6 +113,15 @@ shape = SubResource("SphereShape3D_u6m8x")
 
 [node name="DamageZone" type="Area3D" parent="RotationLess"]
 script = ExtResource("5_4fw2r")
+
+[node name="SmokeParticle" type="GPUParticles3D" parent="RotationLess/DamageZone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.42321)
+sorting_offset = -1.0
+amount = 252
+lifetime = 5.94
+speed_scale = 0.97
+process_material = SubResource("ParticleProcessMaterial_odkc3")
+draw_pass_1 = SubResource("SphereMesh_qks0c")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RotationLess/DamageZone"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.791158)
