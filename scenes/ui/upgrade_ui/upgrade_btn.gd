@@ -2,6 +2,7 @@ extends Button
 
 @export var upgrade_type: Upgrades.UpgradeType 
 @onready var label: Label = $Label
+@onready var progress: TextureProgressBar = $TextureProgressBar
 var upgrades : Upgrades
 var stats: LawnMowerStats
 var upgrade_info : UpgradeInfo 
@@ -19,6 +20,7 @@ func update_button(amount: int):
 		disabled = true
 
 	label.text = "%s - %d$ (%d/%d)" % [Upgrades.UpgradeType.keys()[upgrade_type], upgrade_info.price ,upgrade_info.bought, upgrade_info.max_bought]
+	progress.value = float(upgrade_info.bought) / upgrade_info.max_bought
 
 func set_lawn_mower(mower: LawnMower):
 	upgrades = mower.upgrades
@@ -50,7 +52,9 @@ func buy_upgrade():
 		_:
 			pass
 	upgrade_info.bought += 1
-	upgrade_info.price = upgrade_info.price * upgrade_info.price_increase
+	var price = upgrade_info.price
+	upgrade_info.price = price * upgrade_info.price_increase
 
-	SignalBus.remove_money.emit(upgrade_info.base_price)
+	SignalBus.remove_money.emit(price)
 	SignalBus.upgrades_updated.emit(upgrades)
+

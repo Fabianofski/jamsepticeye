@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://dkrvuap5myfeg"]
+[gd_scene load_steps=13 format=3 uid="uid://dkrvuap5myfeg"]
 
 [ext_resource type="Script" uid="uid://ciuippr4gu5v8" path="res://scenes/ui/upgrade_ui/upgrade_btn.gd" id="1_4sdvl"]
 [ext_resource type="Texture2D" uid="uid://b5mt7cpy4uvom" path="res://scenes/ui/btn_2.png" id="1_tbl4s"]
 [ext_resource type="Texture2D" uid="uid://bode2fx2vmuvw" path="res://scenes/ui/btn_1.png" id="2_0dpt2"]
 [ext_resource type="Texture2D" uid="uid://bt56hiqqwdvap" path="res://scenes/ui/btn_0.png" id="3_4g44r"]
+[ext_resource type="Texture2D" uid="uid://ck8jx8jowhs1f" path="res://scenes/ui/game_ui/fuel_full.png" id="5_0dpt2"]
 [ext_resource type="FontFile" uid="uid://c1hpa04tng3qi" path="res://scenes/ui/Ranchers-Regular.ttf" id="5_nn5yj"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o76u3"]
@@ -65,6 +66,18 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_fka55")
 theme_override_styles/normal = SubResource("StyleBoxTexture_ynu71")
 script = ExtResource("1_4sdvl")
 upgrade_type = 1
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 1.0
+step = 0.01
+nine_patch_stretch = true
+texture_progress = ExtResource("5_0dpt2")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
