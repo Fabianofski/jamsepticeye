@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://de3rc2xtdbptc"
+path="res://.godot/imported/crown.obj-6e8a8951bf08821c17b7b2e4a5f74bdc.mesh"
+
+[deps]
+
+files=["res://.godot/imported/crown.obj-6e8a8951bf08821c17b7b2e4a5f74bdc.mesh"]
+
+source_file="res://scenes/collectible/zombie/hats/crown.obj"
+dest_files=["res://.godot/imported/crown.obj-6e8a8951bf08821c17b7b2e4a5f74bdc.mesh", "res://.godot/imported/crown.obj-6e8a8951bf08821c17b7b2e4a5f74bdc.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

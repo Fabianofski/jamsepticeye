@@ -17,6 +17,8 @@ enum PopupType { FUEL, MONEY, DURABILITY}
 
 @export var particle: PackedScene
 
+var rarity: Hat.Rarity = Hat.Rarity.COMMON
+
 func _ready() -> void:
 	SignalBus.reset_game.connect(func(): 
 		get_parent().queue_free()
