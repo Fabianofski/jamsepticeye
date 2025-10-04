@@ -1,7 +1,7 @@
 extends Node3D
 class_name Collectible
 
-enum PopupType { FUEL, MONEY, DURABILITY}
+enum PopupType { FUEL, MONEY, DURABILITY }
 
 @export var money_amount = 10
 @export var destructible = true 

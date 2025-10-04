@@ -1,5 +1,8 @@
 extends Node3D 
 
+enum Personality { VICIOUS, SCAREDYCAT }
+
+@onready var zombie: Node3D = $"../"
 @onready var collectible: Collectible = $"../Collectible"
 
 @export_group("Colors")
@@ -17,9 +20,11 @@ extends Node3D
 @onready var collider: Node3D = $"../CollisionShape3D"
 
 @export_group("Hats")
-
 @export var hats: Array[Hat] = []
 @export var hat_chance = 0.3
+
+@export_group("Behaviour")
+@export var personality: Personality = Personality.VICIOUS
 
 @export var common_rarity = 0.6
 @export var rare_rarity = 0.3
@@ -27,11 +32,12 @@ extends Node3D
 
 @export var common_multiplier = 1
 @export var rare_multiplier = 4
-@export var epic_multiplier = 10 
+@export var epic_multiplier = 10
 
 func _ready():
 	randomize_size()
 	randomize_hat()
+	randomize_personality()
 	randomize_color()
 
 func randomize_size(): 
@@ -62,6 +68,12 @@ func randomize_hat():
 		collectible.rarity = hat.rarity
 		hat.set_visible(true)
 		hat.scale = mesh.scale
+
+func randomize_personality():
+	var enum_values = Personality.values()
+	var random_idx = randi() % enum_values.size()
+	var random_personality = enum_values[random_idx]
+	zombie.personality = random_personality
 
 func randomize_color(): 
 	var shirt_color = shirt_colors[randi() % shirt_colors.size()]

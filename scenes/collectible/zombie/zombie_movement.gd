@@ -1,11 +1,14 @@
 extends CharacterBody3D
 
 enum State { IDLE, HUNTING, PATH }
+enum Personality { VICIOUS, SCAREDYCAT }
 
 var movement_speed: float = 2.0
 var state: State = State.IDLE
 var base_state: State = State.IDLE
 var player: Node3D = null
+
+var personality: Personality = Personality.SCAREDYCAT
 
 var path: Array[Vector3] = []
 var index: int = 0
@@ -19,7 +22,6 @@ func _ready():
 
 func set_movement_target(movement_target: Vector3):
 	navigation_agent.set_target_position(movement_target)
-
 
 func set_path(_path: Array[Vector3], _index: int) -> void: 
 	path = _path 
@@ -66,7 +68,12 @@ func _physics_process(_delta):
 		return
 
 	if state == State.HUNTING and player != null: 
-		set_movement_target(player.global_position)
+		if personality == Personality.VICIOUS:
+			set_movement_target(player.global_position)
+		elif personality == Personality.SCAREDYCAT:
+			set_movement_target(self.global_position - player.global_position)
+		else:
+			print("If you reach this point something's gone very wrong.")
 
 	if navigation_agent.is_navigation_finished():
 		if state == State.PATH: 
