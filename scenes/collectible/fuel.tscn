@@ -64,4 +64,5 @@ script = ExtResource("1_duayn")
 money_amount = 0
 damage = 0.0
 fuel_amount = 10
+randomize_rotation = true
 metadata/_custom_type_script = "uid://cdn6fo6lrk6nd"

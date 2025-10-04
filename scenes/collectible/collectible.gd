@@ -9,6 +9,7 @@ enum PopupType { FUEL, MONEY, DURABILITY}
 @export var fuel_amount = 0
 
 @onready var mesh: Node3D = $"../Mesh"
+@onready var collision: Node3D = $"../CollisionShape3D"
 @export var randomize_size: bool = false
 @export var randomize_rotation: bool = false
 @export var min_size = 0.6 
@@ -23,8 +24,11 @@ func _ready() -> void:
 	if randomize_size: 
 		var size = randf_range(min_size, max_size)
 		mesh.scale = Vector3.ONE * size
+		collision.scale = Vector3.ONE * size
 	if randomize_rotation:
-		mesh.rotation_degrees.y = randf_range(0, 360)
+		var rot = randf_range(0, 360)
+		mesh.rotation_degrees.y = rot
+		collision.rotation_degrees.y = rot
 
 func trigger(player: LawnMowerHealth):
 	if particle != null: 
