@@ -32,7 +32,7 @@ func on_game_start():
 
 func on_game_end(message: String): 
 	end.set_visible(true)
-	end_label.text = "%s\n You earned: %d$!" % [message, GameManager.current_round_earnings]
+	end_label.text = "%s\n You earned $%d!" % [message, GameManager.current_round_earnings]
 
 func on_game_restart(): 
 	game.set_visible(false)

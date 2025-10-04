@@ -42,4 +42,3 @@ func next_stage():
 		GameManager.tutorial_stage = (GameManager.tutorial_stage + 1) as Stage 
 		change_state()
 		transition = false
-
