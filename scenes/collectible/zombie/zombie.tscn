@@ -18,7 +18,8 @@ script = ExtResource("1_t3ree")
 
 [node name="Area3D" type="Area3D" parent="."]
 script = ExtResource("2_h3k5g")
-damage = 10.0
+damage = 5.0
+max_size = 1.2
 particle = ExtResource("3_h3k5g")
 
 [node name="Mesh" parent="Area3D" instance=ExtResource("3_0pk84")]
