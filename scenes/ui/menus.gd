@@ -21,3 +21,4 @@ func _process(_delta: float) -> void:
 		main_menu_canvas.set_visible(true)
 		if GameManager.game_started:
 			GameManager.game_paused = true
+

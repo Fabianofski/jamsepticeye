@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://boai28d22w8n2"]
+[gd_scene load_steps=20 format=3 uid="uid://boai28d22w8n2"]
 
 [ext_resource type="PackedScene" uid="uid://by1gn4o48sli5" path="res://scenes/map.tscn" id="1_mixcd"]
 [ext_resource type="Script" uid="uid://kfjyu1fenphr" path="res://scenes/ui/menus.gd" id="2_miq82"]
@@ -11,6 +11,7 @@
 [ext_resource type="Resource" uid="uid://d4i14axeujag0" path="res://scenes/lawn_mower/prefabs/lawn_mower/lawn_mower.tres" id="5_kdryc"]
 [ext_resource type="FontFile" uid="uid://c1hpa04tng3qi" path="res://scenes/ui/Ranchers-Regular.ttf" id="5_ueiaa"]
 [ext_resource type="Texture2D" uid="uid://bvocmvvmfrqyr" path="res://scenes/ui/game_ui/durability_1.png" id="6_daj04"]
+[ext_resource type="Script" uid="uid://bn6vubjwb13u2" path="res://scenes/ui/settings.gd" id="7_mlphb"]
 [ext_resource type="Resource" uid="uid://bp5a48ea187oe" path="res://scenes/lawn_mower/prefabs/sitting_mower/sitting_mower.tres" id="8_e35lh"]
 [ext_resource type="AudioStream" uid="uid://dw2t4cvtf4s15" path="res://scenes/audio/ambience.mp3" id="9_udeyl"]
 
@@ -39,6 +40,10 @@ adjustment_saturation = 1.25
 
 [sub_resource type="LabelSettings" id="LabelSettings_daj04"]
 font = ExtResource("5_ueiaa")
+
+[sub_resource type="LabelSettings" id="LabelSettings_mlphb"]
+font = ExtResource("5_ueiaa")
+font_size = 48
 
 [node name="Root" type="Node3D"]
 
@@ -105,6 +110,35 @@ offset_right = 1227.0
 offset_bottom = 379.0
 texture = ExtResource("6_daj04")
 
+[node name="Settings" type="VBoxContainer" parent="Menus/MainMenu"]
+offset_left = 109.0
+offset_top = 594.0
+offset_right = 479.0
+offset_bottom = 683.0
+script = ExtResource("7_mlphb")
+
+[node name="Music" type="Label" parent="Menus/MainMenu/Settings"]
+layout_mode = 2
+text = "Music"
+label_settings = SubResource("LabelSettings_mlphb")
+
+[node name="MusicSlider" type="HSlider" parent="Menus/MainMenu/Settings"]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="Sound" type="Label" parent="Menus/MainMenu/Settings"]
+layout_mode = 2
+text = "Sounds"
+label_settings = SubResource("LabelSettings_mlphb")
+
+[node name="SoundSlider" type="HSlider" parent="Menus/MainMenu/Settings"]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 1.0
+
 [node name="Main Camera" type="Camera3D" parent="."]
 transform = Transform3D(0.707107, 0.40558, -0.579228, 0, 0.819152, 0.573577, 0.707107, -0.40558, 0.579228, -90, 65, 190)
 script = ExtResource("3_6e45b")
@@ -120,4 +154,7 @@ transform = Transform3D(0.653036, -0.446916, 0.6114, 0.0192899, 0.816867, 0.5765
 [node name="Ambience" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_udeyl")
 autoplay = true
-bus = &"Audio"
+bus = &"Sound"
+
+[connection signal="value_changed" from="Menus/MainMenu/Settings/MusicSlider" to="Menus/MainMenu/Settings" method="on_music_slider_value_changed"]
+[connection signal="value_changed" from="Menus/MainMenu/Settings/SoundSlider" to="Menus/MainMenu/Settings" method="on_audio_slider_value_changed"]
