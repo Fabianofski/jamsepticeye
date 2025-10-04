@@ -42,14 +42,14 @@ func trigger(player: LawnMowerHealth):
 	var popup_pos = global_position
 	if money_amount > 0:
 		SignalBus.add_money.emit(money_amount)
-		SignalBus.ui_popup_called.emit(PopupType.MONEY, str(money_amount), popup_pos)
+		SignalBus.ui_popup_called.emit(PopupType.MONEY, "%.f" % money_amount, popup_pos)
 		player.play_shredding_sound()
 	if fuel_amount > 0:
 		SignalBus.add_fuel.emit(fuel_amount)
-		SignalBus.ui_popup_called.emit(PopupType.FUEL, str(fuel_amount), popup_pos)
+		SignalBus.ui_popup_called.emit(PopupType.FUEL, "%.f" % fuel_amount, popup_pos)
 	if damage > 0:
 		player.take_damage(damage)
-		SignalBus.ui_popup_called.emit(PopupType.DURABILITY, str(damage), popup_pos)
+		SignalBus.ui_popup_called.emit(PopupType.DURABILITY, "%.f" % damage, popup_pos)
 
 	if destructible: 
 		get_parent().queue_free()

@@ -40,7 +40,7 @@ func on_game_restart():
 	upgrades.set_visible(true)
 
 func on_money_updated(money: float): 
-	money_label.text = "$" + str(money)
+	money_label.text = "$%.f" % money
 	
 	if money != 0:
 		money_visual.frame = 1
