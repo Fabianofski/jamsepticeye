@@ -8,6 +8,7 @@ var max_speed: float
 
 @onready var rotation_less: Node3D = $RotationLess
 @onready var player_animations: AnimationPlayer = $RotationLess/Model/person/AnimationPlayer
+@onready var player_skeleton: Skeleton3D = $RotationLess/Model/person/Armature/Skeleton3D
 @onready var camera_rig: Node3D = $CameraRig
 @onready var camera: Camera3D = $CameraRig/Camera3D
 
@@ -16,6 +17,9 @@ var max_speed: float
 var speed = 0.0
 var direction = 0.0
 var boosting = false
+var throttle = false
+
+var game_over = false
 
 func _ready():
 	GameManager.player_node = self
@@ -25,6 +29,11 @@ func _ready():
 
 	SignalBus.game_started.connect(func(): 
 		SignalBus.set_camera_target.emit(camera.global_position, camera.quaternion)
+	)
+	SignalBus.game_over.connect(func(_msg): 
+		game_over = true
+		player_animations.stop()
+		player_skeleton.physical_bones_start_simulation() 
 	)
 	SignalBus.reset_game.connect(func(): 
 		await get_tree().create_timer(1).timeout
@@ -59,9 +68,12 @@ func get_speed(delta):
 	var acceleration = stats.acceleration if !boosting else stats.acceleration*2
 	if Input.is_action_pressed("forward"):
 		speed += acceleration * delta
+		throttle = true
 	elif Input.is_action_pressed("back"):
 		speed -= acceleration * delta
+		throttle = true
 	else:
+		throttle = false
 		speed = lerp(speed, 0.0, 0.05)
 
 	var _max_speed = max_speed if !boosting else max_speed * 2
@@ -70,6 +82,11 @@ func get_speed(delta):
 func _physics_process(delta):
 	update_rotation_less()
 	if not GameManager.game_started: 
+		speed = 0.0
+		linear_velocity = Vector3.ZERO
+		throttle = false
+		boosting = false
+		speed_lines.material.set_shader_parameter("effect_power", 0)
 		return	
 
 	if Input.is_action_pressed("boost"):
@@ -92,7 +109,7 @@ func _process(_delta: float) -> void:
 	play_animations()
 	
 func play_animations(): 
-	if sitting:
+	if sitting or game_over:
 		return
 	if not boosting and abs(speed) >= 1 and not player_animations.current_animation == "walk":
 		player_animations.play("walk")

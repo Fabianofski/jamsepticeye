@@ -26,7 +26,7 @@ func update_upgrades(upgrades: Upgrades):
 	SignalBus.fuel_updated.emit(fuel/max_fuel)
 
 func _process(delta: float) -> void:
-	if not GameManager.game_started: 
+	if not GameManager.game_started or !controller.throttle:  
 		return	
 
 	var _fuel_consum = fuel_consum if !controller.boosting else 2*fuel_consum
