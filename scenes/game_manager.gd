@@ -3,6 +3,7 @@ extends Node3D
 var money: int = 100 
 var current_lawn_mower: LawnMower
 var current_lawn_mower_index: int = 0
+var current_round_earnings: int = 0
 var game_started = false
 
 var player_node: Node3D
@@ -12,9 +13,11 @@ func _ready():
 	SignalBus.remove_money.connect(on_remove_money)
 	SignalBus.game_over.connect(on_game_over)
 	SignalBus.game_started.connect(start_game)
+	SignalBus.reset_game.connect(reset_game)
 
 func on_add_money(amount: int): 
 	money += amount
+	current_round_earnings += amount
 	SignalBus.money_updated.emit(money)
 
 func on_remove_money(amount: int): 
@@ -23,8 +26,9 @@ func on_remove_money(amount: int):
 
 func on_game_over(_message: String): 
 	game_started = false 
-	await get_tree().create_timer(1).timeout
-	SignalBus.reset_game.emit()
+
+func reset_game():
+	current_round_earnings = 0
 
 func start_game(): 
 	await get_tree().create_timer(1).timeout

@@ -399,3 +399,32 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "YOU LOST"
 label_settings = SubResource("LabelSettings_3s8aq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="End"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -126.0
+offset_top = 189.0
+offset_right = 126.0
+offset_bottom = 246.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("14_8jg32")
+signal_name = "reset_game"
+
+[node name="Label" type="Label" parent="End/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Continue"
+horizontal_alignment = 1
+vertical_alignment = 1

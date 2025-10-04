@@ -27,6 +27,7 @@ func _ready():
 		SignalBus.set_camera_target.emit(camera.global_position, camera.quaternion)
 	)
 	SignalBus.reset_game.connect(func(): 
+		await get_tree().create_timer(1).timeout
 		queue_free()
 	)
 

@@ -10,7 +10,7 @@ func set_target(pos: Vector3, rot: Quaternion):
 	var current_cam = get_viewport().get_camera_3d() 
 	if current_cam != self: 
 		global_position = current_cam.global_position
-		quaternion = current_cam.quaternion
+		global_rotation = current_cam.global_rotation
 
 	target_position = pos
 	target_rotation = rot
