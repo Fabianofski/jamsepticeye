@@ -3,6 +3,8 @@ extends Camera3D
 var target_position: Vector3
 var target_rotation: Quaternion
 
+@onready var woosh: AudioStreamPlayer = $Woosh
+
 func _ready() -> void:
 	SignalBus.set_camera_target.connect(set_target)
 
@@ -11,6 +13,8 @@ func set_target(pos: Vector3, rot: Quaternion):
 	if current_cam != self: 
 		global_position = current_cam.global_position
 		global_rotation = current_cam.global_rotation
+
+	woosh.play()
 
 	target_position = pos
 	target_rotation = rot

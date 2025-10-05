@@ -8,6 +8,7 @@ enum PopupType { FUEL, MONEY, DURABILITY }
 @export var respawn = false 
 @export var damage = 1.0
 @export var fuel_pickup = false
+@export var despawn = true
 
 var mesh: Node3D
 var collision: Node3D
@@ -25,7 +26,8 @@ var rarity: Hat.Rarity = Hat.Rarity.COMMON
 
 func _ready() -> void:
 	SignalBus.reset_game.connect(func(): 
-		get_parent().queue_free()
+		if despawn:
+			get_parent().queue_free()
 	)
 	if randomize_size or randomize_rotation: 
 		mesh = get_node("../Mesh")
