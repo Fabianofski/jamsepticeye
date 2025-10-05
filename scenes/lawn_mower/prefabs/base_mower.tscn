@@ -1,10 +1,9 @@
-[gd_scene load_steps=34 format=3 uid="uid://bk8l8bllutsvo"]
+[gd_scene load_steps=32 format=3 uid="uid://bk8l8bllutsvo"]
 
 [ext_resource type="Script" uid="uid://bxxhxcs3idf0w" path="res://scenes/lawn_mower/lawn_mower_controller.gd" id="1_mak8i"]
 [ext_resource type="Resource" uid="uid://cltiswliie43p" path="res://scenes/lawn_mower/prefabs/lawn_mower/lawn_mower_stats.tres" id="2_5gyun"]
 [ext_resource type="PackedScene" uid="uid://dk6rofokxluak" path="res://scenes/characters/person.blend" id="3_g2uju"]
 [ext_resource type="Script" uid="uid://djqf6qondhnak" path="res://scenes/lawn_mower/lawn_mower_health.gd" id="5_4fw2r"]
-[ext_resource type="Shader" uid="uid://dum7asi4x3gis" path="res://scenes/ui/posterise.gdshader" id="5_obv1m"]
 [ext_resource type="AudioStream" uid="uid://dt3ijk8eidexk" path="res://scenes/lawn_mower/audio/shredding.wav" id="6_5vb1q"]
 [ext_resource type="AudioStream" uid="uid://ljy1sunspuok" path="res://scenes/lawn_mower/audio/shredding1.wav" id="6_hgy4o"]
 [ext_resource type="Script" uid="uid://bdg068gycehyy" path="res://scenes/collectible/zombie/hunt_zone.gd" id="6_la7gn"]
@@ -73,16 +72,6 @@ radius = 0.901326
 height = 4.14632
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_eqhe0"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qsw3o"]
-shader = ExtResource("5_obv1m")
-shader_parameter/mix_amount = 0.0
-shader_parameter/use_l = true
-shader_parameter/use_c = true
-shader_parameter/use_h = true
-shader_parameter/steps_l = 12.0
-shader_parameter/level_c = 6.0
-shader_parameter/level_h = 0.05
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_aqdb2"]
 frequency = 1.0
@@ -200,15 +189,6 @@ shape = SubResource("SphereShape3D_eqhe0")
 
 [node name="Camera3D" type="Camera3D" parent="CameraRig"]
 transform = Transform3D(-1, -6.18173e-08, 6.18172e-08, -3.39045e-08, 0.925996, 0.377534, -8.05806e-08, 0.377534, -0.925996, 0, 5.84, -4.40668)
-
-[node name="Posterise" type="ColorRect" parent="CameraRig/Camera3D"]
-material = SubResource("ShaderMaterial_qsw3o")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
 
 [node name="Speed Lines" type="ColorRect" parent="CameraRig/Camera3D"]
 material = SubResource("ShaderMaterial_sf5s2")

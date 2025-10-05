@@ -1,7 +1,8 @@
-[gd_scene load_steps=34 format=3 uid="uid://cb8dld63hgqkj"]
+[gd_scene load_steps=36 format=3 uid="uid://cb8dld63hgqkj"]
 
 [ext_resource type="Script" uid="uid://yaswdugcal5a" path="res://scenes/ui/ui.gd" id="1_nvly0"]
 [ext_resource type="Texture2D" uid="uid://dwad8ugg8tvs2" path="res://scenes/ui/game_ui/border.png" id="2_vjxrc"]
+[ext_resource type="Shader" uid="uid://dum7asi4x3gis" path="res://scenes/ui/posterise.gdshader" id="3_egwht"]
 [ext_resource type="Texture2D" uid="uid://cj53tufwlw80h" path="res://scenes/ui/game_ui/fuel_empty.png" id="3_gc7ur"]
 [ext_resource type="Texture2D" uid="uid://b0cxfseq7x005" path="res://scenes/ui/game_ui/fuel_border.png" id="4_8jg32"]
 [ext_resource type="Texture2D" uid="uid://ck8jx8jowhs1f" path="res://scenes/ui/game_ui/fuel_full.png" id="5_3s8aq"]
@@ -21,6 +22,16 @@
 [ext_resource type="Script" uid="uid://bru6pa7ggs1e4" path="res://scenes/ui/upgrade_ui/stats.gd" id="16_3s8aq"]
 [ext_resource type="PackedScene" uid="uid://dkrvuap5myfeg" path="res://scenes/ui/upgrade_ui/upgrade_btn.tscn" id="20_8kkbn"]
 [ext_resource type="Resource" uid="uid://bp5a48ea187oe" path="res://scenes/lawn_mower/prefabs/sitting_mower/sitting_mower.tres" id="20_r5kob"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_msipi"]
+shader = ExtResource("3_egwht")
+shader_parameter/mix_amount = 0.0
+shader_parameter/use_l = true
+shader_parameter/use_c = true
+shader_parameter/use_h = true
+shader_parameter/steps_l = 50.0
+shader_parameter/level_c = 6.0
+shader_parameter/level_h = 0.05
 
 [sub_resource type="LabelSettings" id="LabelSettings_opqoc"]
 font = ExtResource("6_xhr0k")
@@ -120,6 +131,15 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_vjxrc")
 expand_mode = 5
+
+[node name="Posterise" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_msipi")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="Game" type="Control" parent="."]
 visible = false
