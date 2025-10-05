@@ -14,6 +14,9 @@ extends CanvasLayer
 @onready var durability_visual: AnimatedSprite2D = $Durability/DurabilityVisual
 @onready var durability_label: Label = $Durability/DurabilityLabel
 
+@onready var gameplay_music: AudioStreamPlayer = $"Gameplay Music"
+@onready var menu_music: AudioStreamPlayer = $"Menu Music"
+
 var popup_scene = preload("res://scenes/ui/popup.tscn")
 
 func _ready() -> void:
@@ -29,6 +32,9 @@ func _ready() -> void:
 func on_game_start(): 
 	game.set_visible(true)
 	upgrades.set_visible(false)
+	
+	gameplay_music.volume_db = -5
+	menu_music.volume_db = -80
 
 func on_game_end(message: String): 
 	end.set_visible(true)
@@ -38,6 +44,9 @@ func on_game_restart():
 	game.set_visible(false)
 	end.set_visible(false)
 	upgrades.set_visible(true)
+	
+	gameplay_music.volume_db = -80
+	menu_music.volume_db = -5
 
 func on_money_updated(money: float): 
 	money_label.text = "$%.f" % money

@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://cb8dld63hgqkj"]
+[gd_scene load_steps=38 format=3 uid="uid://cb8dld63hgqkj"]
 
 [ext_resource type="Script" uid="uid://yaswdugcal5a" path="res://scenes/ui/ui.gd" id="1_nvly0"]
 [ext_resource type="Texture2D" uid="uid://dwad8ugg8tvs2" path="res://scenes/ui/game_ui/border.png" id="2_vjxrc"]
@@ -22,6 +22,8 @@
 [ext_resource type="Script" uid="uid://bru6pa7ggs1e4" path="res://scenes/ui/upgrade_ui/stats.gd" id="16_3s8aq"]
 [ext_resource type="PackedScene" uid="uid://dkrvuap5myfeg" path="res://scenes/ui/upgrade_ui/upgrade_btn.tscn" id="20_8kkbn"]
 [ext_resource type="Resource" uid="uid://bp5a48ea187oe" path="res://scenes/lawn_mower/prefabs/sitting_mower/sitting_mower.tres" id="20_r5kob"]
+[ext_resource type="AudioStream" uid="uid://6kuk2ar8ewic" path="res://scenes/audio/gameplaymusic.ogg" id="23_tni5r"]
+[ext_resource type="AudioStream" uid="uid://dknfytjht70ma" path="res://scenes/audio/menumusic.ogg" id="24_flg1i"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_msipi"]
 shader = ExtResource("3_egwht")
@@ -456,3 +458,15 @@ text = "Continue"
 label_settings = SubResource("LabelSettings_3b87j")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Gameplay Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("23_tni5r")
+volume_db = -80.0
+autoplay = true
+bus = &"Music"
+
+[node name="Menu Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("24_flg1i")
+volume_db = -5.0
+autoplay = true
+bus = &"Music"
