@@ -17,6 +17,7 @@ enum PopupType { FUEL, MONEY, DURABILITY }
 @export var max_size = 1.0 
 
 @export var particle: PackedScene
+var used = false
 
 var rarity: Hat.Rarity = Hat.Rarity.COMMON
 
@@ -34,6 +35,9 @@ func _ready() -> void:
 		collision.rotation_degrees.y = rot
 
 func trigger(player: LawnMowerHealth):
+	if used: 
+		return
+
 	if particle != null: 
 		var part = particle.instantiate()
 		get_parent().get_parent().add_child(part)
@@ -45,14 +49,17 @@ func trigger(player: LawnMowerHealth):
 		SignalBus.add_money.emit(money_amount)
 		SignalBus.ui_popup_called.emit(PopupType.MONEY, "%.f" % money_amount, popup_pos)
 		player.play_shredding_sound()
+
 	if fuel_pickup:
 		SignalBus.add_fuel.emit()
 		SignalBus.ui_popup_called.emit(PopupType.FUEL, "", popup_pos)
+
 	if damage > 0:
 		player.take_damage(damage)
 		SignalBus.ui_popup_called.emit(PopupType.DURABILITY, "%.f" % damage, popup_pos)
 
 	if destructible: 
+		used = true
 		get_parent().queue_free()
 		if respawn:
 			get_parent().get_parent().respawn()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://boai28d22w8n2"]
+[gd_scene load_steps=33 format=3 uid="uid://boai28d22w8n2"]
 
 [ext_resource type="PackedScene" uid="uid://by1gn4o48sli5" path="res://scenes/map.tscn" id="1_mixcd"]
 [ext_resource type="Script" uid="uid://kfjyu1fenphr" path="res://scenes/ui/menus.gd" id="2_miq82"]
@@ -15,6 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://cxtf315cttux2" path="res://scenes/ui/logo.png" id="10_1wc4g"]
 [ext_resource type="Texture2D" uid="uid://fjc27kog1hq0" path="res://scenes/ui/controls/grabber_1.png" id="12_1wc4g"]
 [ext_resource type="Texture2D" uid="uid://b67sfodp7hfhj" path="res://scenes/ui/controls/grabber_2.png" id="13_78j2m"]
+[ext_resource type="PackedScene" uid="uid://bwy2dpojudeyq" path="res://scenes/collectible/zombie/blood_particles.tscn" id="16_bpcsf"]
+[ext_resource type="PackedScene" uid="uid://u46eetybcuwi" path="res://scenes/lawn_mower/smoke/smoke_particle.tscn" id="17_3d2pr"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mixcd"]
 sky_top_color = Color(0.324592, 0.535986, 0.835765, 1)
@@ -299,6 +301,13 @@ autoplay = true
 bus = &"Sound"
 
 [node name="Map" parent="." instance=ExtResource("1_mixcd")]
+
+[node name="BloodParticles" parent="." instance=ExtResource("16_bpcsf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63.5936, 342.983, 469.755)
+emitting = true
+one_shot = false
+
+[node name="SmokeParticle" parent="BloodParticles" instance=ExtResource("17_3d2pr")]
 
 [connection signal="value_changed" from="Menus/MainMenu/Settings/MusicSlider" to="Menus/MainMenu/Settings" method="on_music_slider_value_changed"]
 [connection signal="value_changed" from="Menus/MainMenu/Settings/SoundSlider" to="Menus/MainMenu/Settings" method="on_audio_slider_value_changed"]

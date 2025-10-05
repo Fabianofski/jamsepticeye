@@ -19,6 +19,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.528958, 0)
 [node name="person" parent="RotationLess/Model" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
+[node name="SmokeParticle" parent="RotationLess/DamageZone" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.47603, 1.8137)
+
 [node name="CollisionShape3D" parent="RotationLess/DamageZone" index="1"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.556664, 0.884054)
 shape = SubResource("CapsuleShape3D_f2foy")

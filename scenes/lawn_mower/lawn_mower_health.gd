@@ -7,10 +7,12 @@ var max_durability: float
 @export var shredding_sounds: Array[AudioStream] = []
 @onready var smoke_particle: GPUParticles3D = $SmokeParticle
 @export var base_amount: int = 200
+var original_y = 0
 
 func _ready() -> void: 
 	SignalBus.upgrades_updated.connect(update_upgrades)
 	body_entered.connect(on_body_entered)
+	original_y = smoke_particle.position.y
 
 func update_upgrades(upgrades: Upgrades):
 	var stats = controller.stats
@@ -21,7 +23,10 @@ func update_particles():
 	var stats = controller.stats
 	var durability_percent = stats.get_durability() / max_durability
 
-	smoke_particle.emitting = durability_percent <= 0.95
+	if durability_percent <= 0.95:
+		smoke_particle.position.y = 200
+	else: 
+		smoke_particle.position.y = original_y
 	var particle_amount = round(base_amount * (1 - durability_percent)) 
 	smoke_particle.amount = max(1, particle_amount)
 
