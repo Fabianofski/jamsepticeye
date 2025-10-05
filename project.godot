@@ -13,6 +13,8 @@ config_version=5
 config/name="ZOMBIES in my SUBURB!"
 run/main_scene="uid://boai28d22w8n2"
 config/features=PackedStringArray("4.4", "GL Compatibility")
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/image="uid://dbk2b7h8m3lwf"
 config/icon="uid://urpwc4qgf74o"
 config/windows_native_icon="res://icon.ico"
 
