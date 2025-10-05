@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://c86cdw04ah500"]
+[gd_scene load_steps=22 format=3 uid="uid://c86cdw04ah500"]
 
 [ext_resource type="ArrayMesh" uid="uid://lhfot7g2vkk7" path="res://scenes/buildings/kenney/building-type-e.obj" id="1_kwedj"]
 [ext_resource type="Texture2D" uid="uid://tqb6mrr6wbfv" path="res://scenes/buildings/kenney/Textures/variation-c.png" id="2_1y0yv"]
@@ -33,7 +33,7 @@ albedo_texture = ExtResource("6_1y0yv")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_almm1"]
 albedo_texture = ExtResource("8_8lpda")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0k16k"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rsk41"]
 albedo_texture = ExtResource("9_53skk")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ui88y"]
@@ -42,20 +42,8 @@ albedo_texture = ExtResource("2_1y0yv")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_53skk"]
 albedo_texture = ExtResource("8_8lpda")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rsk41"]
-albedo_texture = ExtResource("9_53skk")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a2vhv"]
-albedo_texture = ExtResource("2_1y0yv")
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_04f8a"]
 albedo_texture = ExtResource("8_8lpda")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p1anl"]
-albedo_texture = ExtResource("9_53skk")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wgvh5"]
-albedo_texture = ExtResource("2_1y0yv")
 
 [node name="Gridmap Mesh Library" type="Node3D"]
 
@@ -140,7 +128,7 @@ shape = SubResource("BoxShape3D_oerpd")
 transform = Transform3D(16, 0, 0, 0, 16, 0, 0, 0, 16, 0, 0, 0)
 visible = false
 mesh = ExtResource("1_kwedj")
-surface_material_override/0 = SubResource("StandardMaterial3D_0k16k")
+surface_material_override/0 = SubResource("StandardMaterial3D_rsk41")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Kenney House E3"]
 
@@ -188,7 +176,7 @@ shape = SubResource("BoxShape3D_oerpd")
 transform = Transform3D(16, 0, 0, 0, 16, 0, 0, 0, 16, 0, 0, 0)
 visible = false
 mesh = ExtResource("4_1y0yv")
-surface_material_override/0 = SubResource("StandardMaterial3D_a2vhv")
+surface_material_override/0 = SubResource("StandardMaterial3D_ui88y")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Kenney House C4"]
 
@@ -210,9 +198,8 @@ shape = SubResource("BoxShape3D_oerpd")
 
 [node name="Kenney House H3" type="MeshInstance3D" parent="."]
 transform = Transform3D(16, 0, 0, 0, 16, 0, 0, 0, 16, 0, 0, 0)
-visible = false
 mesh = ExtResource("5_7751s")
-surface_material_override/0 = SubResource("StandardMaterial3D_p1anl")
+surface_material_override/0 = SubResource("StandardMaterial3D_rsk41")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Kenney House H3"]
 
@@ -224,7 +211,7 @@ shape = SubResource("BoxShape3D_oerpd")
 transform = Transform3D(16, 0, 0, 0, 16, 0, 0, 0, 16, 0, 0, 0)
 visible = false
 mesh = ExtResource("5_7751s")
-surface_material_override/0 = SubResource("StandardMaterial3D_wgvh5")
+surface_material_override/0 = SubResource("StandardMaterial3D_ui88y")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Kenney House H4"]
 
