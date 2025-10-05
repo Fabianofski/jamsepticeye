@@ -15,6 +15,7 @@ var max_speed: float
 @onready var speed_lines: ColorRect = $"CameraRig/Camera3D/Speed Lines"
 
 @onready var mowing_sound: AudioStreamPlayer3D = $MowingSound
+@onready var boosting_sound: AudioStreamPlayer3D = $BoostingSound
 
 var speed = 0.0
 var direction = 0.0
@@ -122,8 +123,12 @@ func play_animations():
 
 	if boosting: 
 		mowing_sound.pitch_scale = 1.5
+		if boosting_sound.volume_db <= -8:
+			boosting_sound.volume_db += 1
 	else: 
 		mowing_sound.pitch_scale = 1
+		if boosting_sound.volume_db >= -80:
+			boosting_sound.volume_db -= 1
 
 	if sitting:
 		return
