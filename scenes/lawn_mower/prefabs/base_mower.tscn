@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bk8l8bllutsvo"]
+[gd_scene load_steps=34 format=3 uid="uid://bk8l8bllutsvo"]
 
 [ext_resource type="Script" uid="uid://bxxhxcs3idf0w" path="res://scenes/lawn_mower/lawn_mower_controller.gd" id="1_mak8i"]
 [ext_resource type="Resource" uid="uid://cltiswliie43p" path="res://scenes/lawn_mower/prefabs/lawn_mower/lawn_mower_stats.tres" id="2_5gyun"]
@@ -6,10 +6,13 @@
 [ext_resource type="Script" uid="uid://djqf6qondhnak" path="res://scenes/lawn_mower/lawn_mower_health.gd" id="5_4fw2r"]
 [ext_resource type="Shader" uid="uid://dum7asi4x3gis" path="res://scenes/ui/posterise.gdshader" id="5_obv1m"]
 [ext_resource type="AudioStream" uid="uid://dt3ijk8eidexk" path="res://scenes/lawn_mower/audio/shredding.wav" id="6_5vb1q"]
+[ext_resource type="AudioStream" uid="uid://ljy1sunspuok" path="res://scenes/lawn_mower/audio/shredding1.wav" id="6_hgy4o"]
 [ext_resource type="Script" uid="uid://bdg068gycehyy" path="res://scenes/collectible/zombie/hunt_zone.gd" id="6_la7gn"]
 [ext_resource type="Shader" uid="uid://c4u3g231110bn" path="res://scenes/ui/speedlines.gdshader" id="6_orcel"]
 [ext_resource type="Shader" uid="uid://bnot7evxe61ix" path="res://scenes/lawn_mower/smoke/smoke_outline.gdshader" id="7_hrjim"]
+[ext_resource type="AudioStream" uid="uid://pyjid5rwmvi2" path="res://scenes/lawn_mower/audio/shredding2.wav" id="7_tsf2d"]
 [ext_resource type="Script" uid="uid://dsjxdqpqy5fvq" path="res://scenes/lawn_mower/lawn_mower_fuel.gd" id="7_x24gr"]
+[ext_resource type="AudioStream" uid="uid://bl8mgp8x84e1b" path="res://scenes/lawn_mower/audio/shredding3.wav" id="8_fgshn"]
 [ext_resource type="Shader" uid="uid://cyr53jwqoga1w" path="res://scenes/lawn_mower/smoke/smoke.gdshader" id="8_xt5ln"]
 [ext_resource type="Script" uid="uid://bm3fs6bogr87w" path="res://scenes/lawn_mower/tutorial.gd" id="9_dfx2q"]
 [ext_resource type="FontFile" uid="uid://c1hpa04tng3qi" path="res://scenes/ui/Ranchers-Regular.ttf" id="10_17c88"]
@@ -119,6 +122,7 @@ shape = SubResource("SphereShape3D_u6m8x")
 
 [node name="DamageZone" type="Area3D" parent="RotationLess"]
 script = ExtResource("5_4fw2r")
+shredding_sounds = Array[AudioStream]([ExtResource("6_hgy4o"), ExtResource("7_tsf2d"), ExtResource("8_fgshn")])
 
 [node name="SmokeParticle" type="GPUParticles3D" parent="RotationLess/DamageZone"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.42321)

@@ -4,6 +4,7 @@ class_name LawnMowerHealth
 var max_durability: float
 @onready var controller: LawnMowerController = $"../.."
 @onready var shredding_sound: AudioStreamPlayer3D = $"ShreddingSound"
+@export var shredding_sounds: Array[AudioStream] = []
 @onready var smoke_particle: GPUParticles3D = $SmokeParticle
 var base_amount: int
 
@@ -20,8 +21,8 @@ func update_upgrades(upgrades: Upgrades):
 	SignalBus.durability_updated.emit(stats.get_durability() / max_durability)
 
 func play_shredding_sound(): 
+	shredding_sound.stream = shredding_sounds[randi() % shredding_sounds.size()]
 	shredding_sound.play()
-
 
 func take_damage(damage: float): 
 	if !GameManager.game_started or GameManager.game_paused: 
