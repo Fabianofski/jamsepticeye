@@ -24,9 +24,9 @@ func update_particles():
 	var durability_percent = stats.get_durability() / max_durability
 
 	if durability_percent <= 0.95:
-		smoke_particle.position.y = 200
-	else: 
 		smoke_particle.position.y = original_y
+	else: 
+		smoke_particle.position.y = -3
 	var particle_amount = round(base_amount * (1 - durability_percent)) 
 	smoke_particle.amount = max(1, particle_amount)
 
