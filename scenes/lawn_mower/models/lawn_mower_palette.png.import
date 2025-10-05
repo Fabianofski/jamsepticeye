@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bwrvkqo6es3gh"
 path.s3tc="res://.godot/imported/lawn_mower_palette.png-c3021b138878c22f24e71819b41c04da.s3tc.ctex"
+path.etc2="res://.godot/imported/lawn_mower_palette.png-c3021b138878c22f24e71819b41c04da.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://scenes/lawn_mower/models/lawn_mower_palette.png"
-dest_files=["res://.godot/imported/lawn_mower_palette.png-c3021b138878c22f24e71819b41c04da.s3tc.ctex"]
+dest_files=["res://.godot/imported/lawn_mower_palette.png-c3021b138878c22f24e71819b41c04da.s3tc.ctex", "res://.godot/imported/lawn_mower_palette.png-c3021b138878c22f24e71819b41c04da.etc2.ctex"]
 
 [params]
 

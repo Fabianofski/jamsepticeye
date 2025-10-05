@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://ck2g54ymmd5nq"
 path.s3tc="res://.godot/imported/space.png-5ddc748da175a8b42d92083b4d43261e.s3tc.ctex"
+path.etc2="res://.godot/imported/space.png-5ddc748da175a8b42d92083b4d43261e.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://scenes/ui/keyboard/space.png"
-dest_files=["res://.godot/imported/space.png-5ddc748da175a8b42d92083b4d43261e.s3tc.ctex"]
+dest_files=["res://.godot/imported/space.png-5ddc748da175a8b42d92083b4d43261e.s3tc.ctex", "res://.godot/imported/space.png-5ddc748da175a8b42d92083b4d43261e.etc2.ctex"]
 
 [params]
 
