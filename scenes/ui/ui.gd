@@ -69,14 +69,20 @@ func create_popup(popup_type: Collectible.PopupType, popup_value: String, popup_
 		return
 
 	var popup_instance = popup_scene.instantiate()
+
+	var viewport = get_viewport()
+	var shift = randi_range(0, 50)
+	var random_pos = viewport.get_camera_3d().unproject_position(popup_position) - Vector2(0 + shift, 128 + shift)
+
 	self.add_child(popup_instance)
 	match popup_type:
 		Collectible.PopupType.MONEY:
 			popup_instance.set_text(popup_type, "+$" + popup_value)
+			popup_instance.position = random_pos
 		Collectible.PopupType.DURABILITY:
 			popup_instance.set_text(popup_type, "-" + popup_value)
+			popup_instance.position = Vector2(viewport.size.x * 0.1 + shift, viewport.size.y * 0.9 - shift)
 		Collectible.PopupType.FUEL:
-			popup_instance.set_text(popup_type, "+" + popup_value + " fuel!")
-	var shift = randi_range(0, 50)
-	popup_instance.position = get_viewport().get_camera_3d().unproject_position(popup_position) - Vector2(0 + shift, 128 + shift)
+			popup_instance.set_text(popup_type, "Refill!")
+			popup_instance.position = random_pos
 	popup_instance.start_tween()

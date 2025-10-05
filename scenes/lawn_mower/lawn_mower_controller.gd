@@ -61,7 +61,7 @@ func get_steering(delta):
 	elif Input.is_action_pressed("right"):
 		input_dir = -1.0
 
-	if Input.is_action_pressed("drift"): 
+	if Input.is_action_pressed("drift") and stats.drift: 
 		drifting = true
 	else: 
 		drifting = false
@@ -109,9 +109,7 @@ func _physics_process(delta):
 	get_speed(delta)
 	get_steering(delta)
 
-	var y_vel = linear_velocity.y
 	linear_velocity = Vector3(sin(direction), 0, cos(direction)) * speed
-	linear_velocity.y = y_vel
 
 	update_camera()
 

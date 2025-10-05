@@ -23,9 +23,6 @@ enum Personality { VICIOUS, SCAREDYCAT }
 @export var hats: Array[Hat] = []
 @export var hat_chance = 0.3
 
-@export_group("Behaviour")
-@export var personality: Personality = Personality.VICIOUS
-
 @export var common_rarity = 0.6
 @export var rare_rarity = 0.3
 @export var epic_rarity = 0.1
@@ -33,6 +30,10 @@ enum Personality { VICIOUS, SCAREDYCAT }
 @export var common_multiplier = 1
 @export var rare_multiplier = 4
 @export var epic_multiplier = 10
+
+@export_group("Behaviour")
+@export var personality: Personality = Personality.VICIOUS
+
 
 func _ready():
 	randomize_size()

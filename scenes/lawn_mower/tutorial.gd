@@ -32,7 +32,7 @@ func change_state():
 	var stage = GameManager.tutorial_stage
 	movement_tutorial.set_visible(stage == Stage.MOVEMENT)
 	boost_tutorial.set_visible(stage == Stage.BOOST)
-	drift_tutorial.set_visible(stage == Stage.DRIFT)
+	drift_tutorial.set_visible(stage == Stage.DRIFT and controller.stats.drift)
 
 
 func next_stage(): 

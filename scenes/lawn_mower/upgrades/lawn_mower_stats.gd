@@ -9,6 +9,7 @@ class_name LawnMowerStats
 var current_durability
 @export var base_max_fuel = 100.0
 @export var base_fuel_consum = 1.0 
+@export var drift: bool = true
 
 func get_durability() -> float: 
 	if current_durability == null:

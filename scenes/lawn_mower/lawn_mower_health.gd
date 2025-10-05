@@ -6,18 +6,25 @@ var max_durability: float
 @onready var shredding_sound: AudioStreamPlayer3D = $"ShreddingSound"
 @export var shredding_sounds: Array[AudioStream] = []
 @onready var smoke_particle: GPUParticles3D = $SmokeParticle
-var base_amount: int
+@export var base_amount: int = 200
 
 func _ready() -> void: 
-	base_amount = smoke_particle.amount
-	smoke_particle.emitting = false
-
 	SignalBus.upgrades_updated.connect(update_upgrades)
 	body_entered.connect(on_body_entered)
 
 func update_upgrades(upgrades: Upgrades):
 	var stats = controller.stats
 	max_durability = upgrades.calculate_value(stats.base_durability, Upgrades.UpgradeType.DURABILITY)
+	update_particles()
+
+func update_particles(): 
+	var stats = controller.stats
+	var durability_percent = stats.get_durability() / max_durability
+
+	smoke_particle.emitting = durability_percent <= 0.95
+	var particle_amount = round(base_amount * (1 - durability_percent)) 
+	smoke_particle.amount = max(1, particle_amount)
+
 	SignalBus.durability_updated.emit(stats.get_durability() / max_durability)
 
 func play_shredding_sound(): 
@@ -34,11 +41,7 @@ func take_damage(damage: float):
 	if stats.current_durability < 0: 
 		stats.current_durability = 0
 
-	var durability_percent = stats.get_durability() / max_durability
-	SignalBus.durability_updated.emit(durability_percent)
-
-	smoke_particle.emitting = true
-	smoke_particle.amount = round(base_amount * durability_percent) 
+	update_particles()
 
 	if stats.get_durability() <= 0: 
 		SignalBus.game_over.emit("Ran out of durability!")

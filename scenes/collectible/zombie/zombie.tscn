@@ -30,16 +30,21 @@ scared_moan_sounds = Array[AudioStream]([ExtResource("6_o7jn3"), ExtResource("7_
 
 [node name="Collectible" type="Node3D" parent="."]
 script = ExtResource("2_h3k5g")
+money_amount = 8
 respawn = true
-damage = 10.0
+damage = 4.0
 particle = ExtResource("3_h3k5g")
 
 [node name="ZombieRandomizer" type="Node3D" parent="." node_paths=PackedStringArray("hats")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00538993, 0.00735283, 0.000117779)
 script = ExtResource("4_j7snw")
-shirt_colors = Array[Color]([Color(0.529412, 0.462745, 0.537255, 1), Color(0.5274, 0.54, 0.4644, 1)])
-skin_colors = Array[Color]([Color(0.235294, 0.611765, 0.423529, 1), Color(0.41514, 0.589132, 0.272461, 1), Color(0.560834, 0.541557, 0.276488, 1)])
+shirt_colors = Array[Color]([Color(0.529412, 0.462745, 0.537255, 1), Color(0.3402, 0.54, 0.34353, 1), Color(0.54, 0.3348, 0.37242, 1), Color(0.2646, 0.30132, 0.54, 1), Color(0.681835, 0.69, 0.2001, 1)])
+skin_colors = Array[Color]([Color(0.28, 0.462, 0.56, 1), Color(0.28, 0.56, 0.555333, 1), Color(0.235294, 0.611765, 0.423529, 1), Color(0.41514, 0.589132, 0.272461, 1), Color(0.560834, 0.541557, 0.276488, 1), Color(0.56, 0.429333, 0.28, 1)])
 hats = [NodePath("../Mesh/Armature/Skeleton3D/BoneAttachment3D/Crown"), NodePath("../Mesh/Armature/Skeleton3D/BoneAttachment3D/Cone"), NodePath("../Mesh/Armature/Skeleton3D/BoneAttachment3D/BaseCap"), NodePath("../Mesh/Armature/Skeleton3D/BoneAttachment3D/Construction")]
+common_rarity = 0.795
+rare_rarity = 0.2
+epic_rarity = 0.05
+common_multiplier = 2
 
 [node name="Mesh" parent="." instance=ExtResource("3_0pk84")]
 

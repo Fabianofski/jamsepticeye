@@ -8,7 +8,7 @@
 [sub_resource type="Resource" id="Resource_ay66w"]
 script = ExtResource("1_hr7nr")
 amount = 0.2
-base_price = 5
+base_price = 120
 price_increase = 2.0
 max_bought = 3
 metadata/_custom_type_script = "uid://cm0l1l6eqh1cg"
@@ -16,7 +16,7 @@ metadata/_custom_type_script = "uid://cm0l1l6eqh1cg"
 [sub_resource type="Resource" id="Resource_8utq7"]
 script = ExtResource("1_hr7nr")
 amount = -0.2
-base_price = 15
+base_price = 120
 price_increase = 2.0
 max_bought = 3
 metadata/_custom_type_script = "uid://cm0l1l6eqh1cg"
@@ -24,7 +24,7 @@ metadata/_custom_type_script = "uid://cm0l1l6eqh1cg"
 [sub_resource type="Resource" id="Resource_tgm45"]
 script = ExtResource("1_hr7nr")
 amount = 0.2
-base_price = 20
+base_price = 150
 price_increase = 2.0
 max_bought = 3
 metadata/_custom_type_script = "uid://cm0l1l6eqh1cg"
@@ -32,7 +32,7 @@ metadata/_custom_type_script = "uid://cm0l1l6eqh1cg"
 [sub_resource type="Resource" id="Resource_j6iw5"]
 script = ExtResource("1_hr7nr")
 amount = 1.0
-base_price = 10
+base_price = 100
 price_increase = 1.0
 max_bought = 99
 metadata/_custom_type_script = "uid://cm0l1l6eqh1cg"
@@ -40,7 +40,7 @@ metadata/_custom_type_script = "uid://cm0l1l6eqh1cg"
 [sub_resource type="Resource" id="Resource_kx30p"]
 script = ExtResource("1_hr7nr")
 amount = 0.2
-base_price = 20
+base_price = 150
 price_increase = 2.0
 max_bought = 3
 metadata/_custom_type_script = "uid://cm0l1l6eqh1cg"

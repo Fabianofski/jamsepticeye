@@ -6,9 +6,8 @@ var max_fuel: float
 @onready var controller: LawnMowerController = $".."
 
 func _ready() -> void:
-	SignalBus.add_fuel.connect(func(amount): 
-		fuel += amount
-		fuel = clampf(fuel, 0, max_fuel)
+	SignalBus.add_fuel.connect(func(): 
+		fuel = max_fuel
 		SignalBus.fuel_updated.emit(fuel/max_fuel)
 	)
 	SignalBus.remove_fuel.connect(func(amount): 

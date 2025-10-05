@@ -8,7 +8,7 @@ signal set_money(amount: int)
 
 signal upgrades_updated(upgrade: Upgrades)
 
-signal add_fuel(amount: int)
+signal add_fuel()
 signal remove_fuel(amount: int)
 signal fuel_updated(amount: float)
 

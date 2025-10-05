@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://d0u6yq2lnbrxy"]
+[gd_scene load_steps=6 format=3 uid="uid://d0u6yq2lnbrxy"]
 
 [ext_resource type="PackedScene" uid="uid://bk8l8bllutsvo" path="res://scenes/lawn_mower/prefabs/base_mower.tscn" id="1_f2foy"]
+[ext_resource type="Resource" uid="uid://cyvv75cjicj70" path="res://scenes/lawn_mower/prefabs/sitting_mower/sitting_mower_stats.tres" id="2_8rk4x"]
 [ext_resource type="PackedScene" uid="uid://gw3umdaoqibe" path="res://scenes/lawn_mower/models/sitting_mower.glb" id="2_8yoov"]
 [ext_resource type="AudioStream" uid="uid://b1t4io22pio0h" path="res://scenes/lawn_mower/audio/sitting-mower.wav" id="3_8yoov"]
 
@@ -9,6 +10,7 @@ radius = 1.02723
 height = 4.432
 
 [node name="SittingMower" instance=ExtResource("1_f2foy")]
+stats = ExtResource("2_8rk4x")
 sitting = true
 
 [node name="sitting_mower" parent="RotationLess/Model" index="0" instance=ExtResource("2_8yoov")]
