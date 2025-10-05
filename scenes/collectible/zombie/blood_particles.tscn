@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bwy2dpojudeyq"]
+[gd_scene load_steps=5 format=3 uid="uid://bwy2dpojudeyq"]
+
+[ext_resource type="Script" uid="uid://cnk5cuebtdvpm" path="res://scenes/collectible/zombie/delete.gd" id="1_5hbbk"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_t3ree"]
 emission_shape = 1
@@ -25,3 +27,4 @@ lifetime = 0.66
 one_shot = true
 process_material = SubResource("ParticleProcessMaterial_t3ree")
 draw_pass_1 = SubResource("BoxMesh_t3ree")
+script = ExtResource("1_5hbbk")
