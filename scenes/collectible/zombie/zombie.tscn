@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c485h3twkkbdo"]
+[gd_scene load_steps=20 format=3 uid="uid://c485h3twkkbdo"]
 
 [ext_resource type="Script" uid="uid://boh502kvn5pcr" path="res://scenes/collectible/zombie/zombie_movement.gd" id="1_t3ree"]
 [ext_resource type="Script" uid="uid://cdn6fo6lrk6nd" path="res://scenes/collectible/collectible.gd" id="2_h3k5g"]
@@ -12,8 +12,12 @@
 [ext_resource type="ArrayMesh" uid="uid://c1umahbcoawkn" path="res://scenes/collectible/zombie/hats/traffic_cone.obj" id="5_0pk84"]
 [ext_resource type="AudioStream" uid="uid://g0t012xc00gy" path="res://scenes/collectible/zombie/audio/zombie4.wav" id="5_o7jn3"]
 [ext_resource type="Script" uid="uid://boaalixbp2dkk" path="res://scenes/collectible/zombie/hats/hat_rarity.gd" id="6_iix3q"]
+[ext_resource type="AudioStream" uid="uid://dlagt183uxu3b" path="res://scenes/collectible/zombie/audio/zombie1_scared.wav" id="6_o7jn3"]
 [ext_resource type="ArrayMesh" uid="uid://cyitxfxste8pd" path="res://scenes/collectible/zombie/hats/base_cap.obj" id="6_tnm7x"]
 [ext_resource type="ArrayMesh" uid="uid://bm2g021ryj72a" path="res://scenes/collectible/zombie/hats/construction.obj" id="7_c53e3"]
+[ext_resource type="AudioStream" uid="uid://btj6i1qf5jcs5" path="res://scenes/collectible/zombie/audio/zombie2_scared.wav" id="7_kficn"]
+[ext_resource type="AudioStream" uid="uid://cgg4n8l37q4ui" path="res://scenes/collectible/zombie/audio/zombie3_scared.wav" id="8_jvde3"]
+[ext_resource type="AudioStream" uid="uid://hth217t7mp3c" path="res://scenes/collectible/zombie/audio/zombie4_scared.wav" id="9_u82n7"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_k77ap"]
 radius = 0.462967
@@ -22,6 +26,7 @@ height = 2.5
 [node name="Zombie" type="CharacterBody3D" groups=["Collectible", "Zombie"]]
 script = ExtResource("1_t3ree")
 moan_sounds = Array[AudioStream]([ExtResource("2_wup23"), ExtResource("3_lrud2"), ExtResource("4_ag4xc"), ExtResource("5_o7jn3")])
+scared_moan_sounds = Array[AudioStream]([ExtResource("6_o7jn3"), ExtResource("7_kficn"), ExtResource("8_jvde3"), ExtResource("9_u82n7")])
 
 [node name="Collectible" type="Node3D" parent="."]
 script = ExtResource("2_h3k5g")
@@ -76,5 +81,6 @@ shape = SubResource("CapsuleShape3D_k77ap")
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
 [node name="MoanSound" type="AudioStreamPlayer3D" parent="."]
+bus = &"Sound"
 
 [editable path="Mesh"]

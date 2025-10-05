@@ -117,7 +117,7 @@ func _process(_delta: float) -> void:
 	play_animations()
 	
 func play_animations(): 
-	if sitting or game_over:
+	if sitting:
 		return
 	if not boosting and abs(speed) >= 1 and not player_animations.current_animation == "walk":
 		player_animations.play("walk")

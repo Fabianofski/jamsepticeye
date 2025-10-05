@@ -17,6 +17,7 @@ var index: int = 0
 @onready var mesh_animation: AnimationPlayer = $Mesh/AnimationPlayer
 
 @export var moan_sounds: Array[AudioStream] = []
+@export var scared_moan_sounds: Array[AudioStream] = []
 @onready var moan_sound_player: AudioStreamPlayer3D = $"MoanSound"
 @export var min_moan_time: float = 5 
 @export var max_moan_time: float = 30
@@ -51,8 +52,10 @@ func hunt(_player: Node3D):
 	state = State.HUNTING
 	play_animations()
 
-	if randf() > 0.8:
-		moan_sound_player.play()
+	if personality == Personality.SCAREDYCAT: 
+		moan_sound_player.stream = scared_moan_sounds[randi() % scared_moan_sounds.size()]
+	moan_sound_player.play()
+	# calc_next_moan()
 
 func stop_hunt(): 
 	player = null 
