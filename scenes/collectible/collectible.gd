@@ -9,12 +9,14 @@ enum PopupType { FUEL, MONEY, DURABILITY }
 @export var damage = 1.0
 @export var fuel_pickup = false
 
-@onready var mesh: Node3D = $"../Mesh"
-@onready var collision: Node3D = $"../CollisionShape3D"
+var mesh: Node3D
+var collision: Node3D
 @export var randomize_size: bool = false
 @export var randomize_rotation: bool = false
 @export var min_size = 0.6 
 @export var max_size = 1.0 
+
+@export var collectible_sound: AudioStream
 
 @export var particle: PackedScene
 var used = false
@@ -25,6 +27,10 @@ func _ready() -> void:
 	SignalBus.reset_game.connect(func(): 
 		get_parent().queue_free()
 	)
+	if randomize_size or randomize_rotation: 
+		mesh = get_node("../Mesh")
+		collision = get_node("../CollisionShape3D")
+
 	if randomize_size: 
 		var size = randf_range(min_size, max_size)
 		mesh.scale = Vector3.ONE * size
@@ -37,6 +43,9 @@ func _ready() -> void:
 func trigger(player: LawnMowerHealth):
 	if used: 
 		return
+
+	if collectible_sound != null:
+		UiPlayback.play_sound(collectible_sound)
 
 	if particle != null: 
 		var part = particle.instantiate()
@@ -60,6 +69,8 @@ func trigger(player: LawnMowerHealth):
 
 	if destructible: 
 		used = true
+		get_parent().set_visible(false)
+		get_tree().create_timer(2).timeout 
 		get_parent().queue_free()
 		if respawn:
 			get_parent().get_parent().respawn()

@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=4 uid="uid://6tsp8d8bsshk"]
+[gd_scene load_steps=8 format=4 uid="uid://6tsp8d8bsshk"]
 
 [ext_resource type="Script" uid="uid://cdn6fo6lrk6nd" path="res://scenes/collectible/collectible.gd" id="1_u0wpv"]
 [ext_resource type="Texture2D" uid="uid://dvdrpekiqsssa" path="res://scenes/collectible/rock_palette.png" id="2_u0wpv"]
+[ext_resource type="AudioStream" uid="uid://c22qe84j32arj" path="res://scenes/collectible/audio/kenney_impact-sounds/Audio/impactPlate_heavy_004.ogg" id="3_o2guw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u0wpv"]
 size = Vector3(1, 1.83737, 1.08008)
@@ -66,4 +67,5 @@ randomize_size = true
 randomize_rotation = true
 min_size = 1.0
 max_size = 2.0
+collectible_sound = ExtResource("3_o2guw")
 metadata/_custom_type_script = "uid://cdn6fo6lrk6nd"

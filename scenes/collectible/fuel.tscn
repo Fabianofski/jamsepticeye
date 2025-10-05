@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=4 uid="uid://jcttd5eh4ywc"]
+[gd_scene load_steps=8 format=4 uid="uid://jcttd5eh4ywc"]
 
 [ext_resource type="Script" uid="uid://cdn6fo6lrk6nd" path="res://scenes/collectible/collectible.gd" id="1_duayn"]
 [ext_resource type="Texture2D" uid="uid://cg6f6sl5h6gun" path="res://scenes/collectible/gas_can_palette.png" id="2_0edl8"]
+[ext_resource type="AudioStream" uid="uid://bsmp177smwbqe" path="res://scenes/collectible/audio/kenney_digital-audio/Audio/powerUp11.ogg" id="3_goea2"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_k77ap"]
 radius = 0.75
@@ -65,4 +66,5 @@ money_amount = 0
 damage = 0.0
 fuel_pickup = true
 randomize_rotation = true
+collectible_sound = ExtResource("3_goea2")
 metadata/_custom_type_script = "uid://cdn6fo6lrk6nd"

@@ -31,3 +31,8 @@ func _play_hover() -> void:
 func _play_pressed() -> void:
 	var playback_type = AudioServer.PlaybackType.PLAYBACK_TYPE_DEFAULT
 	playback.play_stream(preload('res://scenes/ui/controls/click3.ogg'), 0, 0, 1, playback_type, &"Sound")
+
+func play_sound(stream: AudioStream): 
+	var playback_type = AudioServer.PlaybackType.PLAYBACK_TYPE_DEFAULT
+	playback.play_stream(stream, 0, 0, 1, playback_type, &"Sound")
+
