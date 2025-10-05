@@ -11,6 +11,13 @@ func _ready() -> void:
 	SignalBus.reset_game.connect(spawn)
 	spawn()
 
+func get_random_pos() -> Vector3: 
+	var angle = randf() * TAU
+	var dist = randf() * radius
+	var pos = Vector3(cos(angle) * dist, 0, sin(angle) * dist)
+	return pos
+
+
 func spawn():
 	var count = randi_range(min_spawn, max_spawn)
 	var positions: Array = []
@@ -18,9 +25,7 @@ func spawn():
 	var tries = 0
 	while positions.size() < count and tries < count * 50:
 		tries += 1
-		var angle = randf() * TAU
-		var dist = randf() * radius
-		var pos = Vector3(cos(angle) * dist, 0, sin(angle) * dist)
+		var pos = get_random_pos()
 		var valid = true
 		for p in positions:
 			if p.distance_to(pos) < min_distance:
@@ -33,3 +38,13 @@ func spawn():
 		var instance = prefab.instantiate()
 		add_child(instance)
 		instance.position = pos
+
+func respawn(): 
+	var respawn_time = randf_range(10, 20)
+	await get_tree().create_timer(respawn_time).timeout
+
+	var pos = get_random_pos()
+	var instance = prefab.instantiate()
+	add_child(instance)
+	instance.position = pos
+

@@ -5,6 +5,7 @@ enum PopupType { FUEL, MONEY, DURABILITY }
 
 @export var money_amount = 10
 @export var destructible = true 
+@export var respawn = false 
 @export var damage = 1.0
 @export var fuel_amount = 0
 
@@ -53,3 +54,5 @@ func trigger(player: LawnMowerHealth):
 
 	if destructible: 
 		get_parent().queue_free()
+		if respawn:
+			get_parent().get_parent().respawn()

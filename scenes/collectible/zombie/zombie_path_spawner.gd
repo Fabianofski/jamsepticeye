@@ -35,3 +35,19 @@ func spawn():
 		add_child(instance)
 		instance.global_position = positions[i]
 		instance.set_path(path, indices[i])
+
+func respawn(): 
+	var respawn_time = randf_range(10, 20)
+	await get_tree().create_timer(respawn_time).timeout
+
+	var seg_idx = randi_range(0, len(path) - 1)
+	var a = path[seg_idx]
+	var b_idx = (seg_idx + 1) % len(path) 
+	var b = path[b_idx]
+
+	var t = randf()
+	var pos = a.lerp(b, t)
+	var instance = prefab.instantiate()
+	add_child(instance)
+	instance.position = pos
+
