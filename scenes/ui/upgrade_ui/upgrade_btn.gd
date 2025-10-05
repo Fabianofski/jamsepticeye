@@ -3,6 +3,7 @@ extends Button
 @export var upgrade_type: Upgrades.UpgradeType 
 @onready var label: Label = $Label
 @onready var progress: TextureProgressBar = $TextureProgressBar
+@onready var chaching: AudioStreamPlayer = $Chaching
 var upgrades : Upgrades
 var stats: LawnMowerStats
 var upgrade_info : UpgradeInfo 
@@ -42,6 +43,7 @@ func set_lawn_mower(mower: LawnMower):
 		disabled = true
 
 func buy_upgrade(): 
+	chaching.play()
 	match upgrade_type:
 		Upgrades.UpgradeType.SPEED:
 			print("Upgrade Speed")

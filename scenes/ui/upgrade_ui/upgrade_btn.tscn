@@ -1,11 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://dkrvuap5myfeg"]
+[gd_scene load_steps=14 format=3 uid="uid://dkrvuap5myfeg"]
 
 [ext_resource type="Script" uid="uid://ciuippr4gu5v8" path="res://scenes/ui/upgrade_ui/upgrade_btn.gd" id="1_4sdvl"]
-[ext_resource type="Texture2D" uid="uid://b5mt7cpy4uvom" path="res://scenes/ui/btn_2.png" id="1_tbl4s"]
-[ext_resource type="Texture2D" uid="uid://bode2fx2vmuvw" path="res://scenes/ui/btn_1.png" id="2_0dpt2"]
-[ext_resource type="Texture2D" uid="uid://bt56hiqqwdvap" path="res://scenes/ui/btn_0.png" id="3_4g44r"]
+[ext_resource type="Texture2D" uid="uid://b5mt7cpy4uvom" path="res://scenes/ui/controls/btn_2.png" id="1_tbl4s"]
+[ext_resource type="Texture2D" uid="uid://bode2fx2vmuvw" path="res://scenes/ui/controls/btn_1.png" id="2_0dpt2"]
+[ext_resource type="Texture2D" uid="uid://bt56hiqqwdvap" path="res://scenes/ui/controls/btn_0.png" id="3_4g44r"]
 [ext_resource type="Texture2D" uid="uid://casuik4xwlg2v" path="res://scenes/ui/game_ui/progressbar_fill_alt.png" id="5_0dpt2"]
 [ext_resource type="FontFile" uid="uid://c1hpa04tng3qi" path="res://scenes/ui/Ranchers-Regular.ttf" id="5_nn5yj"]
+[ext_resource type="AudioStream" uid="uid://bsw02wx8qsayj" path="res://scenes/ui/upgrade_ui/chaching.wav" id="7_4g44r"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o76u3"]
 
@@ -46,7 +47,7 @@ outline_color = Color(0, 0, 0, 1)
 shadow_color = Color(0, 0, 0, 1)
 shadow_offset = Vector2(4, 0)
 
-[node name="SpeedUpgradeBtn" type="Button"]
+[node name="SpeedUpgradeBtn" type="Button" groups=["ignore_press_sfx"]]
 custom_minimum_size = Vector2(164, 48)
 anchors_preset = 8
 anchor_left = 0.5
@@ -94,3 +95,8 @@ text = "Repair - 10$"
 label_settings = SubResource("LabelSettings_2mi0r")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Chaching" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_4g44r")
+volume_db = -5.253
+bus = &"Sound"

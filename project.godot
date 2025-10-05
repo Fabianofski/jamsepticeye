@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 GameManager="*res://scenes/game_manager.gd"
 SignalBus="*res://scenes/signal_bus.gd"
+UiPlayback="*res://scenes/ui/ui_playback.gd"
 
 [display]
 
@@ -36,6 +37,7 @@ enabled=PackedStringArray("res://addons/gizmos/plugin.cfg")
 LawnMower="The LawnMower Object for Collision Check"
 Zombie=""
 Collectible=""
+ignore_press_sfx=""
 
 [input]
 
