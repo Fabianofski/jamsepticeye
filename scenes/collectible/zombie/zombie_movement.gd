@@ -16,9 +16,20 @@ var index: int = 0
 @onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var mesh_animation: AnimationPlayer = $Mesh/AnimationPlayer
 
+@export var moan_sounds: Array[AudioStream] = []
+@onready var moan_sound_player: AudioStreamPlayer3D = $"MoanSound"
+@export var min_moan_time: float = 5 
+@export var max_moan_time: float = 30
+var next_moan: float = 0.0
+
 func _ready():
 	navigation_agent.path_desired_distance = 0.5
 	navigation_agent.target_desired_distance = 0.5
+	calc_next_moan()
+
+func calc_next_moan(): 
+	moan_sound_player.stream = moan_sounds[randi() % moan_sounds.size()]
+	next_moan = randf_range(min_moan_time, max_moan_time)
 
 func set_movement_target(movement_target: Vector3):
 	navigation_agent.set_target_position(movement_target)
@@ -39,6 +50,9 @@ func hunt(_player: Node3D):
 	player = _player
 	state = State.HUNTING
 	play_animations()
+
+	if randf() > 0.8:
+		moan_sound_player.play()
 
 func stop_hunt(): 
 	player = null 
@@ -89,3 +103,9 @@ func _physics_process(_delta):
 
 	velocity = current_agent_position.direction_to(next_path_position) * movement_speed
 	move_and_slide()
+
+func _process(delta: float) -> void:
+	next_moan -= delta 
+	if next_moan <= 0: 
+		calc_next_moan()
+		moan_sound_player.play()

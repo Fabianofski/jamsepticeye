@@ -1,12 +1,16 @@
-[gd_scene load_steps=12 format=3 uid="uid://c485h3twkkbdo"]
+[gd_scene load_steps=16 format=3 uid="uid://c485h3twkkbdo"]
 
 [ext_resource type="Script" uid="uid://boh502kvn5pcr" path="res://scenes/collectible/zombie/zombie_movement.gd" id="1_t3ree"]
 [ext_resource type="Script" uid="uid://cdn6fo6lrk6nd" path="res://scenes/collectible/collectible.gd" id="2_h3k5g"]
+[ext_resource type="AudioStream" uid="uid://cgcl5hp2p2amr" path="res://scenes/collectible/zombie/audio/zombie1.wav" id="2_wup23"]
 [ext_resource type="PackedScene" uid="uid://bupa6lleqo38t" path="res://scenes/characters/zombie.blend" id="3_0pk84"]
 [ext_resource type="PackedScene" uid="uid://bwy2dpojudeyq" path="res://scenes/collectible/zombie/blood_particles.tscn" id="3_h3k5g"]
+[ext_resource type="AudioStream" uid="uid://duw0tvxocwvox" path="res://scenes/collectible/zombie/audio/zombie2.wav" id="3_lrud2"]
+[ext_resource type="AudioStream" uid="uid://cgplj8f5jyjqn" path="res://scenes/collectible/zombie/audio/zombie3.wav" id="4_ag4xc"]
 [ext_resource type="Script" uid="uid://d6nlmb6mq2gs" path="res://scenes/collectible/zombie/zombie_randomizer.gd" id="4_j7snw"]
 [ext_resource type="ArrayMesh" uid="uid://de3rc2xtdbptc" path="res://scenes/collectible/zombie/hats/crown.obj" id="4_sft5r"]
 [ext_resource type="ArrayMesh" uid="uid://c1umahbcoawkn" path="res://scenes/collectible/zombie/hats/traffic_cone.obj" id="5_0pk84"]
+[ext_resource type="AudioStream" uid="uid://g0t012xc00gy" path="res://scenes/collectible/zombie/audio/zombie4.wav" id="5_o7jn3"]
 [ext_resource type="Script" uid="uid://boaalixbp2dkk" path="res://scenes/collectible/zombie/hats/hat_rarity.gd" id="6_iix3q"]
 [ext_resource type="ArrayMesh" uid="uid://cyitxfxste8pd" path="res://scenes/collectible/zombie/hats/base_cap.obj" id="6_tnm7x"]
 [ext_resource type="ArrayMesh" uid="uid://bm2g021ryj72a" path="res://scenes/collectible/zombie/hats/construction.obj" id="7_c53e3"]
@@ -17,6 +21,7 @@ height = 2.5
 
 [node name="Zombie" type="CharacterBody3D" groups=["Collectible", "Zombie"]]
 script = ExtResource("1_t3ree")
+moan_sounds = Array[AudioStream]([ExtResource("2_wup23"), ExtResource("3_lrud2"), ExtResource("4_ag4xc"), ExtResource("5_o7jn3")])
 
 [node name="Collectible" type="Node3D" parent="."]
 script = ExtResource("2_h3k5g")
@@ -32,7 +37,7 @@ hats = [NodePath("../Mesh/Armature/Skeleton3D/BoneAttachment3D/Crown"), NodePath
 [node name="Mesh" parent="." instance=ExtResource("3_0pk84")]
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/Armature/Skeleton3D" index="6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.39688, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.3, 0)
 bone_name = "neck"
 bone_idx = 4
 use_external_skeleton = true
@@ -69,5 +74,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.24068, 0)
 shape = SubResource("CapsuleShape3D_k77ap")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="MoanSound" type="AudioStreamPlayer3D" parent="."]
 
 [editable path="Mesh"]
