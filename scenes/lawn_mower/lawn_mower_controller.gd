@@ -14,6 +14,8 @@ var max_speed: float
 
 @onready var speed_lines: ColorRect = $"CameraRig/Camera3D/Speed Lines"
 
+@onready var mowing_sound: AudioStreamPlayer3D = $MowingSound
+
 var speed = 0.0
 var direction = 0.0
 var boosting = false
@@ -61,7 +63,8 @@ func get_steering(delta):
 
 	if Input.is_action_pressed("drift"): 
 		drifting = true
-		var speed_factor = abs(speed) / max_speed
+		var _max_speed = max_speed if !boosting else max_speed * 2
+		var speed_factor = abs(speed) / _max_speed
 		input_dir *= stats.drift_speed * speed_factor
 	else: 
 		drifting = false
@@ -117,8 +120,17 @@ func _process(_delta: float) -> void:
 	play_animations()
 	
 func play_animations(): 
+	var _max_speed = max_speed if not boosting else max_speed * 2
+	mowing_sound.volume_linear = speed / _max_speed
+
+	if boosting: 
+		mowing_sound.pitch_scale = 1.5
+	else: 
+		mowing_sound.pitch_scale = 1
+
 	if sitting:
 		return
+
 	if not boosting and abs(speed) >= 1 and not player_animations.current_animation == "walk":
 		player_animations.play("walk")
 	elif boosting and abs(speed) >= 1 and not player_animations.current_animation == "dash":

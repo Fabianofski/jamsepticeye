@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://d0u6yq2lnbrxy"]
+[gd_scene load_steps=5 format=3 uid="uid://d0u6yq2lnbrxy"]
 
 [ext_resource type="PackedScene" uid="uid://bk8l8bllutsvo" path="res://scenes/lawn_mower/prefabs/base_mower.tscn" id="1_f2foy"]
 [ext_resource type="PackedScene" uid="uid://gw3umdaoqibe" path="res://scenes/lawn_mower/models/sitting_mower.glb" id="2_8yoov"]
+[ext_resource type="AudioStream" uid="uid://b1t4io22pio0h" path="res://scenes/lawn_mower/audio/sitting-mower.wav" id="3_8yoov"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f2foy"]
 radius = 1.02723
@@ -19,3 +20,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 [node name="CollisionShape3D" parent="RotationLess/DamageZone" index="1"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.556664, 0.884054)
 shape = SubResource("CapsuleShape3D_f2foy")
+
+[node name="MowingSound" parent="." index="4"]
+stream = ExtResource("3_8yoov")

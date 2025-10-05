@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bk8l8bllutsvo"]
+[gd_scene load_steps=31 format=3 uid="uid://bk8l8bllutsvo"]
 
 [ext_resource type="Script" uid="uid://bxxhxcs3idf0w" path="res://scenes/lawn_mower/lawn_mower_controller.gd" id="1_mak8i"]
 [ext_resource type="Resource" uid="uid://cltiswliie43p" path="res://scenes/lawn_mower/prefabs/lawn_mower/lawn_mower_stats.tres" id="2_5gyun"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://dh6w2o71nwdpv" path="res://scenes/ui/keyboard/shift.png" id="11_qm8ju"]
 [ext_resource type="Texture2D" uid="uid://ck2g54ymmd5nq" path="res://scenes/ui/keyboard/space.png" id="12_07o8m"]
 [ext_resource type="Texture2D" uid="uid://bm380lemsb6b1" path="res://scenes/ui/keyboard/wasd.png" id="12_xt5ln"]
+[ext_resource type="AudioStream" uid="uid://spitrxb4fxcj" path="res://scenes/lawn_mower/audio/hand_mower.wav" id="17_5i8ns"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_u6m8x"]
 radius = 10.0
@@ -215,3 +216,8 @@ grow_vertical = 2
 
 [node name="Fuel" type="Node3D" parent="."]
 script = ExtResource("7_x24gr")
+
+[node name="MowingSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("17_5i8ns")
+autoplay = true
+bus = &"Sound"
