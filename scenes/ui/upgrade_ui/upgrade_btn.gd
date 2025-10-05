@@ -8,9 +8,9 @@ var stats: LawnMowerStats
 var upgrade_info : UpgradeInfo 
 
 func _ready():
-	SignalBus.money_updated.connect(update_button)
 	pressed.connect(buy_upgrade)
 	SignalBus.mower_updated.connect(set_lawn_mower)
+	SignalBus.money_updated.connect(update_button)
 
 func update_button(amount: float): 
 	var max_upgrades_bought = upgrade_info.bought >= upgrade_info.max_bought 

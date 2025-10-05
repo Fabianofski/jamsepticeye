@@ -1,21 +1,16 @@
-[gd_scene load_steps=36 format=3 uid="uid://boai28d22w8n2"]
+[gd_scene load_steps=31 format=3 uid="uid://boai28d22w8n2"]
 
 [ext_resource type="PackedScene" uid="uid://by1gn4o48sli5" path="res://scenes/map.tscn" id="1_mixcd"]
 [ext_resource type="Script" uid="uid://kfjyu1fenphr" path="res://scenes/ui/menus.gd" id="2_miq82"]
 [ext_resource type="Script" uid="uid://bgpu3yrnt5wo" path="res://scenes/main_camera.gd" id="3_6e45b"]
 [ext_resource type="Script" uid="uid://b2ly8jfqp50c5" path="res://scenes/ui/signal_btn.gd" id="3_miq82"]
-[ext_resource type="Script" uid="uid://d1ewpaukhbydx" path="res://scenes/lawn_mower/lawn_mower_base.gd" id="3_mixcd"]
 [ext_resource type="PackedScene" uid="uid://cb8dld63hgqkj" path="res://scenes/ui/game_ui/game_ui.tscn" id="3_v1wow"]
 [ext_resource type="Texture2D" uid="uid://b5mt7cpy4uvom" path="res://scenes/ui/btn_2.png" id="4_3d2pr"]
 [ext_resource type="Texture2D" uid="uid://dwad8ugg8tvs2" path="res://scenes/ui/game_ui/border.png" id="4_h5hfs"]
-[ext_resource type="Script" uid="uid://cv4gv6mj1avnu" path="res://scenes/lawn_mower/upgrades/lawn_mower.gd" id="4_mj2jn"]
-[ext_resource type="Resource" uid="uid://cdygjpkfg3d7t" path="res://scenes/lawn_mower/prefabs/hand_mower/hand_mower.tres" id="5_6e45b"]
 [ext_resource type="Texture2D" uid="uid://bode2fx2vmuvw" path="res://scenes/ui/btn_1.png" id="5_h5hfs"]
-[ext_resource type="Resource" uid="uid://d4i14axeujag0" path="res://scenes/lawn_mower/prefabs/lawn_mower/lawn_mower.tres" id="5_kdryc"]
 [ext_resource type="FontFile" uid="uid://c1hpa04tng3qi" path="res://scenes/ui/Ranchers-Regular.ttf" id="5_ueiaa"]
 [ext_resource type="Texture2D" uid="uid://bt56hiqqwdvap" path="res://scenes/ui/btn_0.png" id="6_snaye"]
 [ext_resource type="Script" uid="uid://bn6vubjwb13u2" path="res://scenes/ui/settings.gd" id="7_mlphb"]
-[ext_resource type="Resource" uid="uid://bp5a48ea187oe" path="res://scenes/lawn_mower/prefabs/sitting_mower/sitting_mower.tres" id="8_e35lh"]
 [ext_resource type="AudioStream" uid="uid://dw2t4cvtf4s15" path="res://scenes/audio/ambience.mp3" id="9_udeyl"]
 [ext_resource type="Texture2D" uid="uid://cxtf315cttux2" path="res://scenes/ui/logo.png" id="10_1wc4g"]
 [ext_resource type="Texture2D" uid="uid://fjc27kog1hq0" path="res://scenes/ui/grabber_1.png" id="12_1wc4g"]
@@ -165,8 +160,6 @@ transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -
 light_color = Color(1, 0.94, 0.88, 1)
 shadow_enabled = true
 
-[node name="Map" parent="." instance=ExtResource("1_mixcd")]
-
 [node name="Menus" type="Node3D" parent="."]
 script = ExtResource("2_miq82")
 
@@ -296,18 +289,12 @@ value = 1.0
 transform = Transform3D(0.707107, 0.40558, -0.579228, 0, 0.819152, 0.573577, 0.707107, -0.40558, 0.579228, -90, 65, 190)
 script = ExtResource("3_6e45b")
 
-[node name="MowerBase" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.789532, 0)
-script = ExtResource("3_mixcd")
-lawn_mowers = Array[ExtResource("4_mj2jn")]([ExtResource("5_6e45b"), ExtResource("5_kdryc"), ExtResource("8_e35lh")])
-
-[node name="BaseCam" type="Node3D" parent="MowerBase"]
-transform = Transform3D(0.653036, -0.446916, 0.6114, 0.0192899, 0.816867, 0.576504, -0.757081, -0.364684, 0.542065, 4.08389, 4.5, 5.17659)
-
 [node name="Ambience" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_udeyl")
 autoplay = true
 bus = &"Sound"
+
+[node name="Map" parent="." instance=ExtResource("1_mixcd")]
 
 [connection signal="value_changed" from="Menus/MainMenu/Settings/MusicSlider" to="Menus/MainMenu/Settings" method="on_music_slider_value_changed"]
 [connection signal="value_changed" from="Menus/MainMenu/Settings/SoundSlider" to="Menus/MainMenu/Settings" method="on_audio_slider_value_changed"]
