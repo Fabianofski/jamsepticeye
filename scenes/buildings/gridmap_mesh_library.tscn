@@ -1,13 +1,15 @@
-[gd_scene load_steps=15 format=3 uid="uid://c86cdw04ah500"]
+[gd_scene load_steps=26 format=3 uid="uid://c86cdw04ah500"]
 
 [ext_resource type="ArrayMesh" uid="uid://lhfot7g2vkk7" path="res://scenes/buildings/kenney/building-type-e.obj" id="1_kwedj"]
+[ext_resource type="Texture2D" uid="uid://tqb6mrr6wbfv" path="res://scenes/buildings/kenney/Textures/variation-c.png" id="2_1y0yv"]
 [ext_resource type="ArrayMesh" uid="uid://bnkcmhw865fub" path="res://scenes/buildings/kenney/fence.obj" id="2_7751s"]
 [ext_resource type="ArrayMesh" uid="uid://dah8j8d33d42e" path="res://scenes/buildings/kenney/tree-large.obj" id="3_umrhb"]
 [ext_resource type="ArrayMesh" uid="uid://becujvmuuaxdl" path="res://scenes/buildings/kenney/building-type-c.obj" id="4_1y0yv"]
 [ext_resource type="ArrayMesh" uid="uid://brqm3d5rifsnx" path="res://scenes/buildings/kenney/driveway-long.obj" id="5_3y830"]
 [ext_resource type="ArrayMesh" uid="uid://ej2prfykg38t" path="res://scenes/buildings/kenney/building-type-h.obj" id="5_7751s"]
 [ext_resource type="Texture2D" uid="uid://jpf8g76vb6ge" path="res://scenes/buildings/kenney/Textures/colormap.png" id="6_1y0yv"]
-[ext_resource type="Script" uid="uid://dwarmbqv7xa63" path="res://scenes/buildings/colour_randomiser.gd" id="7_3y830"]
+[ext_resource type="Texture2D" uid="uid://byitc02n4gjhu" path="res://scenes/buildings/kenney/Textures/variation-a.png" id="8_8lpda"]
+[ext_resource type="Texture2D" uid="uid://cxsi74r8qain4" path="res://scenes/buildings/kenney/Textures/variation-b.png" id="9_53skk"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3y830"]
 albedo_texture = ExtResource("6_1y0yv")
@@ -28,6 +30,33 @@ albedo_texture = ExtResource("6_1y0yv")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8lpda"]
 albedo_texture = ExtResource("6_1y0yv")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_almm1"]
+albedo_texture = ExtResource("8_8lpda")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0k16k"]
+albedo_texture = ExtResource("9_53skk")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ui88y"]
+albedo_texture = ExtResource("2_1y0yv")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_53skk"]
+albedo_texture = ExtResource("8_8lpda")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rsk41"]
+albedo_texture = ExtResource("9_53skk")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a2vhv"]
+albedo_texture = ExtResource("2_1y0yv")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_04f8a"]
+albedo_texture = ExtResource("8_8lpda")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p1anl"]
+albedo_texture = ExtResource("9_53skk")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wgvh5"]
+albedo_texture = ExtResource("2_1y0yv")
+
 [node name="Gridmap Mesh Library" type="Node3D"]
 
 [node name="Kenney House E" type="MeshInstance3D" parent="."]
@@ -35,7 +64,6 @@ transform = Transform3D(16, 0, 0, 0, 16, 0, 0, 0, 16, 0, 0, 0)
 visible = false
 mesh = ExtResource("1_kwedj")
 surface_material_override/0 = SubResource("StandardMaterial3D_3y830")
-script = ExtResource("7_3y830")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Kenney House E"]
 
@@ -71,7 +99,6 @@ transform = Transform3D(16, 0, 0, 0, 16, 0, 0, 0, 16, 0, 0, 0)
 visible = false
 mesh = ExtResource("4_1y0yv")
 surface_material_override/0 = SubResource("StandardMaterial3D_1y0yv")
-script = ExtResource("7_3y830")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Kenney House C"]
 
@@ -81,9 +108,9 @@ shape = SubResource("BoxShape3D_oerpd")
 
 [node name="Kenney House H" type="MeshInstance3D" parent="."]
 transform = Transform3D(16, 0, 0, 0, 16, 0, 0, 0, 16, 0, 0, 0)
+visible = false
 mesh = ExtResource("5_7751s")
 surface_material_override/0 = SubResource("StandardMaterial3D_8lpda")
-script = ExtResource("7_3y830")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Kenney House H"]
 
@@ -93,5 +120,114 @@ shape = SubResource("BoxShape3D_oerpd")
 
 [node name="Path" type="MeshInstance3D" parent="."]
 transform = Transform3D(48, 0, 0, 0, 16, 0, 0, 0, 48, 0, 0, 0)
+visible = false
 mesh = ExtResource("5_3y830")
 skeleton = NodePath("../Kenney House C/StaticBody3D")
+
+[node name="Kenney House E2" type="MeshInstance3D" parent="."]
+transform = Transform3D(16, 0, 0, 0, 16, 0, 0, 0, 16, 0, 0, 0)
+visible = false
+mesh = ExtResource("1_kwedj")
+surface_material_override/0 = SubResource("StandardMaterial3D_almm1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Kenney House E2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Kenney House E2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_oerpd")
+
+[node name="Kenney House E3" type="MeshInstance3D" parent="."]
+transform = Transform3D(16, 0, 0, 0, 16, 0, 0, 0, 16, 0, 0, 0)
+visible = false
+mesh = ExtResource("1_kwedj")
+surface_material_override/0 = SubResource("StandardMaterial3D_0k16k")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Kenney House E3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Kenney House E3/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_oerpd")
+
+[node name="Kenney House E4" type="MeshInstance3D" parent="."]
+transform = Transform3D(16, 0, 0, 0, 16, 0, 0, 0, 16, 0, 0, 0)
+visible = false
+mesh = ExtResource("1_kwedj")
+surface_material_override/0 = SubResource("StandardMaterial3D_ui88y")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Kenney House E4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Kenney House E4/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_oerpd")
+
+[node name="Kenney House C2" type="MeshInstance3D" parent="."]
+transform = Transform3D(16, 0, 0, 0, 16, 0, 0, 0, 16, 0, 0, 0)
+visible = false
+mesh = ExtResource("4_1y0yv")
+surface_material_override/0 = SubResource("StandardMaterial3D_53skk")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Kenney House C2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Kenney House C2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_oerpd")
+
+[node name="Kenney House C3" type="MeshInstance3D" parent="."]
+transform = Transform3D(16, 0, 0, 0, 16, 0, 0, 0, 16, 0, 0, 0)
+visible = false
+mesh = ExtResource("4_1y0yv")
+surface_material_override/0 = SubResource("StandardMaterial3D_rsk41")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Kenney House C3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Kenney House C3/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_oerpd")
+
+[node name="Kenney House C4" type="MeshInstance3D" parent="."]
+transform = Transform3D(16, 0, 0, 0, 16, 0, 0, 0, 16, 0, 0, 0)
+visible = false
+mesh = ExtResource("4_1y0yv")
+surface_material_override/0 = SubResource("StandardMaterial3D_a2vhv")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Kenney House C4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Kenney House C4/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_oerpd")
+
+[node name="Kenney House H2" type="MeshInstance3D" parent="."]
+transform = Transform3D(16, 0, 0, 0, 16, 0, 0, 0, 16, 0, 0, 0)
+visible = false
+mesh = ExtResource("5_7751s")
+surface_material_override/0 = SubResource("StandardMaterial3D_04f8a")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Kenney House H2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Kenney House H2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_oerpd")
+
+[node name="Kenney House H3" type="MeshInstance3D" parent="."]
+transform = Transform3D(16, 0, 0, 0, 16, 0, 0, 0, 16, 0, 0, 0)
+visible = false
+mesh = ExtResource("5_7751s")
+surface_material_override/0 = SubResource("StandardMaterial3D_p1anl")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Kenney House H3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Kenney House H3/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_oerpd")
+
+[node name="Kenney House H4" type="MeshInstance3D" parent="."]
+transform = Transform3D(16, 0, 0, 0, 16, 0, 0, 0, 16, 0, 0, 0)
+visible = false
+mesh = ExtResource("5_7751s")
+surface_material_override/0 = SubResource("StandardMaterial3D_wgvh5")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Kenney House H4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Kenney House H4/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_oerpd")
