@@ -4,7 +4,7 @@ class_name LawnMowerController
 @export var stats: LawnMowerStats
 @export var sitting: bool = false
 
-var max_speed: float
+var max_speed: float = 1
 
 @onready var rotation_less: Node3D = $RotationLess
 @onready var player_animations: AnimationPlayer = $RotationLess/Model/person/AnimationPlayer
