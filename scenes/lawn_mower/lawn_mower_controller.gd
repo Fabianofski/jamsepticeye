@@ -119,7 +119,7 @@ func _process(_delta: float) -> void:
 	
 func play_animations(): 
 	var _max_speed = max_speed if not boosting else max_speed * 2
-	mowing_sound.volume_linear = speed / _max_speed
+	mowing_sound.volume_linear = abs(speed) / _max_speed
 
 	if boosting: 
 		mowing_sound.pitch_scale = 1.5
