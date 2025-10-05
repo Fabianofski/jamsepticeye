@@ -31,6 +31,7 @@ scared_moan_sounds = Array[AudioStream]([ExtResource("6_o7jn3"), ExtResource("7_
 [node name="Collectible" type="Node3D" parent="."]
 script = ExtResource("2_h3k5g")
 respawn = true
+damage = 10.0
 particle = ExtResource("3_h3k5g")
 
 [node name="ZombieRandomizer" type="Node3D" parent="." node_paths=PackedStringArray("hats")]

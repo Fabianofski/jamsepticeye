@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://cb8dld63hgqkj"]
+[gd_scene load_steps=34 format=3 uid="uid://cb8dld63hgqkj"]
 
 [ext_resource type="Script" uid="uid://yaswdugcal5a" path="res://scenes/ui/ui.gd" id="1_nvly0"]
 [ext_resource type="Texture2D" uid="uid://dwad8ugg8tvs2" path="res://scenes/ui/game_ui/border.png" id="2_vjxrc"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://b5mt7cpy4uvom" path="res://scenes/ui/controls/btn_2.png" id="15_3b87j"]
 [ext_resource type="Script" uid="uid://bru6pa7ggs1e4" path="res://scenes/ui/upgrade_ui/stats.gd" id="16_3s8aq"]
 [ext_resource type="PackedScene" uid="uid://dkrvuap5myfeg" path="res://scenes/ui/upgrade_ui/upgrade_btn.tscn" id="20_8kkbn"]
+[ext_resource type="Resource" uid="uid://bp5a48ea187oe" path="res://scenes/lawn_mower/prefabs/sitting_mower/sitting_mower.tres" id="20_r5kob"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_opqoc"]
 font = ExtResource("6_xhr0k")
@@ -349,13 +350,14 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -255.0
+offset_left = -349.0
 offset_top = 1.0
 offset_right = -25.0
 offset_bottom = 1081.0
 grow_horizontal = 0
 alignment = 1
 script = ExtResource("16_3s8aq")
+best_mower = ExtResource("20_r5kob")
 
 [node name="RepairBtn" parent="Upgrade" instance=ExtResource("20_8kkbn")]
 layout_mode = 1

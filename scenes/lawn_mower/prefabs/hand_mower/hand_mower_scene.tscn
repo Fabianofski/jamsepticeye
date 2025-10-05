@@ -14,5 +14,5 @@ stats = ExtResource("2_i36kc")
 [node name="hand_mower" parent="RotationLess" index="0" instance=ExtResource("4_gol1m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.504451, -0.202667)
 
-[node name="CollisionShape3D" parent="RotationLess/DamageZone" index="0"]
+[node name="CollisionShape3D" parent="RotationLess/DamageZone" index="1"]
 shape = SubResource("CapsuleShape3D_i36kc")

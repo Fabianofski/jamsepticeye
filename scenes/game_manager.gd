@@ -1,6 +1,6 @@
 extends Node3D 
 
-var money: float = 100 
+var money: float = 10 
 var current_lawn_mower: LawnMower
 var current_lawn_mower_index: int = 0
 var current_round_earnings: float = 0

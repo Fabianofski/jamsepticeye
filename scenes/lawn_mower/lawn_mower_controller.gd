@@ -63,13 +63,12 @@ func get_steering(delta):
 
 	if Input.is_action_pressed("drift"): 
 		drifting = true
-		var _max_speed = max_speed if !boosting else max_speed * 2
-		var speed_factor = abs(speed) / _max_speed
-		input_dir *= stats.drift_speed * speed_factor
 	else: 
 		drifting = false
 
-	direction += input_dir * stats.steering_speed * delta * (speed / max_speed)
+	var _max_speed = max_speed if !boosting else max_speed * 2
+	var steer_speed = stats.steering_speed if !drifting else stats.drift_speed
+	direction += input_dir * steer_speed * delta * (speed / _max_speed)
 
 func get_speed(delta): 
 	var acceleration = stats.acceleration if !boosting else stats.acceleration*2

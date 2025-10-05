@@ -8,25 +8,25 @@
 [sub_resource type="Resource" id="Resource_1sety"]
 script = ExtResource("1_wtddo")
 amount = 0.2
-base_price = 5
+base_price = 20
 price_increase = 2.0
-max_bought = 3
+max_bought = 2
 metadata/_custom_type_script = "uid://cm0l1l6eqh1cg"
 
 [sub_resource type="Resource" id="Resource_snrfe"]
 script = ExtResource("1_wtddo")
 amount = -0.2
-base_price = 15
+base_price = 20
 price_increase = 2.0
-max_bought = 3
+max_bought = 2
 metadata/_custom_type_script = "uid://cm0l1l6eqh1cg"
 
 [sub_resource type="Resource" id="Resource_6chsq"]
 script = ExtResource("1_wtddo")
 amount = 0.2
-base_price = 20
+base_price = 30
 price_increase = 2.0
-max_bought = 3
+max_bought = 2
 metadata/_custom_type_script = "uid://cm0l1l6eqh1cg"
 
 [sub_resource type="Resource" id="Resource_wtddo"]
@@ -39,10 +39,10 @@ metadata/_custom_type_script = "uid://cm0l1l6eqh1cg"
 
 [sub_resource type="Resource" id="Resource_ode16"]
 script = ExtResource("1_wtddo")
-amount = 0.2
-base_price = 20
+amount = 0.5
+base_price = 30
 price_increase = 2.0
-max_bought = 3
+max_bought = 1
 metadata/_custom_type_script = "uid://cm0l1l6eqh1cg"
 
 [resource]
