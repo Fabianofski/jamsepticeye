@@ -85,7 +85,8 @@ func _physics_process(_delta):
 		if personality == Personality.VICIOUS:
 			set_movement_target(player.global_position)
 		elif personality == Personality.SCAREDYCAT:
-			set_movement_target(self.global_position - player.global_position)
+			var direction = (self.global_position - player.global_position).normalized()
+			set_movement_target(global_position + direction)
 		else:
 			print("If you reach this point something's gone very wrong.")
 
