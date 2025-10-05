@@ -1,4 +1,4 @@
-# Blender 4.5.3 LTS MTL File: 'hats.blend'
+# Blender 4.5.3 LTS MTL File: 'None'
 # www.blender.org
 
 newmtl material
@@ -9,4 +9,4 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd /home/fabi/code/godot/jamsepticeye/scenes/palette.png
+map_Kd /home/santumerino/Documents/GitHub/jamsepticeye/scenes/palette.png
